@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SHAYFLY - השוואת טיסות, מלונות, רכבים ודילים במחירים המשתלמים ביותר.">
+  <title>SHAYFLY - טיסות, מלונות, רכבים ודילים</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-blue-50 font-sans">
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <img src="logo.png" alt="SHAYFLY Logo" class="h-12" />
+    <h1 class="text-xl">ברוכים הבאים ל-SHAYFLY</h1>
+    <select id="language-select" class="text-black p-1 rounded">
+      <option value="he">עברית</option>
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
+    </select>
+  </header>
+  <main class="p-6">
+    <nav class="grid grid-cols-4 gap-4 mb-4">
+      <a href="https://www.skyscanner.net/" target="_blank" class="btn">✈️ טיסות</a>
+      <a href="https://www.booking.com/" target="_blank" class="btn">🏨 מלונות</a>
+      <a href="https://www.rentalcars.com/" target="_blank" class="btn">🚗 רכבים</a>
+      <a href="https://www.travelpayouts.com/" target="_blank" class="btn">💼 דילים</a>
+    </nav>
+    <section id="search-section" class="bg-white p-4 rounded shadow-md">
+      <input type="text" id="from" placeholder="מוצא" class="input" />
+      <input type="text" id="to" placeholder="יעד" class="input" />
+      <input type="date" id="departure" class="input" />
+      <input type="date" id="return" class="input" />
+      <input type="number" id="passengers" placeholder="נוסעים" class="input" />
+      <button id="search-btn" class="btn bg-green-500">חפש</button>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+
+.btn {
+  @apply bg-blue-400 text-white p-2 rounded hover:bg-blue-600;
+}
+.input {
+  @apply border p-2 m-2 rounded;
+}
