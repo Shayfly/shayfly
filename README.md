@@ -1,16 +1,17 @@
 
-# SHAYFLY - Professional Travel Aggregator
+# SHAYFLY - Travel Aggregator
 
-## Features
-- Flight, Hotel, Car, Package search with external links
-- Contact form (mailto)
-- Multilingual support ready
-- SEO setup (robots.txt, sitemap.xml)
-- Responsive design
+Welcome to SHAYFLY, your modern and refreshing travel search engine for Flights, Hotels, Cars and Package Deals.
 
-## Structure
-- index.html
-- /pages (flights, hotels, cars, packages, contact, about, terms, privacy)
-- /assets/images (favicon)
-- /lang (multi-language files)
-- styles.css
+## Pages included
+- Home
+- Flights
+- Hotels
+- Cars
+- Packages
+- Contact
+
+## How to Deploy
+1. Upload the content of this folder to your GitHub repository.
+2. Go to Settings -> Pages -> Set branch to 'main' or 'master' and root.
+3. Done! Your website is live.
