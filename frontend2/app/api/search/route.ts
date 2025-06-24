@@ -14,12 +14,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'API configuration missing' }, { status: 500 });
   }
 
-  const url = `${apiUrl}?origin=${origin}&destination=${destination}&departDate=${departDate}&returnDate=${returnDate}&passengers=${passengers}`;
+  // Travelpayouts API expects token as a query parameter
+  const url = `${apiUrl}?origin=${origin}&destination=${destination}&depart_date=${departDate}&return_date=${returnDate}&passengers=${passengers}&token=${apiKey}`;
 
   try {
-    const apiResponse = await fetch(url, {
-      headers: { 'Authorization': `Bearer ${apiKey}` }
-    });
+    const apiResponse = await fetch(url);
     const data = await apiResponse.json();
     return NextResponse.json(data);
   } catch (err) {
