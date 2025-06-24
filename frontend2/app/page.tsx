@@ -1,51 +1,8 @@
-'use client'
-import { useState } from 'react'
-
-export default function Home() {
-  const [origin, setOrigin] = useState('')
-  const [destination, setDestination] = useState('')
-  const [departDate, setDepartDate] = useState('')
-  const [returnDate, setReturnDate] = useState('')
-  const [passengers, setPassengers] = useState(1)
-  const [results, setResults] = useState<any>(null)
-  const [loading, setLoading] = useState(false)
-
-  async function search() {
-    setLoading(true)
-    try {
-      const params = new URLSearchParams({
-        origin,
-        destination,
-        departDate,
-        returnDate,
-        passengers: String(passengers)
-      })
-      const res = await fetch(`/api/search?${params}`)
-      const data = await res.json()
-      setResults(data)
-    } catch (e) {
-      console.error(e)
-    } finally {
-      setLoading(false)
-    }
-  }
-
+export default function HomePage() {
   return (
-    <main className="min-h-screen p-8 flex flex-col items-center gap-6">
-      <h1 className="text-2xl font-bold">ShayFly</h1>
-      <div className="grid gap-4 w-full max-w-md">
-        <input className="border p-2" placeholder="Origin" value={origin} onChange={e=>setOrigin(e.target.value)} />
-        <input className="border p-2" placeholder="Destination" value={destination} onChange={e=>setDestination(e.target.value)} />
-        <input className="border p-2" type="date" value={departDate} onChange={e=>setDepartDate(e.target.value)} />
-        <input className="border p-2" type="date" value={returnDate} onChange={e=>setReturnDate(e.target.value)} />
-        <input className="border p-2" type="number" min="1" value={passengers} onChange={e=>setPassengers(Number(e.target.value))} />
-        <button className="bg-blue-600 text-white p-2" onClick={search} disabled={loading}>{loading? 'Searching...' : 'Search'}</button>
-      </div>
-      {results && (
-        <pre className="text-left mt-6 w-full max-w-2xl overflow-auto bg-gray-100 p-4">
-          {JSON.stringify(results, null, 2)}
-        </pre>
-      )}
+    <main>
+      <h1>ברוכים הבאים ל־ShayFly!</h1>
+      <p>האתר עובד! 🎉</p>
     </main>
-  )
+  );
 }
