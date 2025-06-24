@@ -11,8 +11,8 @@ ShayFly הוא פרויקט לדוגמה המדגים מנוע חיפוש דיל
    ```
 2. יצירת קובץ `.env.local` עם משתנים:
    ```bash
-   SEARCH_API_URL=https://example.com/api
-   SEARCH_API_KEY=your_key_here
+   SEARCH_API_URL=https://api.travelpayouts.com/aviasales/v3/prices_for_dates
+   SEARCH_API_KEY=<YOUR_TRAVELPAYOUTS_API_KEY>
    ```
 3. הרצת סביבה לפיתוח:
    ```bash
