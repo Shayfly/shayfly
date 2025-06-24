@@ -9,9 +9,11 @@ export default function Home() {
   const [passengers, setPassengers] = useState(1)
   const [results, setResults] = useState<any>(null)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   async function search() {
     setLoading(true)
+    setError(null)
     try {
       const params = new URLSearchParams({
         origin,
@@ -21,10 +23,12 @@ export default function Home() {
         passengers: String(passengers)
       })
       const res = await fetch(`/api/search?${params}`)
+      if (!res.ok) throw new Error('Request failed')
       const data = await res.json()
       setResults(data)
     } catch (e) {
       console.error(e)
+      setError('Failed to fetch results')
     } finally {
       setLoading(false)
     }
@@ -41,6 +45,7 @@ export default function Home() {
         <input className="border p-2" type="number" min="1" value={passengers} onChange={e=>setPassengers(Number(e.target.value))} />
         <button className="bg-blue-600 text-white p-2" onClick={search} disabled={loading}>{loading? 'Searching...' : 'Search'}</button>
       </div>
+      {error && <p className="text-red-500 mt-4">{error}</p>}
       {results && (
         <pre className="text-left mt-6 w-full max-w-2xl overflow-auto bg-gray-100 p-4">
           {JSON.stringify(results, null, 2)}
