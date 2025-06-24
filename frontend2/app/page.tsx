@@ -1,3 +1,9 @@
+codex/fix-missing-or-invalid-code-in-page.tsx
+export default function HomePage() {
+  return (
+    <main>
+      <h1>ברוכים הבאים ל־ShayFly!</h1>
+      <p>האתר עובד! 🎉</p>
 'use client'
 import { useState } from 'react'
 
@@ -51,6 +57,7 @@ export default function Home() {
           {JSON.stringify(results, null, 2)}
         </pre>
       )}
+      main
     </main>
-  )
+  );
 }
