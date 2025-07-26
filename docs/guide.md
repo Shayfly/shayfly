@@ -1,1 +1,0 @@
-# מדריך הפעלה והעלאה ל-GitHub Pages ו-Heroku
