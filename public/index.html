@@ -512,11 +512,14 @@
             }
 
             // Initial language application
+            // Try to get language from localStorage, otherwise default to 'he'
+            currentLang = localStorage.getItem('shayflyLang') || 'he';
             applyLanguage(currentLang);
 
             // Event listener for language toggle button
             langToggleBtn.addEventListener('click', () => {
                 currentLang = (currentLang === 'he' ? 'en' : 'he');
+                localStorage.setItem('shayflyLang', currentLang); // Save preference
                 applyLanguage(currentLang);
             });
 
