@@ -1,12 +1,587 @@
 <!DOCTYPE html>
 <html lang="he">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ShayFly</title>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo&family=Rubik&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-he="ShayFly - סוכן הנסיעות שלך לחופשה המושלמת" data-en="ShayFly - Your Travel Agent for the Perfect Vacation">ShayFly - סוכן הנסיעות שלך לחופשה המושלמת</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700;800&family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base styles, updated by JS for language */
+        body {
+            font-family: 'Heebo', sans-serif; /* Default to Heebo for Hebrew */
+            direction: rtl; /* Default to RTL for Hebrew */
+            text-align: right; /* Default to right for Hebrew */
+            background-color: #f0f9ff; /* Light blue background */
+            color: #334155; /* Darker text for contrast */
+        }
+        h1, h2, h3 {
+            font-family: 'Rubik', sans-serif; /* Rubik for headings in both languages */
+        }
+        /* Custom scroll-snap for smooth section transitions (optional, can be removed) */
+        html {
+            scroll-behavior: smooth;
+        }
+        .section-snap {
+            scroll-snap-align: start;
+        }
+
+        /* Fade-in animation styles */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hide English content by default */
+        [data-lang="en"] {
+            display: none;
+        }
+
+        /* Mobile menu overlay styles */
+        #mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Dark overlay */
+            z-index: 60; /* Above header */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        #mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #mobile-menu-overlay ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        #mobile-menu-overlay ul li {
+            margin: 1.5rem 0;
+        }
+
+        #mobile-menu-overlay ul li a {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        #mobile-menu-overlay ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-lg py-4 px-6 md:px-12 sticky top-0 z-50 rounded-b-xl">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://imgur.com/MJ3fjNG.png"
+                     alt="לוגו ShayFly"
+                     data-he-alt="לוגו ShayFly"
+                     data-en-alt="ShayFly Logo"
+                     class="h-16 w-auto mr-2 rounded-md">
+                <span class="text-3xl font-extrabold text-blue-700 hover:text-blue-900 transition duration-300 transform hover:scale-105"
+                      data-he="ShayFly" data-en="ShayFly">ShayFly</span>
+            </div>
+
+            <ul class="hidden md:flex space-x-6 space-x-reverse">
+                <li><a href="#hero" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-300 rounded-md p-2"
+                       data-he="בית" data-en="Home">בית</a></li>
+                <li><a href="#about-us" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-300 rounded-md p-2"
+                       data-he="אודותינו" data-en="About Us">אודותינו</a></li>
+                <li><a href="#destinations" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-300 rounded-md p-2"
+                       data-he="יעדים" data-en="Destinations">יעדים</a></li>
+                <li><a href="#why-us" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-300 rounded-md p-2"
+                       data-he="למה אנחנו?" data-en="Why Us?">למה אנחנו?</a></li>
+                <li><a href="#contact" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-300 rounded-md p-2"
+                       data-he="צור קשר" data-en="Contact Us">צור קשר</a></li>
+            </ul>
+
+            <div class="flex items-center md:hidden">
+                <button id="language-toggle" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300 ml-4"
+                        data-he="English" data-en="עברית">English</button>
+                <button id="mobile-menu-button" class="text-gray-700 text-2xl ml-4">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mobile-menu-overlay">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-white text-3xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="#hero" class="mobile-nav-link" data-he="בית" data-en="Home">בית</a></li>
+            <li><a href="#about-us" class="mobile-nav-link" data-he="אודותינו" data-en="About Us">אודותינו</a></li>
+            <li><a href="#destinations" class="mobile-nav-link" data-he="יעדים" data-en="Destinations">יעדים</a></li>
+            <li><a href="#why-us" class="mobile-nav-link" data-he="למה אנחנו?" data-en="Why Us?">למה אנחנו?</a></li>
+            <li><a href="#contact" class="mobile-nav-link" data-he="צור קשר" data-en="Contact Us">צור קשר</a></li>
+        </ul>
+    </div>
+
+    <main class="flex-grow">
+        <section id="hero" class="relative bg-gradient-to-br from-blue-500 to-purple-600 text-white py-24 md:py-32 text-center overflow-hidden rounded-b-3xl shadow-xl section-snap fade-in-section">
+            <img src="https://thailand-vibes.com/wp-content/uploads/2020/10/46980880.jpg"
+                 alt="נוף טרופי עם יאכטה בים תכול"
+                 data-he-alt="נוף טרופי עם יאכטה בים תכול"
+                 data-en-alt="Tropical landscape with a yacht in clear blue sea"
+                 class="absolute inset-0 w-full h-full object-cover opacity-30">
+            <div class="container mx-auto px-6 md:px-12 relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-lg rounded-md p-2"
+                    data-he="החופשה שתמיד חלמת עליה, מתחילה כאן!"
+                    data-en="Your Dream Vacation Starts Here!">החופשה שתמיד חלמת עליה, מתחילה כאן!</h1>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto drop-shadow-md rounded-md p-2"
+                   data-he="ShayFly - המומחים שלך לתכנון טיולים ונופשים בלתי נשכחים בכל יעד בעולם."
+                   data-en="ShayFly - Your experts in planning unforgettable trips and holidays to any destination worldwide.">ShayFly - המומחים שלך לתכנון טיולים ונופשים בלתי נשכחים בכל יעד בעולם.</p>
+                <a href="#contact" class="inline-block bg-white text-blue-600 hover:bg-blue-100 font-bold py-3 px-8 rounded-full shadow-xl transition duration-300 transform hover:scale-105"
+                   data-he="צור קשר עכשיו!" data-en="Contact Us Now!">צור קשר עכשיו!</a>
+            </div>
+        </section>
+
+        <section id="about-us" class="py-16 md:py-24 bg-gray-50 section-snap fade-in-section">
+            <div class="container mx-auto px-6 md:px-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12 rounded-md p-2"
+                    data-he="אודות ShayFly - המומחים שלך לטיולים"
+                    data-en="About ShayFly - Your Travel Experts">אודות ShayFly - המומחים שלך לטיולים</h2>
+                <div class="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
+                    <p class="mb-6"
+                       data-he="ברוכים הבאים ל-ShayFly, הבית החדש שלכם לתכנון חופשות וטיולים. אנו סוכנות נסיעות מובילה, המתמחה ביצירת חוויות טיול בלתי נשכחות, המותאמות אישית לכל לקוח. עם שנים של ניסיון בתעשיית התיירות, צברנו ידע עשיר ורשת קשרים ענפה המאפשרת לנו להציע לכם את העסקאות הטובות ביותר ליעדים האקזוטיים והמרתקים ביותר בעולם."
+                       data-en="Welcome to ShayFly, your new home for planning vacations and trips. We are a leading travel agency specializing in creating unforgettable travel experiences, custom-tailored for every client. With years of experience in the tourism industry, we have gained rich knowledge and an extensive network of connections that allows us to offer you the best deals to the most exotic and exciting destinations worldwide.">ברוכים הבאים ל-ShayFly, הבית החדש שלכם לתכנון חופשות וטיולים. אנו סוכנות נסיעות מובילה, המתמחה ביצירת חוויות טיול בלתי נשכחות, המותאמות אישית לכל לקוח. עם שנים של ניסיון בתעשיית התיירות, צברנו ידע עשיר ורשת קשרים ענפה המאפשרת לנו להציע לכם את העסקאות הטובות ביותר ליעדים האקזוטיים והמרתקים ביותר בעולם.</p>
+                    <p class="mb-6"
+                       data-he="ב-ShayFly, אנו מאמינים שכל חופשה צריכה להיות מושלמת, החל מהרגע הראשון של התכנון ועד לחזרה הביתה. אנו מתחייבים לשירות אישי, מקצועי וקשוב, תוך הקפדה על הפרטים הקטנים ביותר. בין אם אתם מחפשים נופש רומנטי, טיול משפחתי מלא הרפתקאות, חופשת בטן-גב מרגיעה או מסע תרבותי מעשיר – אנחנו כאן כדי להגשים לכם את החלום."
+                       data-en="At ShayFly, we believe that every vacation should be perfect, from the very first moment of planning until your return home. We are committed to personal, professional, and attentive service, paying attention to the smallest details. Whether you are looking for a romantic getaway, an adventurous family trip, a relaxing beach holiday, or an enriching cultural journey – we are here to make your dream come true.">ב-ShayFly, אנו מאמינים שכל חופשה צריכה להיות מושלמת, החל מהרגע הראשון של התכנון ועד לחזרה הביתה. אנו מתחייבים לשירות אישי, מקצועי וקשוב, תוך הקפדה על הפרטים הקטנים ביותר. בין אם אתם מחפשים נופש רומנטי, טיול משפחתי מלא הרפתקאות, חופשת בטן-גב מרגיעה או מסע תרבותי מעשיר – אנחנו כאן כדי להגשים לכם את החלום.</p>
+                    <p data-he="הצטרפו למאות לקוחותינו המרוצים וחוו את ההבדל של תכנון טיול עם ShayFly. אנו נדאג לכל הפרטים, כדי שאתם תוכלו להתמקד בליהנות מהחופשה שלכם בראש שקט."
+                       data-en="Join hundreds of our satisfied customers and experience the ShayFly difference in trip planning. We will take care of all the details, so you can focus on enjoying your vacation with peace of mind.">הצטרפו למאות לקוחותינו המרוצים וחוו את ההבדל של תכנון טיול עם ShayFly. אנו נדאג לכל הפרטים, כדי שאתם תוכלו להתמקד בליהנות מהחופשה שלכם בראש שקט.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="destinations" class="py-16 md:py-24 bg-white section-snap fade-in-section">
+            <div class="container mx-auto px-6 md:px-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12 rounded-md p-2"
+                    data-he="יעדים מומלצים לחופשת אוגוסט!"
+                    data-en="Recommended Destinations for August!">יעדים מומלצים לחופשת אוגוסט!</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                        <img src="https://www.agoda.com/wp-content/uploads/2024/04/Featured-image-Dubai-UAE-1244x700.jpg"
+                             alt="קו הרקיע המודרני של דובאי בשקיעה"
+                             data-he-alt="קו הרקיע המודרני של דובאי בשקיעה"
+                             data-en-alt="Modern Dubai skyline at sunset">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-he="דובאי" data-en="Dubai">דובאי</h3>
+                            <p class="text-gray-600 mb-3"
+                               data-he="עיר העתיד עם קניונים מפוארים, אטרקציות עוצרות נשימה וחיי לילה תוססים."
+                               data-en="The city of the future with luxurious malls, breathtaking attractions, and vibrant nightlife.">עיר העתיד עם קניונים מפוארים, אטרקציות עוצרות נשימה וחיי לילה תוססים.</p>
+                            <div class="text-sm text-gray-700">
+                                <p class="font-bold" data-he="מחירים מיוחדים לאוגוסט:" data-en="Special August Prices:">מחירים מיוחדים לאוגוסט:</p>
+                                <p data-he="לזוגות: החל מ-5570 ₪ לאדם" data-en="For Couples: From 5570 ₪ per person">לזוגות: החל מ-5570 ₪ לאדם</p>
+                                <p data-he="למשפחות: החל מ-3285 ₪ לאדם" data-en="For Families: From 3285 ₪ per person">למשפחות: החל מ-3285 ₪ לאדם</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                        <img src="https://assets.entrepreneur.com/content/3x2/2000/1597744549-shutterstock-163833845.jpg?format=pjeg&auto=webp&crop=16:9&width=675&height=380"
+                             alt="נוף פנורמי של אבו דאבי עם בניינים מודרניים"
+                             data-he-alt="נוף פנורמי של אבו דאבי עם בניינים מודרניים"
+                             data-en-alt="Panoramic view of Abu Dhabi with modern buildings">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-he="אבו דאבי" data-en="Abu Dhabi">אבו דאבי</h3>
+                            <p class="text-gray-600 mb-3"
+                               data-he="שילוב של תרבות עשירה, ארכיטקטורה מרהיבה ופארקים מהנים לכל המשפחה."
+                               data-en="A blend of rich culture, stunning architecture, and fun parks for the whole family.">שילוב של תרבות עשירה, ארכיטקטורה מרהיבה ופארקים מהנים לכל המשפחה.</p>
+                            <div class="text-sm text-gray-700">
+                                <p class="font-bold" data-he="מחירים מיוחדים לאוגוסט:" data-en="Special August Prices:">מחירים מיוחדים לאוגוסט:</p>
+                                <p data-he="לזוגות: החל מ-2740 ₪ לאדם" data-en="For Couples: From 2740 ₪ per person">לזוגות: החל מ-2740 ₪ לאדם</p>
+                                <p data-he="למשפחות: החל מ-2070 ₪ לאדם" data-en="For Families: From 2070 ₪ per person">למשפחות: החל מ-2070 ₪ לאדם</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/205131222.jpg?k=e1901d3fe44009eb53d59756b86460eea202b23c993a9a5bba01ab499d2e6514&o="
+                             alt="בריכת נופש יוקרתית באיה נאפה"
+                             data-he-alt="בריכת נופש יוקרתית באיה נאפה"
+                             data-en-alt="Luxury resort pool in Ayia Napa">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-he="איה נאפה" data-en="Ayia Napa">איה נאפה</h3>
+                            <p class="text-gray-600 mb-3"
+                               data-he="חופים תכולים, מסיבות תוססות ואווירת חופש מושלמת לצעירים ולמשפחות."
+                               data-en="Azure beaches, lively parties, and a perfect holiday atmosphere for youth and families.">חופים תכולים, מסיבות תוססות ואווירת חופש מושלמת לצעירים ולמשפחות.</p>
+                            <div class="text-sm text-gray-700">
+                                <p class="font-bold" data-he="מחירים מיוחדים לאוגוסט:" data-en="Special August Prices:">מחירים מיוחדים לאוגוסט:</p>
+                                <p data-he="לזוגות: החל מ-1950 ₪ לאדם" data-en="For Couples: From 1950 ₪ per person">לזוגות: החל מ-1950 ₪ לאדם</p>
+                                <p data-he="למשפחות: החל מ-1625 ₪ לאדם" data-en="For Families: From 1625 ₪ per person">למשפחות: החל מ-1625 ₪ לאדם</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/7a/3b/68/20180904-122514-largejpg.jpg?w=1000&h=-1&s=1"
+                             alt="חוף חולי בבורגס עם שמשיות"
+                             data-he-alt="חוף חולי בבורגס עם שמשיות"
+                             data-en-alt="Sandy beach in Burgas with umbrellas">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-he="בורגס" data-en="Burgas">בורגס</h3>
+                            <p class="text-gray-600 mb-3"
+                               data-he="עיר חוף תוססת בבולגריה עם חופים יפים, פארקי מים וטיילת ארוכה."
+                               data-en="A vibrant coastal city in Bulgaria with beautiful beaches, water parks, and a long promenade.">עיר חוף תוססת בבולגריה עם חופים יפים, פארקי מים וטיילת ארוכה.</p>
+                            <div class="text-sm text-gray-700">
+                                <p class="font-bold" data-he="מחירים מיוחדים לאוגוסט:" data-en="Special August Prices:">מחירים מיוחדים לאוגוסט:</p>
+                                <p data-he="לזוגות: החל מ-2100 ₪ לאדם" data-en="For Couples: From 2100 ₪ per person">לזוגות: החל מ-2100 ₪ לאדם</p>
+                                <p data-he="למשפחות: החל מ-1700 ₪ לאדם" data-en="For Families: From 1700 ₪ per person">למשפחות: החל מ-1700 ₪ לאדם</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                        <img src="https://romaniatourism.com/images/bucharest/bucharest-revolution-square2.jpg"
+                             alt="כיכר המהפכה בבוקרשט עם מבנים היסטוריים"
+                             data-he-alt="כיכר המהפכה בבוקרשט עם מבנים היסטוריים"
+                             data-en-alt="Revolution Square in Bucharest with historic buildings">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-he="בוקרשט" data-en="Bucharest">בוקרשט</h3>
+                            <p class="text-gray-600 mb-3"
+                               data-he="בירת רומניה עם ארכיטקטורה מרשימה, היסטוריה עשירה וחיי לילה תוססים."
+                               data-en="The capital of Romania with impressive architecture, rich history, and vibrant nightlife.">בירת רומניה עם ארכיטקטורה מרשימה, היסטוריה עשירה וחיי לילה תוססים.</p>
+                            <div class="text-sm text-gray-700">
+                                <p class="font-bold" data-he="מחירים מיוחדים לאוגוסט:" data-en="Special August Prices:">מחירים מיוחדים לאוגוסט:</p>
+                                <p data-he="לזוגות: החל מ-2175 ₪ לאדם" data-en="For Couples: From 2175 ₪ per person">לזוגות: החל מ-2175 ₪ לאדם</p>
+                                <p data-he="למשפחות: החל מ-1590 ₪ לאדם" data-en="For Families: From 1590 ₪ per person">למשפחות: החל מ-1590 ₪ לאדם</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                        <img src="https://lp-cms-production.imgix.net/2023-03/GettyRF_473481530.jpg?auto=format,compress&q=72&w=1095&fit=crop&crop=faces,edges"
+                             alt="בניין הפרלמנט ההונגרי בבודפשט על גדות הדנובה"
+                             data-he-alt="בניין הפרלמנט ההונגרי בבודפשט על גדות הדנובה"
+                             data-en-alt="Hungarian Parliament Building in Budapest on the Danube river">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-he="בודפשט" data-en="Budapest">בודפשט</h3>
+                            <p class="text-gray-600 mb-3"
+                               data-he="פנינת הדנובה עם מרחצאות תרמיים, ארכיטקטורה גותית וחיי תרבות עשירים."
+                               data-en="The pearl of the Danube with thermal baths, Gothic architecture, and rich cultural life.">פנינת הדנובה עם מרחצאות תרמיים, ארכיטקטורה גותית וחיי תרבות עשירים.</p>
+                            <div class="text-sm text-gray-700">
+                                <p class="font-bold" data-he="מחירים מיוחדים לאוגוסט:" data-en="Special August Prices:">מחירים מיוחדים לאוגוסט:</p>
+                                <p data-he="לזוגות: החל מ-2250 ₪ לאדם" data-en="For Couples: From 2250 ₪ per person">לזוגות: החל מ-2250 ₪ לאדם</p>
+                                <p data-he="למשפחות: החל מ-1625 ₪ לאדם" data-en="For Families: From 1625 ₪ per person">למשפחות: החל מ-1625 ₪ לאדם</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                        <img src="https://image.content.travelyo-cdn.site/custom/holidayfinder/destinations/athens/Athens-cid_2.webp"
+                             alt="האקרופוליס באתונה בשקיעה"
+                             data-he-alt="האקרופוליס באתונה בשקיעה"
+                             data-en-alt="Acropolis in Athens at sunset">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-he="אתונה" data-en="Athens">אתונה</h3>
+                            <p class="text-gray-600 mb-3"
+                               data-he="עיר הבירה ההיסטורית של יוון, עם אתרים עתיקים מרתקים ואווירה ים תיכונית."
+                               data-en="The historic capital of Greece, with fascinating ancient sites and a Mediterranean atmosphere.">עיר הבירה ההיסטורית של יוון, עם אתרים עתיקים מרתקים ואווירה ים תיכונית.</p>
+                            <div class="text-sm text-gray-700">
+                                <p class="font-bold" data-he="מחירים מיוחדים לאוגוסט:" data-en="Special August Prices:">מחירים מיוחדים לאוגוסט:</p>
+                                <p data-he="לזוגות: החל מ-1975 ₪ לאדם" data-en="For Couples: From 1975 ₪ per person">לזוגות: החל מ-1975 ₪ לאדם</p>
+                                <p data-he="למשפחות: החל מ-1490 ₪ לאדם" data-en="For Families: From 1490 ₪ per person">למשפחות: החל מ-1490 ₪ לאדם</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                        <img src="https://image.content.travelyo-cdn.site/custom/holidayfinder/destinations/Crete/Crete-cid_1.webp"
+                             alt="חוף טרופי בכרתים עם מים צלולים"
+                             data-he-alt="חוף טרופי בכרתים עם מים צלולים"
+                             data-en-alt="Tropical beach in Crete with clear waters">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-he="כרתים" data-en="Crete">כרתים</h3>
+                            <p class="text-gray-600 mb-3"
+                               data-he="האי הגדול ביוון עם חופים מדהימים, כפרים ציוריים ומטבח מקומי משובח."
+                               data-en="The largest island in Greece with stunning beaches, picturesque villages, and excellent local cuisine.">האי הגדול ביוון עם חופים מדהימים, כפרים ציוריים ומטבח מקומי משובח.</p>
+                            <div class="text-sm text-gray-700">
+                                <p class="font-bold" data-he="מחירים מיוחדים לאוגוסט:" data-en="Special August Prices:">מחירים מיוחדים לאוגוסט:</p>
+                                <p data-he="לזוגות: החל מ-2640 ₪ לאדם" data-en="For Couples: From 2640 ₪ per person">לזוגות: החל מ-2640 ₪ לאדם</p>
+                                <p data-he="למשפחות: החל מ-1820 ₪ לאדם" data-en="For Families: From 1820 ₪ per person">למשפחות: החל מ-1820 ₪ לאדם</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="py-16 md:py-24 bg-blue-50 section-snap fade-in-section">
+            <div class="container mx-auto px-6 md:px-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12 rounded-md p-2"
+                    data-he="למה לבחור ב-ShayFly?" data-en="Why Choose ShayFly?">למה לבחור ב-ShayFly?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex-shrink-0 text-blue-600 text-3xl ml-4">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2"
+                                data-he="שירות אישי ומקצועי" data-en="Personal and Professional Service">שירות אישי ומקצועי</h3>
+                            <p class="text-gray-600"
+                               data-he="ליווי צמוד וייעוץ מקצועי לכל אורך תכנון החופשה, מותאם אישית לצרכים שלך."
+                               data-en="Close guidance and professional advice throughout the vacation planning, tailored to your needs.">ליווי צמוד וייעוץ מקצועי לכל אורך תכנון החופשה, מותאם אישית לצרכים שלך.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex-shrink-0 text-green-600 text-3xl ml-4">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2"
+                                data-he="מגוון רחב של אפשרויות" data-en="Wide Range of Options">מגוון רחב של אפשרויות</h3>
+                            <p class="text-gray-600"
+                               data-he="טיסות, מלונות, חבילות נופש וטיולים מאורגנים ליעדים בכל העולם."
+                               data-en="Flights, hotels, holiday packages, and organized tours to destinations worldwide.">טיסות, מלונות, חבילות נופש וטיולים מאורגנים ליעדים בכל העולם.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex-shrink-0 text-purple-600 text-3xl ml-4">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2"
+                                data-he="מחירים תחרותיים" data-en="Competitive Prices">מחירים תחרותיים</h3>
+                            <p class="text-gray-600"
+                               data-he="אנו עובדים קשה כדי להבטיח לכם את העסקאות הטובות ביותר ללא פשרות על איכות."
+                               data-en="We work hard to ensure you get the best deals without compromising on quality.">אנו עובדים קשה כדי להבטיח לכם את העסקאות הטובות ביותר ללא פשרות על איכות.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex-shrink-0 text-red-600 text-3xl ml-4">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2"
+                                data-he="תכנון מותאם אישית" data-en="Customized Planning">תכנון מותאם אישית</h3>
+                            <p class="text-gray-600"
+                               data-he="בין אם זה טיול משפחתי, ירח דבש או חופשת הרפתקאות – נתפור לכם את החופשה המושלמת."
+                               data-en="Whether it's a family trip, a honeymoon, or an adventure vacation – we'll tailor the perfect holiday for you.">בין אם זה טיול משפחתי, ירח דבש או חופשת הרפתקאות – נתפור לכם את החופשה המושלמת.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex-shrink-0 text-yellow-600 text-3xl ml-4">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2"
+                                data-he="זמינות ותמיכה" data-en="Availability and Support">זמינות ותמיכה</h3>
+                            <p class="text-gray-600"
+                               data-he="זמינים עבורכם לפני, במהלך ואחרי הטיול לכל שאלה או צורך."
+                               data-en="Available for you before, during, and after the trip for any question or need.">זמינים עבורכם לפני, במהלך ואחרי הטיול לכל שאלה או צורך.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex-shrink-0 text-teal-600 text-3xl ml-4">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2"
+                                data-he="ניסיון עשיר" data-en="Rich Experience">ניסיון עשיר</h3>
+                            <p class="text-gray-600"
+                               data-he="שנים של ניסיון בתעשיית התיירות, עם אלפי לקוחות מרוצים."
+                               data-en="Years of experience in the tourism industry, with thousands of satisfied customers.">שנים של ניסיון בתעשיית התיירות, עם אלפי לקוחות מרוצים.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-indigo-700 text-white text-center section-snap fade-in-section">
+            <div class="container mx-auto px-6 md:px-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 drop-shadow-lg rounded-md p-2"
+                    data-he="מוכנים לצאת לחופשה הבאה שלכם?" data-en="Ready for your next vacation?">מוכנים לצאת לחופשה הבאה שלכם?</h2>
+                <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto drop-shadow-md rounded-md p-2"
+                   data-he="צרו קשר עוד היום ונתחיל לתכנן את הטיול המושלם עבורכם!"
+                   data-en="Contact us today and let's start planning your perfect trip!">צרו קשר עוד היום ונתחיל לתכנן את הטיול המושלם עבורכם!</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <a href="tel:+972503456723" class="bg-white text-blue-700 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center hover:bg-blue-50 hover:text-blue-800 transition duration-300 transform hover:scale-105 group">
+                        <i class="fas fa-phone-alt text-4xl mb-3 group-hover:text-blue-900"></i>
+                        <span class="text-xl font-semibold" data-he="טלפון" data-en="Phone">טלפון</span>
+                        <span class="text-lg text-gray-600 group-hover:text-gray-700">050-3456723</span>
+                    </a>
+                    <a href="https://wa.me/972503456723" target="_blank" rel="noopener noreferrer" class="bg-white text-green-600 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center hover:bg-green-50 hover:text-green-700 transition duration-300 transform hover:scale-105 group">
+                        <i class="fab fa-whatsapp text-4xl mb-3 group-hover:text-green-800"></i>
+                        <span class="text-xl font-semibold" data-he="וואטסאפ" data-en="WhatsApp">וואטסאפ</span>
+                        <span class="text-lg text-gray-600 group-hover:text-gray-700"
+                              data-he="שלח הודעה" data-en="Send Message">שלח הודעה</span>
+                    </a>
+                    <a href="mailto:shayfly84@gmail.com" class="bg-white text-red-600 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center hover:bg-red-50 hover:text-red-700 transition duration-300 transform hover:scale-105 group">
+                        <i class="fas fa-envelope text-4xl mb-3 group-hover:text-red-800"></i>
+                        <span class="text-xl font-semibold" data-he="אימייל" data-en="Email">אימייל</span>
+                        <span class="text-lg text-gray-600 group-hover:text-gray-700">shayfly84@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 px-6 md:px-12 mt-8 rounded-t-xl">
+        <div class="container mx-auto text-center">
+            <p data-he="&copy; 2025 ShayFly. כל הזכויות שמורות." data-en="&copy; 2025 ShayFly. All rights reserved.">&copy; 2025 ShayFly. כל הזכויות שמורות.</p>
+            <div class="flex justify-center space-x-4 space-x-reverse mt-4">
+                <a href="#" class="hover:text-white transition duration-300"
+                   data-he="מדיניות פרטיות" data-en="Privacy Policy">מדיניות פרטיות</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white transition duration-300"
+                   data-he="תנאי שימוש" data-en="Terms of Use">תנאי שימוש</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langToggleBtn = document.getElementById('language-toggle');
+            let currentLang = 'he'; // Default language
+
+            // Function to apply translations and direction
+            function applyLanguage(lang) {
+                // Update text content
+                document.querySelectorAll('[data-he], [data-en]').forEach(element => {
+                    if (element.dataset[lang]) {
+                        element.textContent = element.dataset[lang];
+                    }
+                });
+
+                // Update title tag
+                const titleElement = document.querySelector('title');
+                if (titleElement) {
+                    titleElement.textContent = titleElement.dataset[lang];
+                }
+
+                // Update alt attributes for images
+                document.querySelectorAll('img').forEach(img => {
+                    const altKey = `${lang}Alt`; // e.g., 'heAlt' or 'enAlt'
+                    if (img.dataset[altKey]) {
+                        img.alt = img.dataset[altKey];
+                    }
+                });
+
+                // Apply body styles for direction and font
+                document.body.style.direction = (lang === 'he' ? 'rtl' : 'ltr');
+                document.body.style.textAlign = (lang === 'he' ? 'right' : 'left');
+                document.body.style.fontFamily = (lang === 'he' ? "'Heebo', sans-serif" : "'Inter', sans-serif");
+
+                // Adjust nav links spacing for RTL/LTR
+                const navUl = document.querySelector('header nav ul');
+                if (navUl) {
+                    if (lang === 'he') {
+                        navUl.classList.add('space-x-reverse');
+                    } else {
+                        navUl.classList.remove('space-x-reverse');
+                    }
+                }
+
+                // Update the toggle button text
+                langToggleBtn.textContent = (lang === 'he' ? langToggleBtn.dataset.en : langToggleBtn.dataset.he);
+            }
+
+            // Initial language application
+            applyLanguage(currentLang);
+
+            // Event listener for language toggle button
+            langToggleBtn.addEventListener('click', () => {
+                currentLang = (currentLang === 'he' ? 'en' : 'he');
+                applyLanguage(currentLang);
+            });
+
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenuOverlay.classList.add('open');
+            });
+
+            closeMobileMenuButton.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('open');
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.remove('open'); // Close menu when a link is clicked
+                });
+            });
+
+
+            // Intersection Observer for fade-in animations
+            const sections = document.querySelectorAll('.fade-in-section');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of the section must be visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Detect screen orientation changes (for demonstration/debugging)
+            window.addEventListener('orientationchange', () => {
+                const orientation = screen.orientation.type;
+                console.log(`Screen orientation changed to: ${orientation}`);
+                // The responsive CSS (Tailwind) handles the layout adjustments automatically.
+            });
+        });
+
+        // Custom alert message function (instead of alert())
+        function alertMessage(message) {
+            const existingModal = document.getElementById('custom-alert-modal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+
+            const modal = document.createElement('div');
+            modal.id = 'custom-alert-modal';
+            modal.className = 'fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full text-center">
+                    <p class="text-lg font-semibold text-gray-800 mb-6">${message}</p>
+                    <button onclick="document.getElementById('custom-alert-modal').remove()"
+                            class="bg-blue-600 text-white hover:bg-blue-700 font-bold py-2 px-6 rounded-md transition duration-300">
+                        ${document.body.style.direction === 'rtl' ? 'אישור' : 'OK'}
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+    </script>
+</body>
 </html>
