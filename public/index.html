@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-he="ShayFly - סוכן הנסיעות שלך לחופשה המושלמת" data-en="ShayFly - Your Travel Agent for the Perfect Vacation">ShayFly - סוכן הנסיעות שלך לחופשה המושלמת</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Heebo for Hebrew, Inter for English, Rubik for headings -->
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700;800&family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (phone, WhatsApp, email, bars, times) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Base styles, updated by JS for language */
@@ -93,10 +96,12 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
+    <!-- Header Section -->
     <header class="bg-white shadow-lg py-4 px-6 md:px-12 sticky top-0 z-50 rounded-b-xl">
         <nav class="container mx-auto flex justify-between items-center">
+            <!-- ShayFly Logo -->
             <div class="flex items-center">
-                <img src="https://imgur.com/MJ3fjNG.png"
+                <img src="http://googleusercontent.com/file_content/9"
                      alt="לוגו ShayFly"
                      data-he-alt="לוגו ShayFly"
                      data-en-alt="ShayFly Logo"
@@ -105,6 +110,7 @@
                       data-he="ShayFly" data-en="ShayFly">ShayFly</span>
             </div>
 
+            <!-- Desktop Navigation -->
             <ul class="hidden md:flex space-x-6 space-x-reverse">
                 <li><a href="#hero" class="text-gray-700 hover:text-blue-600 font-semibold transition duration-300 rounded-md p-2"
                        data-he="בית" data-en="Home">בית</a></li>
@@ -118,6 +124,7 @@
                        data-he="צור קשר" data-en="Contact Us">צור קשר</a></li>
             </ul>
 
+            <!-- Mobile Menu and Language Toggle -->
             <div class="flex items-center md:hidden">
                 <button id="language-toggle" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300 ml-4"
                         data-he="English" data-en="עברית">English</button>
@@ -128,6 +135,7 @@
         </nav>
     </header>
 
+    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu-overlay">
         <button id="close-mobile-menu" class="absolute top-6 right-6 text-white text-3xl">
             <i class="fas fa-times"></i>
@@ -142,6 +150,7 @@
     </div>
 
     <main class="flex-grow">
+        <!-- Hero Section -->
         <section id="hero" class="relative bg-gradient-to-br from-blue-500 to-purple-600 text-white py-24 md:py-32 text-center overflow-hidden rounded-b-3xl shadow-xl section-snap fade-in-section">
             <img src="https://thailand-vibes.com/wp-content/uploads/2020/10/46980880.jpg"
                  alt="נוף טרופי עם יאכטה בים תכול"
@@ -160,6 +169,7 @@
             </div>
         </section>
 
+        <!-- About Us Section -->
         <section id="about-us" class="py-16 md:py-24 bg-gray-50 section-snap fade-in-section">
             <div class="container mx-auto px-6 md:px-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12 rounded-md p-2"
@@ -328,6 +338,10 @@
                         </div>
                     </div>
                 </div>
+                <!-- Price Disclaimer -->
+                <p class="text-sm text-gray-500 text-center mt-12"
+                   data-he="המחירים נכונים לעת הפרסום ויכולים להשתנות עקב הביקוש!"
+                   data-en="Prices are valid at the time of publication and may change due to demand!">המחירים נכונים לעת הפרסום ויכולים להשתנות עקב הביקוש!</p>
             </div>
         </section>
 
