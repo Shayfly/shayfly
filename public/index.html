@@ -122,7 +122,7 @@
             <!-- Mobile Menu and Language Toggle -->
             <div class="flex items-center md:hidden">
                 <button id="language-toggle" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300 ml-4"
-                        data-he="English" data-en="עברית">English</button>
+                        data-lang-he-text="English" data-lang-en-text="עברית">English</button>
                 <button id="mobile-menu-button" class="text-gray-700 text-2xl ml-4">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -508,7 +508,7 @@
                 }
 
                 // Update the toggle button text
-                langToggleBtn.textContent = (lang === 'he' ? langToggleBtn.dataset.en : langToggleBtn.dataset.he);
+                langToggleBtn.textContent = (lang === 'he' ? langToggleBtn.dataset.langHeText : langToggleBtn.dataset.langEnText);
             }
 
             // Initial language application
