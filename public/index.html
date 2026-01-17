@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" class="scroll-smooth">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShayFly — דילים במחיר של סוכן</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -13,215 +13,345 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0f172a', // Deep Navy
-                        accent: '#b8860b',  // Dark Gold
-                        whatsapp: '#25d366'
+                        brand: {
+                            dark: '#0f172a', // כחול עמוק
+                            gold: '#d4af37', // זהב יוקרתי
+                            light: '#f8fafc'
+                        }
                     },
                     fontFamily: {
-                        sans: ['Heebo', 'Inter', 'sans-serif'],
-                    },
+                        sans: ['Heebo', 'sans-serif'],
+                        eng: ['Montserrat', 'sans-serif']
+                    }
                 }
             }
         }
     </script>
     <style>
-        .gold-gradient { background: linear-gradient(135deg, #b8860b 0%, #ffd700 100%); }
-        .hero-overlay { background: rgba(15, 23, 42, 0.7); }
-        [data-lang="en"] { display: none; }
-        .en-mode [data-lang="he"] { display: none; }
-        .en-mode [data-lang="en"] { display: block; }
-        .en-mode { dir: ltr; font-family: 'Inter', sans-serif; }
+        body { font-family: 'Heebo', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .hero-gradient { background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.9)); }
+        
+        /* Language toggling classes */
+        [lang="en"] { display: none; }
+        body.english-mode [lang="he"] { display: none; }
+        body.english-mode [lang="en"] { display: block; }
+        body.english-mode { direction: ltr; font-family: 'Montserrat', sans-serif; }
+        
+        .card-zoom:hover img { transform: scale(1.1); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 overflow-x-hidden">
+<body class="bg-gray-50 text-brand-dark">
 
-    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <nav class="fixed w-full z-50 transition-all duration-300 glass shadow-sm" id="navbar">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <div class="text-2xl font-black text-primary tracking-tighter">
-                    Shay<span class="text-accent">Fly</span>
-                </div>
-                <button onclick="toggleLanguage()" class="text-xs font-bold border border-gray-300 px-2 py-1 rounded hover:bg-gray-100 transition">
-                    <span data-lang="he">EN</span><span data-lang="en">HE</span>
-                </button>
-            </div>
-            
-            <nav class="hidden md:flex gap-8 font-bold text-sm uppercase tracking-wide">
-                <a href="#destinations" class="hover:text-accent transition"><span data-lang="he">דילים חמים</span><span data-lang="en">Hot Deals</span></a>
-                <a href="#why-us" class="hover:text-accent transition"><span data-lang="he">למה אנחנו</span><span data-lang="en">Why ShayFly</span></a>
-                <a href="#faq" class="hover:text-accent transition"><span data-lang="he">שאלות נפוצות</span><span data-lang="en">FAQ</span></a>
-            </nav>
+            <a href="#" class="text-2xl font-black tracking-tighter text-brand-dark">
+                SHAY<span class="text-brand-gold">FLY</span>
+            </a>
 
-            <a href="https://wa.me/972503456723" class="bg-whatsapp text-white px-5 py-2 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition shadow-md">
-                <i class="fab fa-whatsapp text-lg"></i>
-                <span class="hidden sm:inline" data-lang="he">דברו איתי</span>
-                <span class="hidden sm:inline" data-lang="en">WhatsApp</span>
+            <div class="hidden md:flex gap-8 font-bold text-sm">
+                <a href="#deals" class="hover:text-brand-gold transition"><span lang="he">הדילים שלנו</span><span lang="en">Deals</span></a>
+                <a href="#why" class="hover:text-brand-gold transition"><span lang="he">למה אנחנו</span><span lang="en">Why Us</span></a>
+                <a href="#contact" class="hover:text-brand-gold transition"><span lang="he">צור קשר</span><span lang="en">Contact</span></a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="toggleLang()" class="text-xs font-bold border border-gray-300 rounded px-2 py-1 hover:bg-gray-100 transition">
+                    <span lang="he">EN</span><span lang="en">HE</span>
+                </button>
+                <a href="https://wa.me/972503456723" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg flex items-center gap-2 transition transform hover:scale-105">
+                    <i class="fab fa-whatsapp"></i>
+                    <span class="hidden sm:inline" lang="he">וואטסאפ</span>
+                    <span class="hidden sm:inline" lang="en">WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-[80vh] flex items-center justify-center bg-gray-900 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109c055?auto=format&fit=crop&w=1920&q=80" class="absolute inset-0 w-full h-full object-cover opacity-50" alt="Travel Background">
+        <div class="absolute inset-0 hero-gradient"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+            <div class="inline-block border border-brand-gold text-brand-gold px-4 py-1 rounded-full text-sm font-bold mb-6 tracking-wide uppercase">
+                ShayFly Premium Travel
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black text-white mb-6 leading-tight">
+                <span lang="he">העולם מחכה לך<br><span class="text-brand-gold">במחיר של סוכן</span></span>
+                <span lang="en">The World Awaits<br><span class="text-brand-gold">At Agent Prices</span></span>
+            </h1>
+            <p class="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
+                <span lang="he">חופשות יוקרה, מלונות שנבחרו בקפידה ומחירים שאי אפשר להשיג באונליין.</span>
+                <span lang="en">Luxury vacations, hand-picked hotels, and prices you can't find online.</span>
+            </p>
+            <a href="#deals" class="bg-brand-gold text-white hover:bg-yellow-600 font-bold text-lg px-10 py-4 rounded-full shadow-2xl transition transform hover:-translate-y-1 inline-block">
+                <span lang="he">לצפייה בדילים החמים</span><span lang="en">View Hot Deals</span>
             </a>
         </div>
     </header>
 
-    <section class="relative h-[85vh] flex items-center justify-center text-white overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109c055?auto=format&fit=crop&w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Travel">
-        <div class="absolute inset-0 hero-overlay"></div>
-        <div class="relative z-10 text-center px-4 max-w-4xl">
-            <h2 class="text-accent font-bold tracking-widest mb-4 uppercase">ShayFly — <span data-lang="he">דילים במחיר של סוכן</span><span data-lang="en">Agent Price Deals</span></h2>
-            <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight">
-                <span data-lang="he">החופשה הבאה שלכם<br>מתחילה כאן</span>
-                <span data-lang="en">Your Next Luxury Escape<br>Starts Here</span>
-            </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light">
-                <span data-lang="he">חווית תיירות אישית עם מחירים ששמורים רק למקצוענים.</span>
-                <span data-lang="en">Personalized travel experiences with prices reserved for pros.</span>
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/972503456723" class="gold-gradient text-primary px-10 py-4 rounded-full font-black text-lg shadow-2xl hover:brightness-110 transition transform hover:scale-105">
-                    <span data-lang="he">קבלו הצעה בוואטסאפ</span>
-                    <span data-lang="en">Get an Offer on WhatsApp</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="destinations" class="py-20 bg-white">
+    <section id="deals" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black text-primary mb-4">
-                    <span data-lang="he">דילים חמים לסוף ינואר</span>
-                    <span data-lang="en">Hot Deals for Late January</span>
+                <h2 class="text-3xl md:text-5xl font-black text-brand-dark mb-4">
+                    <span lang="he">דילים לסוף ינואר</span>
+                    <span lang="en">Late January Deals</span>
                 </h2>
-                <p class="text-gray-500 italic">"ShayFly — <span data-lang="he">דילים במחיר של סוכן</span><span data-lang="en">Agent Prices</span>"</p>
+                <div class="w-20 h-1 bg-brand-gold mx-auto rounded"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition duration-500">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group card-zoom border border-gray-100">
                     <div class="relative h-64 overflow-hidden">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Burj_Khalifa.jpg/800px-Burj_Khalifa.jpg" alt="Dubai" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute top-4 right-4 gold-gradient text-primary text-xs font-black px-3 py-1 rounded-full shadow-md uppercase">5★ Premium</div>
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700" alt="Dubai">
+                        <div class="absolute top-4 right-4 bg-brand-dark text-brand-gold text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Premium</div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-primary"><span data-lang="he">דובאי</span><span data-lang="en">Dubai</span></h3>
-                        <p class="text-gray-600 text-sm mb-4"><span data-lang="he">חופשת יוקרה בעיר העתיד</span><span data-lang="en">Luxury in the city of the future</span></p>
-                        <div class="flex gap-4 text-gray-500 text-sm mb-6 border-y py-3">
-                            <span><i class="fa fa-plane mr-1 ml-1"></i> טיסה</span>
-                            <span><i class="fa fa-hotel mr-1 ml-1"></i> 4 לילות</span>
-                            <span><i class="fa fa-coffee mr-1 ml-1"></i> א.בוקר</span>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-10 left-6 bg-brand-gold text-white text-lg font-bold w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white z-10">
+                            <i class="fas fa-plane"></i>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <h3 class="text-2xl font-bold mt-2 mb-1 text-gray-900"><span lang="he">דובאי</span><span lang="en">Dubai</span></h3>
+                        <p class="text-sm text-gray-500 mb-4"><span lang="he">בורג' ח'ליפה ומלונות יוקרה</span><span lang="en">Burj Khalifa & Luxury</span></p>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                            <span title="לילות"><i class="far fa-moon text-brand-gold"></i> 4</span>
+                            <span title="מלון"><i class="fas fa-star text-brand-gold"></i> 5</span>
+                            <span title="כבודה"><i class="fas fa-suitcase-rolling text-brand-gold"></i> טרולי</span>
+                            <span title="ארוחות"><i class="fas fa-coffee text-brand-gold"></i> B.B</span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t pt-4">
                             <div>
-                                <p class="text-xs text-gray-400"><span data-lang="he">החל מ-</span><span data-lang="en">Starting at</span></p>
-                                <p class="text-2xl font-black text-primary">₪1,499</p>
+                                <span class="text-xs text-gray-400 block"><span lang="he">החל מ- (לאדם בחדר זוגי)</span><span lang="en">From (pp/dbl)</span></span>
+                                <span class="text-3xl font-black text-brand-dark">₪1,499</span>
                             </div>
-                            <a href="https://wa.me/972503456723" class="text-accent font-bold hover:underline italic"><span data-lang="he">אני רוצה!</span><span data-lang="en">I want this</span> →</a>
+                            <a href="https://wa.me/972503456723?text=אני מעוניין בדיל לדובאי" class="text-brand-gold font-bold hover:text-brand-dark transition"><span lang="he">הזמן עכשיו</span><span lang="en">Book Now</span> &rarr;</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition duration-500">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group card-zoom border border-gray-100">
                     <div class="relative h-64 overflow-hidden">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Sheikh_Zayed_Mosque_vertical.jpg/800px-Sheikh_Zayed_Mosque_vertical.jpg" alt="Abu Dhabi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute top-4 right-4 gold-gradient text-primary text-xs font-black px-3 py-1 rounded-full shadow-md uppercase">5★ Luxury</div>
+                        <img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700" alt="Abu Dhabi">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-primary"><span data-lang="he">אבו דאבי</span><span data-lang="en">Abu Dhabi</span></h3>
-                        <p class="text-gray-600 text-sm mb-4"><span data-lang="he">שילוב מנצח של תרבות ופאר</span><span data-lang="en">A perfect blend of culture & luxury</span></p>
-                        <div class="flex gap-4 text-gray-500 text-sm mb-6 border-y py-3">
-                            <span><i class="fa fa-plane mr-1 ml-1"></i> טיסה</span>
-                            <span><i class="fa fa-hotel mr-1 ml-1"></i> 4 לילות</span>
-                            <span><i class="fa fa-suitcase mr-1 ml-1"></i> טרולי</span>
+                    <div class="p-6 relative">
+                         <div class="absolute -top-10 left-6 bg-brand-dark text-white text-lg font-bold w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white z-10">
+                            <i class="fas fa-mosque"></i>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <h3 class="text-2xl font-bold mt-2 mb-1 text-gray-900"><span lang="he">אבו דאבי</span><span lang="en">Abu Dhabi</span></h3>
+                        <p class="text-sm text-gray-500 mb-4"><span lang="he">פאר המזרח ומסגד שייח' זאיד</span><span lang="en">Sheikh Zayed Mosque</span></p>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                            <span><i class="far fa-moon text-brand-gold"></i> 4</span>
+                            <span><i class="fas fa-star text-brand-gold"></i> 5</span>
+                            <span><i class="fas fa-suitcase-rolling text-brand-gold"></i> טרולי</span>
+                            <span><i class="fas fa-coffee text-brand-gold"></i> B.B</span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t pt-4">
                             <div>
-                                <p class="text-xs text-gray-400"><span data-lang="he">החל מ-</span><span data-lang="en">Starting at</span></p>
-                                <p class="text-2xl font-black text-primary">₪1,499</p>
+                                <span class="text-xs text-gray-400 block"><span lang="he">החל מ- (לאדם)</span><span lang="en">From (pp)</span></span>
+                                <span class="text-3xl font-black text-brand-dark">₪1,499</span>
                             </div>
-                            <a href="https://wa.me/972503456723" class="text-accent font-bold hover:underline italic"><span data-lang="he">אני רוצה!</span><span data-lang="en">I want this</span> →</a>
+                            <a href="https://wa.me/972503456723?text=אני מעוניין בדיל לאבו דאבי" class="text-brand-gold font-bold hover:text-brand-dark transition"><span lang="he">הזמן עכשיו</span><span lang="en">Book Now</span> &rarr;</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition duration-500">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group card-zoom border border-gray-100">
                     <div class="relative h-64 overflow-hidden">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/The_Hungarian_Parliament_Building_from_the_other_side_of_the_Danube.jpg/800px-The_Hungarian_Parliament_Building_from_the_other_side_of_the_Danube.jpg" alt="Budapest" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1541844053589-346841d0b34c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700" alt="Budapest">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-primary"><span data-lang="he">בודפשט</span><span data-lang="en">Budapest</span></h3>
-                        <p class="text-gray-600 text-sm mb-4"><span data-lang="he">הפנינה על הדנובה</span><span data-lang="en">The Pearl of the Danube</span></p>
-                        <div class="flex gap-4 text-gray-500 text-sm mb-6 border-y py-3">
-                            <span><i class="fa fa-hotel mr-1 ml-1"></i> 4★ Central</span>
-                            <span><i class="fa fa-calendar mr-1 ml-1"></i> 4 לילות</span>
-                            <span><i class="fa fa-coffee mr-1 ml-1"></i> א.בוקר</span>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-10 left-6 bg-brand-gold text-white text-lg font-bold w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white z-10">
+                            <i class="fas fa-landmark"></i>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <h3 class="text-2xl font-bold mt-2 mb-1 text-gray-900"><span lang="he">בודפשט</span><span lang="en">Budapest</span></h3>
+                        <p class="text-sm text-gray-500 mb-4"><span lang="he">אירופה הקלאסית והפרלמנט</span><span lang="en">Classic Europe</span></p>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                            <span><i class="far fa-moon text-brand-gold"></i> 4</span>
+                            <span><i class="fas fa-star text-brand-gold"></i> 4</span>
+                            <span><i class="fas fa-suitcase-rolling text-brand-gold"></i> טרולי</span>
+                            <span><i class="fas fa-coffee text-brand-gold"></i> B.B</span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t pt-4">
                             <div>
-                                <p class="text-xs text-gray-400"><span data-lang="he">החל מ-</span><span data-lang="en">Starting at</span></p>
-                                <p class="text-2xl font-black text-primary">₪1,199</p>
+                                <span class="text-xs text-gray-400 block"><span lang="he">החל מ-</span><span lang="en">From</span></span>
+                                <span class="text-3xl font-black text-brand-dark">₪1,199</span>
                             </div>
-                            <a href="https://wa.me/972503456723" class="text-accent font-bold hover:underline italic"><span data-lang="he">אני רוצה!</span><span data-lang="en">I want this</span> →</a>
+                            <a href="https://wa.me/972503456723?text=אני מעוניין בדיל לבודפשט" class="text-brand-gold font-bold hover:text-brand-dark transition"><span lang="he">הזמן עכשיו</span><span lang="en">Book Now</span> &rarr;</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition duration-500">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group card-zoom border border-gray-100">
                     <div class="relative h-64 overflow-hidden">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Batumi_at_night.jpg/800px-Batumi_at_night.jpg" alt="Batumi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1555992828-35653f4aa3b5?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700" alt="Athens">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-primary"><span data-lang="he">בתומי</span><span data-lang="en">Batumi</span></h3>
-                        <p class="text-gray-600 text-sm mb-4"><span data-lang="he">בילויים, קזינו ונוף לים</span><span data-lang="en">Casino and seaside views</span></p>
-                        <div class="flex gap-4 text-gray-500 text-sm mb-6 border-y py-3">
-                            <span><i class="fa fa-hotel mr-1 ml-1"></i> 5★ Premium</span>
-                            <span><i class="fa fa-calendar mr-1 ml-1"></i> 4 לילות</span>
+                    <div class="p-6 relative">
+                         <div class="absolute -top-10 left-6 bg-brand-dark text-white text-lg font-bold w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white z-10">
+                            <i class="fas fa-gopuram"></i>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <h3 class="text-2xl font-bold mt-2 mb-1 text-gray-900"><span lang="he">אתונה</span><span lang="en">Athens</span></h3>
+                        <p class="text-sm text-gray-500 mb-4"><span lang="he">האקרופוליס וטברנות</span><span lang="en">Acropolis & Tavernas</span></p>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                            <span><i class="far fa-moon text-brand-gold"></i> 3</span>
+                            <span><i class="fas fa-city text-brand-gold"></i> City</span>
+                            <span><i class="fas fa-suitcase-rolling text-brand-gold"></i> טרולי</span>
+                            <span><i class="fas fa-coffee text-brand-gold"></i> B.B</span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t pt-4">
                             <div>
-                                <p class="text-xs text-gray-400"><span data-lang="he">החל מ-</span><span data-lang="en">Starting at</span></p>
-                                <p class="text-2xl font-black text-primary">₪1,299</p>
+                                <span class="text-xs text-gray-400 block"><span lang="he">החל מ-</span><span lang="en">From</span></span>
+                                <span class="text-3xl font-black text-brand-dark">₪1,099</span>
                             </div>
-                            <a href="https://wa.me/972503456723" class="text-accent font-bold hover:underline italic"><span data-lang="he">אני רוצה!</span><span data-lang="en">I want this</span> →</a>
+                            <a href="https://wa.me/972503456723?text=אני מעוניין בדיל לאתונה" class="text-brand-gold font-bold hover:text-brand-dark transition"><span lang="he">הזמן עכשיו</span><span lang="en">Book Now</span> &rarr;</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition duration-500">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group card-zoom border border-gray-100">
                     <div class="relative h-64 overflow-hidden">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Aerial_view_of_Tbilisi%2C_Georgia.jpg/800px-Aerial_view_of_Tbilisi%2C_Georgia.jpg" alt="Tbilisi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700" alt="Thessaloniki">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-primary"><span data-lang="he">טביליסי</span><span data-lang="en">Tbilisi</span></h3>
-                        <p class="text-gray-600 text-sm mb-4"><span data-lang="he">קסם גאורגי אותנטי</span><span data-lang="en">Authentic Georgian charm</span></p>
-                        <div class="flex gap-4 text-gray-500 text-sm mb-6 border-y py-3">
-                            <span><i class="fa fa-hotel mr-1 ml-1"></i> 5★ Luxury</span>
-                            <span><i class="fa fa-calendar mr-1 ml-1"></i> 4 לילות</span>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-10 left-6 bg-brand-gold text-white text-lg font-bold w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white z-10">
+                            <i class="fas fa-water"></i>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <h3 class="text-2xl font-bold mt-2 mb-1 text-gray-900"><span lang="he">סלוניקי</span><span lang="en">Thessaloniki</span></h3>
+                        <p class="text-sm text-gray-500 mb-4"><span lang="he">המגדל הלבן והטיילת</span><span lang="en">White Tower & Sea</span></p>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                            <span><i class="far fa-moon text-brand-gold"></i> 3</span>
+                            <span><i class="fas fa-city text-brand-gold"></i> City</span>
+                            <span><i class="fas fa-suitcase-rolling text-brand-gold"></i> טרולי</span>
+                            <span><i class="fas fa-coffee text-brand-gold"></i> B.B</span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t pt-4">
                             <div>
-                                <p class="text-xs text-gray-400"><span data-lang="he">החל מ-</span><span data-lang="en">Starting at</span></p>
-                                <p class="text-2xl font-black text-primary">₪1,299</p>
+                                <span class="text-xs text-gray-400 block"><span lang="he">החל מ-</span><span lang="en">From</span></span>
+                                <span class="text-3xl font-black text-brand-dark">₪1,099</span>
                             </div>
-                            <a href="https://wa.me/972503456723" class="text-accent font-bold hover:underline italic"><span data-lang="he">אני רוצה!</span><span data-lang="en">I want this</span> →</a>
+                            <a href="https://wa.me/972503456723?text=אני מעוניין בדיל לסלוניקי" class="text-brand-gold font-bold hover:text-brand-dark transition"><span lang="he">הזמן עכשיו</span><span lang="en">Book Now</span> &rarr;</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition duration-500">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group card-zoom border border-gray-100">
                     <div class="relative h-64 overflow-hidden">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/India_Gate_600px.jpg/600px-India_Gate_600px.jpg" alt="New Delhi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1526481280695-3c687fd643ed?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700" alt="Bucharest">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-primary"><span data-lang="he">ניו דלהי, הודו</span><span data-lang="en">New Delhi, India</span></h3>
-                        <p class="text-gray-600 text-sm mb-4"><span data-lang="he">חוויה רוחנית וצבעונית</span><span data-lang="en">A spiritual and vibrant journey</span></p>
-                        <div class="flex gap-4 text-gray-500 text-sm mb-6 border-y py-3">
-                            <span><i class="fa fa-suitcase mr-1 ml-1"></i> מזוודה</span>
-                            <span><i class="fa fa-calendar mr-1 ml-1"></i> 7 לילות</span>
-                            <span><i class="fa fa-hotel mr-1 ml-1"></i> 5★</span>
+                    <div class="p-6 relative">
+                         <div class="absolute -top-10 left-6 bg-brand-dark text-white text-lg font-bold w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white z-10">
+                            <i class="fas fa-monument"></i>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <h3 class="text-2xl font-bold mt-2 mb-1 text-gray-900"><span lang="he">בוקרשט</span><span lang="en">Bucharest</span></h3>
+                        <p class="text-sm text-gray-500 mb-4"><span lang="he">ארמון הפרלמנט וקניות</span><span lang="en">Parliament & Shopping</span></p>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                            <span><i class="far fa-moon text-brand-gold"></i> 3</span>
+                            <span><i class="fas fa-star text-brand-gold"></i> 4</span>
+                            <span><i class="fas fa-suitcase-rolling text-brand-gold"></i> טרולי</span>
+                            <span><i class="fas fa-coffee text-brand-gold"></i> B.B</span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t pt-4">
                             <div>
-                                <p class="text-xs text-gray-400"><span data-lang="he">החל מ-</span><span data-lang="en">Starting at</span></p>
-                                <p class="text-2xl font-black text-primary">₪2,499</p>
+                                <span class="text-xs text-gray-400 block"><span lang="he">החל מ-</span><span lang="en">From</span></span>
+                                <span class="text-3xl font-black text-brand-dark">₪1,299</span>
                             </div>
-                            <a href="https://wa.me/972503456723" class="text-accent font-bold hover:underline italic"><span data-lang="he">אני רוצה!</span><span data-lang="en">I want this</span> →</a>
+                            <a href="https://wa.me/972503456723?text=אני מעוניין בדיל לבוקרשט" class="text-brand-gold font-bold hover:text-brand-dark transition"><span lang="he">הזמן עכשיו</span><span lang="en">Book Now</span> &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group card-zoom border border-gray-100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1603190287605-0b3f02d29363?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700" alt="Batumi">
+                        <div class="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Best Value</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-10 left-6 bg-brand-gold text-white text-lg font-bold w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white z-10">
+                            <i class="fas fa-dice"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mt-2 mb-1 text-gray-900"><span lang="he">בתומי</span><span lang="en">Batumi</span></h3>
+                        <p class="text-sm text-gray-500 mb-4"><span lang="he">לאס וגאס של הים השחור</span><span lang="en">Black Sea Resort</span></p>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                            <span><i class="far fa-moon text-brand-gold"></i> 4</span>
+                            <span><i class="fas fa-star text-brand-gold"></i> 5</span>
+                            <span><i class="fas fa-suitcase-rolling text-brand-gold"></i> טרולי</span>
+                            <span><i class="fas fa-coffee text-brand-gold"></i> B.B</span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t pt-4">
+                            <div>
+                                <span class="text-xs text-gray-400 block"><span lang="he">החל מ-</span><span lang="en">From</span></span>
+                                <span class="text-3xl font-black text-brand-dark">₪1,299</span>
+                            </div>
+                            <a href="https://wa.me/972503456723?text=אני מעוניין בדיל לבתומי" class="text-brand-gold font-bold hover:text-brand-dark transition"><span lang="he">הזמן עכשיו</span><span lang="en">Book Now</span> &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group card-zoom border border-gray-100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700" alt="Tbilisi">
+                    </div>
+                    <div class="p-6 relative">
+                         <div class="absolute -top-10 left-6 bg-brand-dark text-white text-lg font-bold w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white z-10">
+                            <i class="fas fa-wine-glass"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mt-2 mb-1 text-gray-900"><span lang="he">טביליסי</span><span lang="en">Tbilisi</span></h3>
+                        <p class="text-sm text-gray-500 mb-4"><span lang="he">העיר העתיקה והרים</span><span lang="en">Old City & Mountains</span></p>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                            <span><i class="far fa-moon text-brand-gold"></i> 4</span>
+                            <span><i class="fas fa-star text-brand-gold"></i> 5</span>
+                            <span><i class="fas fa-suitcase-rolling text-brand-gold"></i> טרולי</span>
+                            <span><i class="fas fa-coffee text-brand-gold"></i> B.B</span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t pt-4">
+                            <div>
+                                <span class="text-xs text-gray-400 block"><span lang="he">החל מ-</span><span lang="en">From</span></span>
+                                <span class="text-3xl font-black text-brand-dark">₪1,299</span>
+                            </div>
+                            <a href="https://wa.me/972503456723?text=אני מעוניין בדיל לטביליסי" class="text-brand-gold font-bold hover:text-brand-dark transition"><span lang="he">הזמן עכשיו</span><span lang="en">Book Now</span> &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group card-zoom border border-gray-100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700" alt="New Delhi">
+                    </div>
+                    <div class="p-6 relative">
+                         <div class="absolute -top-10 left-6 bg-brand-gold text-white text-lg font-bold w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white z-10">
+                            <i class="fas fa-om"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mt-2 mb-1 text-gray-900"><span lang="he">ניו דלהי</span><span lang="en">New Delhi</span></h3>
+                        <p class="text-sm text-gray-500 mb-4"><span lang="he">שער הודו והמזרח הרחוק</span><span lang="en">India Gate & Culture</span></p>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                            <span><i class="far fa-moon text-brand-gold"></i> 7</span>
+                            <span><i class="fas fa-star text-brand-gold"></i> 5</span>
+                            <span><i class="fas fa-suitcase text-brand-gold"></i> 23kg</span>
+                            <span><i class="fas fa-coffee text-brand-gold"></i> B.B</span>
+                        </div>
+
+                        <div class="flex justify-between items-end border-t pt-4">
+                            <div>
+                                <span class="text-xs text-gray-400 block"><span lang="he">החל מ-</span><span lang="en">From</span></span>
+                                <span class="text-3xl font-black text-brand-dark">₪2,499</span>
+                            </div>
+                            <a href="https://wa.me/972503456723?text=אני מעוניין בדיל להודו" class="text-brand-gold font-bold hover:text-brand-dark transition"><span lang="he">הזמן עכשיו</span><span lang="en">Book Now</span> &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -230,79 +360,64 @@
         </div>
     </section>
 
-    <section id="why-us" class="py-20 bg-primary text-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-black mb-12 text-center"><span data-lang="he">למה לבחור ב-ShayFly?</span><span data-lang="en">Why Choose ShayFly?</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="text-center p-6 rounded-xl bg-white/5 border border-white/10">
-                    <i class="fa fa-tags text-4xl text-accent mb-4"></i>
-                    <h4 class="font-bold text-xl mb-2 italic">ShayFly Price</h4>
-                    <p class="text-gray-400 text-sm"><span data-lang="he">מחירים ישירים של סוכנים, ללא עמלות תיווך מיותרות.</span><span data-lang="en">Direct agent prices without extra middleman fees.</span></p>
-                </div>
-                <div class="text-center p-6 rounded-xl bg-white/5 border border-white/10">
-                    <i class="fa fa-user-shield text-4xl text-accent mb-4"></i>
-                    <h4 class="font-bold text-xl mb-2"><span data-lang="he">שירות אישי</span><span data-lang="en">Personal Service</span></h4>
-                    <p class="text-gray-400 text-sm"><span data-lang="he">אני זמין עבורכם לכל שאלה, מרגע ההזמנה ועד הנחיתה בארץ.</span><span data-lang="en">Available for every question from booking until landing.</span></p>
-                </div>
-                <div class="text-center p-6 rounded-xl bg-white/5 border border-white/10">
-                    <i class="fa fa-clock text-4xl text-accent mb-4"></i>
-                    <h4 class="font-bold text-xl mb-2"><span data-lang="he">זמינות מלאה</span><span data-lang="en">Full Availability</span></h4>
-                    <p class="text-gray-400 text-sm"><span data-lang="he">מענה מהיר בוואטסאפ לכל בקשה או שינוי שלכם.</span><span data-lang="en">Fast WhatsApp response for any request or change.</span></p>
-                </div>
-                <div class="text-center p-6 rounded-xl bg-white/5 border border-white/10">
-                    <i class="fa fa-gem text-4xl text-accent mb-4"></i>
-                    <h4 class="font-bold text-xl mb-2"><span data-lang="he">אמינות מעל הכל</span><span data-lang="en">Unmatched Reliability</span></h4>
-                    <p class="text-gray-400 text-sm"><span data-lang="he">עבודה מול ספקים מורשים ומוכרים בלבד.</span><span data-lang="en">We only work with licensed and recognized suppliers.</span></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-3xl font-black mb-10 text-center text-primary"><span data-lang="he">שאלות נפוצות</span><span data-lang="en">Questions & Answers</span></h2>
-            <div class="space-y-4">
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 class="font-bold mb-2"><span data-lang="he">האם המחיר סופי?</span><span data-lang="en">Is the price final?</span></h4>
-                    <p class="text-gray-600 text-sm"><span data-lang="he">המחירים כפופים לזמינות המושבים בטיסה והחדרים במלון בזמן ביצוע ההזמנה.</span><span data-lang="en">Prices depend on flight and hotel availability at the time of booking.</span></p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 class="font-bold mb-2"><span data-lang="he">מה הדיל כולל?</span><span data-lang="en">What's included?</span></h4>
-                    <p class="text-gray-600 text-sm"><span data-lang="he">כל דיל מפורט בנפרד, לרוב טיסה, מלון, כבודה (טרולי או מזוודה) וארוחת בוקר.</span><span data-lang="en">Details vary by deal, usually including flights, hotel, baggage, and breakfast.</span></p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h4 class="font-bold mb-2"><span data-lang="he">איך משלמים?</span><span data-lang="en">How do I pay?</span></h4>
-                    <p class="text-gray-600 text-sm"><span data-lang="he">ניתן לשלם בכרטיס אשראי או בהעברה בנקאית, עד מספר תשלומים לבחירה.</span><span data-lang="en">Credit card or bank transfer, with flexible installment options.</span></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-white py-12 border-t border-gray-200">
+    <section id="why" class="py-20 bg-brand-dark text-white">
         <div class="container mx-auto px-4 text-center">
-            <div class="text-3xl font-black text-primary mb-6">ShayFly</div>
-            <p class="text-accent font-bold mb-8 italic uppercase tracking-widest">ShayFly — <span data-lang="he">דילים במחיר של סוכן</span><span data-lang="en">Agent Price Deals</span></p>
+            <h2 class="text-3xl md:text-4xl font-black mb-12"><span lang="he">למה להזמין דרך ShayFly?</span><span lang="en">Why ShayFly?</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="p-6 border border-gray-700 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition">
+                    <i class="fas fa-tag text-4xl text-brand-gold mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2"><span lang="he">מחיר של סוכן</span><span lang="en">Agent Pricing</span></h3>
+                    <p class="text-gray-400"><span lang="he">אנחנו חותכים את פערי התיווך ומביאים לכם את המחיר נטו.</span><span lang="en">Cutting out the middleman fees for you.</span></p>
+                </div>
+                <div class="p-6 border border-gray-700 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition">
+                    <i class="fas fa-user-tie text-4xl text-brand-gold mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2"><span lang="he">ליווי אישי</span><span lang="en">Personal VIP</span></h3>
+                    <p class="text-gray-400"><span lang="he">זה לא בוט. זה שי. אני איתכם בוואטסאפ לכל שאלה.</span><span lang="en">Real human support on WhatsApp.</span></p>
+                </div>
+                <div class="p-6 border border-gray-700 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition">
+                    <i class="fas fa-check-circle text-4xl text-brand-gold mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2"><span lang="he">אמינות וביטחון</span><span lang="en">Trust & Safety</span></h3>
+                    <p class="text-gray-400"><span lang="he">ספקים מורשים בלבד, ללא הפתעות בשדה התעופה.</span><span lang="en">Only licensed suppliers, no surprises.</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-white pt-16 pb-8 border-t border-gray-200">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-black text-brand-dark mb-8">SHAY<span class="text-brand-gold">FLY</span></h2>
             
-            <div class="flex flex-wrap justify-center gap-8 mb-10 text-gray-700 font-bold">
-                <a href="tel:0503456723" class="hover:text-accent transition"><i class="fa fa-phone mr-2"></i> 050-3456723</a>
-                <a href="https://wa.me/972503456723" class="hover:text-accent transition"><i class="fab fa-whatsapp mr-2"></i> WhatsApp</a>
-                <a href="mailto:shayfly84@gmail.com" class="hover:text-accent transition"><i class="fa fa-envelope mr-2"></i> shayfly84@gmail.com</a>
+            <div class="flex flex-col md:flex-row justify-center gap-6 mb-10 text-lg font-bold text-gray-700">
+                <a href="tel:0503456723" class="hover:text-brand-gold flex items-center justify-center gap-2"><i class="fas fa-phone"></i> 050-3456723</a>
+                <a href="https://wa.me/972503456723" class="hover:text-green-500 flex items-center justify-center gap-2"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="mailto:shayfly84@gmail.com" class="hover:text-brand-gold flex items-center justify-center gap-2"><i class="fas fa-envelope"></i> shayfly84@gmail.com</a>
             </div>
 
-            <p class="text-xs text-gray-400 max-w-xl mx-auto leading-relaxed">
-                <span data-lang="he">* המחירים הינם לאדם בהרכב זוגי. הטבה בכפוף לזמינות ולתנאי הספק. ט.ל.ח.</span>
-                <span data-lang="en">* Prices are per person based on double occupancy. Subject to availability and supplier terms. E&OE.</span>
+            <p class="text-xs text-gray-400 max-w-2xl mx-auto border-t border-gray-100 pt-8">
+                <span lang="he">© כל הזכויות שמורות ל-ShayFly. * המחירים הינם לאדם בהרכב זוגי, כוללים טיסה ומלון כפי שצוין. המחיר כפוף לזמינות בעת ההזמנה ועלול להשתנות. ט.ל.ח.</span>
+                <span lang="en">© All rights reserved to ShayFly. Prices per person (double occupancy). Subject to availability. E&OE.</span>
             </p>
         </div>
     </footer>
 
     <script>
-        function toggleLanguage() {
-            document.body.classList.toggle('en-mode');
-            const isEn = document.body.classList.contains('en-mode');
-            document.documentElement.dir = isEn ? 'ltr' : 'rtl';
-            document.documentElement.lang = isEn ? 'en' : 'he';
+        // Language Toggle Logic
+        function toggleLang() {
+            document.body.classList.toggle('english-mode');
+            const isEnglish = document.body.classList.contains('english-mode');
+            document.documentElement.setAttribute('dir', isEnglish ? 'ltr' : 'rtl');
+            document.documentElement.setAttribute('lang', isEnglish ? 'en' : 'he');
         }
+
+        // Smooth Scroll for Anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
