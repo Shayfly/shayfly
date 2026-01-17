@@ -1,417 +1,184 @@
 <!DOCTYPE html>
-<html lang="he" data-current-lang="he">
+<html lang="he">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShayFly - מחירי רצפה לסוף ינואר</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShayFly – דילים במחיר של סוכן | מחירי רצפה לסוף ינואר</title>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=Inter:wght@400;600;700;800&family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-  <style>
-    body { font-family: 'Heebo', sans-serif; direction: rtl; text-align: right; background: #f0f9ff; color: #0f172a; }
-    h1,h2,h3 { font-family: 'Rubik', sans-serif; }
-    html { scroll-behavior: smooth; }
-
-    /* Language display */
-    [data-lang="he"], [data-lang="en"] { display: none; }
-    html[data-current-lang="he"] [data-lang="he"] { display: initial; }
-    html[data-current-lang="en"] [data-lang="en"] { display: initial; }
-
-    /* Fade in */
-    .fade-in-section { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
-    .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
-
-    /* Mobile menu overlay */
-    #mobile-menu-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.9);
-      z-index: 60;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      opacity: 0; visibility: hidden;
-      transition: opacity .25s ease, visibility .25s ease;
-    }
-    #mobile-menu-overlay.open { opacity: 1; visibility: visible; }
-    #mobile-menu-overlay ul { list-style: none; padding: 0; text-align: center; }
-    #mobile-menu-overlay li { margin: 1rem 0; }
-    #mobile-menu-overlay a { color: #fff; font-size: 1.6rem; font-weight: 800; padding: .6rem 1rem; border-radius: .75rem; }
-    #mobile-menu-overlay a:hover { background: rgba(255,255,255,.15); }
-
-    /* Card image safe */
-    .deal-img { width: 100%; height: 220px; object-fit: cover; background: #e2e8f0; }
-  </style>
+<style>
+  body{font-family:'Heebo',sans-serif;direction:rtl;background:#f8fafc;color:#0f172a}
+  .deal-img{width:100%;height:220px;object-fit:cover;background:#e2e8f0}
+</style>
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body>
 
-  <!-- Header -->
-  <header class="bg-white shadow-lg py-4 px-6 md:px-12 sticky top-0 z-50 rounded-b-xl">
-    <nav class="container mx-auto flex justify-between items-center">
+<!-- HEADER -->
+<header class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="leading-tight">
+      <div class="text-2xl font-extrabold text-blue-700">ShayFly</div>
+      <div class="text-sm font-bold text-gray-600">ShayFly – דילים במחיר של סוכן</div>
+    </div>
 
-      <!-- Logo -->
-      <div class="flex items-center">
-        <img
-          src="https://i.imgur.com/3avr14P.png"
-          alt="לוגו ShayFly"
-          class="h-14 w-auto ml-3 rounded-md"
-        />
-        <div class="leading-tight">
-          <div class="text-3xl font-extrabold text-blue-700">ShayFly</div>
-          <div class="text-sm text-gray-500 font-semibold">
-            <span data-lang="he">הדרך המהירה לחופשה הבאה שלך</span>
-            <span data-lang="en">Your fastest way to your next vacation</span>
-          </div>
-        </div>
+    <a href="https://wa.me/972503456723" target="_blank" rel="noopener"
+       class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full font-extrabold flex items-center gap-2">
+      <i class="fa-brands fa-whatsapp text-lg"></i>
+      וואטסאפ להצעה
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative">
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80" class="w-full h-[420px] opacity-90" alt="חופשה">
+  <div class="absolute inset-0 bg-black/55 flex items-center justify-center text-center text-white px-4">
+    <div class="max-w-3xl">
+      <div class="text-sm md:text-base font-extrabold text-white/90 mb-2">ShayFly – דילים במחיר של סוכן</div>
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">🔥 מחירי רצפה לסוף ינואר 🔥</h1>
+      <p class="text-lg md:text-xl font-semibold text-white/90">
+        טיסה + מלון + כבודה לפי יעד • כולל ארוחת בוקר בכל הדילים • מחיר לאדם בהרכב זוגי
+      </p>
+      <div class="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="#deals" class="bg-white text-blue-700 hover:bg-blue-50 px-7 py-3 rounded-full font-extrabold shadow">
+          לצפייה בדילים
+        </a>
+        <a href="https://wa.me/972503456723" target="_blank" rel="noopener"
+           class="bg-green-600 hover:bg-green-700 text-white px-7 py-3 rounded-full font-extrabold shadow flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i> שלחו וואטסאפ עכשיו
+        </a>
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- Desktop Nav -->
-      <ul class="hidden md:flex gap-2">
-        <li><a href="#hero" class="text-gray-700 hover:text-blue-600 font-semibold px-3 py-2 rounded-lg"> <span data-lang="he">בית</span><span data-lang="en">Home</span></a></li>
-        <li><a href="#destinations" class="text-gray-700 hover:text-blue-600 font-semibold px-3 py-2 rounded-lg"> <span data-lang="he">מחירי רצפה</span><span data-lang="en">Deals</span></a></li>
-        <li><a href="#about" class="text-gray-700 hover:text-blue-600 font-semibold px-3 py-2 rounded-lg"> <span data-lang="he">למה אנחנו</span><span data-lang="en">Why us</span></a></li>
-        <li><a href="#contact" class="text-gray-700 hover:text-blue-600 font-semibold px-3 py-2 rounded-lg"> <span data-lang="he">צור קשר</span><span data-lang="en">Contact</span></a></li>
-      </ul>
-
-      <!-- Mobile controls -->
-      <div class="flex items-center md:hidden">
-        <button id="language-toggle" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition ml-3">
-          English
-        </button>
-        <button id="mobile-menu-button" class="text-gray-800 text-2xl">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-
-    </nav>
-  </header>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu-overlay">
-    <button id="close-mobile-menu" class="absolute top-6 right-6 text-white text-3xl" aria-label="Close menu">
-      <i class="fas fa-times"></i>
-    </button>
-    <ul>
-      <li><a class="mobile-nav-link" href="#hero"><span data-lang="he">בית</span><span data-lang="en">Home</span></a></li>
-      <li><a class="mobile-nav-link" href="#destinations"><span data-lang="he">מחירי רצפה</span><span data-lang="en">Deals</span></a></li>
-      <li><a class="mobile-nav-link" href="#about"><span data-lang="he">למה אנחנו</span><span data-lang="en">Why us</span></a></li>
-      <li><a class="mobile-nav-link" href="#contact"><span data-lang="he">צור קשר</span><span data-lang="en">Contact</span></a></li>
-    </ul>
+<!-- DEALS -->
+<section id="deals" class="max-w-7xl mx-auto px-6 py-16">
+  <div class="text-center mb-10">
+    <h2 class="text-3xl md:text-4xl font-extrabold">דילים במחירי רצפה – סוף ינואר</h2>
+    <p class="text-gray-600 mt-2 font-semibold">המחיר לאדם בהרכב זוגי • בכפוף לזמינות • כולל ארוחת בוקר בכל הדילים</p>
   </div>
 
-  <main class="flex-grow">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <!-- Hero -->
-    <section id="hero" class="relative text-white py-20 md:py-28 text-center overflow-hidden rounded-b-3xl shadow-xl fade-in-section">
-      <img
-        src="https://source.unsplash.com/2000x1100/?beach,resort,travel"
-        alt="רקע חופשה"
-        class="absolute inset-0 w-full h-full object-cover opacity-35"
-        loading="lazy"
-      />
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-700/50 to-purple-700/50"></div>
+    <!-- DUBAI -->
+    <article class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+      <img class="deal-img" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80" alt="דובאי">
+      <div class="p-5">
+        <h3 class="text-xl font-extrabold">דובאי</h3>
+        <p class="text-gray-600 mt-1">יוקרה, קניונים ענקיים, אטרקציות, בורג׳ ח׳ליפה וחופים מדהימים.</p>
 
-      <div class="container mx-auto px-6 md:px-12 relative z-10">
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">
-          <span data-lang="he">מחירי רצפה לסוף ינואר 🔥</span>
-          <span data-lang="en">Floor Prices for Late January 🔥</span>
-        </h1>
-        <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto drop-shadow">
-          <span data-lang="he">טיסה + מלון + כבודה לפי יעד • כולל ארוחת בוקר בכל הדילים • מחיר לאדם בהרכב זוגי</span>
-          <span data-lang="en">Flight + hotel + baggage per destination • Breakfast included • Price per person (double occupancy)</span>
-        </p>
+        <div class="flex flex-wrap gap-3 mt-4 text-sm font-bold text-gray-800">
+          <span class="flex items-center gap-2"><i class="fa-solid fa-plane text-blue-700"></i> טיסה</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-hotel text-blue-700"></i> מלון 5★</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-suitcase-rolling text-blue-700"></i> טרולי</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-mug-hot text-blue-700"></i> א.בוקר</span>
+        </div>
 
-        <div class="flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="#destinations" class="inline-block bg-white text-blue-700 hover:bg-blue-50 font-extrabold py-3 px-8 rounded-full shadow-xl transition">
-            <span data-lang="he">לראות את הדילים</span>
-            <span data-lang="en">See deals</span>
-          </a>
-
+        <div class="mt-4 flex items-center justify-between">
+          <div>
+            <div class="text-gray-500 font-bold text-sm">4 לילות</div>
+            <div class="text-2xl font-extrabold text-blue-700">החל מ־1,500 ₪</div>
+            <div class="text-xs text-gray-500 font-semibold">לאדם (זוגי)</div>
+          </div>
           <a href="https://wa.me/972503456723" target="_blank" rel="noopener"
-             class="inline-block bg-green-600 text-white hover:bg-green-700 font-extrabold py-3 px-8 rounded-full shadow-xl transition">
-            <i class="fab fa-whatsapp ml-2"></i>
-            <span data-lang="he">שלחו וואטסאפ עכשיו</span>
-            <span data-lang="en">WhatsApp us now</span>
+             class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-extrabold flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp"></i> סגור דיל
           </a>
         </div>
       </div>
-    </section>
+    </article>
 
-    <!-- Destinations / Deals -->
-    <section id="destinations" class="py-16 md:py-24 bg-white fade-in-section">
-      <div class="container mx-auto px-6 md:px-12">
+    <!-- ABU DHABI -->
+    <article class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+      <img class="deal-img" src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1600&q=80" alt="אבו דאבי">
+      <div class="p-5">
+        <h3 class="text-xl font-extrabold">אבו דאבי</h3>
+        <p class="text-gray-600 mt-1">וייב יוקרתי, מסגד שייח׳ זאיד, טיילות, פארקים ואטרקציות למשפחות.</p>
 
-        <div class="text-center mb-10">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
-            <span data-lang="he">מחירי רצפה לסוף ינואר</span>
-            <span data-lang="en">Late January Floor Deals</span>
-          </h2>
-          <p class="text-gray-600 max-w-3xl mx-auto">
-            <span data-lang="he">כולל ארוחת בוקר בכל הדילים • המחיר לאדם בהרכב זוגי • בכפוף לזמינות</span>
-            <span data-lang="en">Breakfast included in all deals • Price per person (double occupancy) • Subject to availability</span>
-          </p>
+        <div class="flex flex-wrap gap-3 mt-4 text-sm font-bold text-gray-800">
+          <span class="flex items-center gap-2"><i class="fa-solid fa-plane text-blue-700"></i> טיסה</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-hotel text-blue-700"></i> מלון 5★</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-suitcase-rolling text-blue-700"></i> טרולי</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-mug-hot text-blue-700"></i> א.בוקר</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-          <!-- Dubai -->
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1">
-            <img class="deal-img" src="https://source.unsplash.com/1600x900/?dubai,burj-khalifa,skyline" alt="דובאי" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-gray-900 mb-2">דובאי</h3>
-              <p class="text-gray-600 mb-4">4 לילות • טיסה + טרולי • מלון 5★ • 🥐 ארוחת בוקר</p>
-              <div class="text-sm text-gray-800">
-                <div class="font-extrabold mb-1">מחיר שיווקי:</div>
-                <div class="text-lg font-extrabold text-blue-700">החל מ־1,500 ₪ לאדם (זוגי)</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Abu Dhabi -->
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1">
-            <img class="deal-img" src="https://source.unsplash.com/1600x900/?abu-dhabi,sheikh-zayed-mosque" alt="אבו דאבי" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-gray-900 mb-2">אבו דאבי</h3>
-              <p class="text-gray-600 mb-4">4 לילות • טיסה + טרולי • מלון 5★ • 🥐 ארוחת בוקר</p>
-              <div class="text-sm text-gray-800">
-                <div class="font-extrabold mb-1">מחיר שיווקי:</div>
-                <div class="text-lg font-extrabold text-blue-700">החל מ־1,500 ₪ לאדם (זוגי)</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Budapest -->
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1">
-            <img class="deal-img" src="https://source.unsplash.com/1600x900/?budapest,parliament,danube" alt="בודפשט" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-gray-900 mb-2">בודפשט</h3>
-              <p class="text-gray-600 mb-4">4 לילות • טיסה + טרולי • מלון 4★ • 🥐 ארוחת בוקר</p>
-              <div class="text-sm text-gray-800">
-                <div class="font-extrabold mb-1">מחיר שיווקי:</div>
-                <div class="text-lg font-extrabold text-blue-700">החל מ־1,200 ₪ לאדם (זוגי)</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Athens -->
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1">
-            <img class="deal-img" src="https://source.unsplash.com/1600x900/?athens,acropolis,greece" alt="אתונה" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-gray-900 mb-2">אתונה</h3>
-              <p class="text-gray-600 mb-4">3 לילות • טיסה + טרולי • מלון • 🥐 ארוחת בוקר</p>
-              <div class="text-sm text-gray-800">
-                <div class="font-extrabold mb-1">מחיר שיווקי:</div>
-                <div class="text-lg font-extrabold text-blue-700">החל מ־1,100 ₪ לאדם (זוגי)</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Thessaloniki -->
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1">
-            <img class="deal-img" src="https://source.unsplash.com/1600x900/?thessaloniki,greece,waterfront" alt="סלוניקי" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-gray-900 mb-2">סלוניקי</h3>
-              <p class="text-gray-600 mb-4">3 לילות • טיסה + טרולי • מלון • 🥐 ארוחת בוקר</p>
-              <div class="text-sm text-gray-800">
-                <div class="font-extrabold mb-1">מחיר שיווקי:</div>
-                <div class="text-lg font-extrabold text-blue-700">החל מ־1,100 ₪ לאדם (זוגי)</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Bucharest -->
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1">
-            <img class="deal-img" src="https://source.unsplash.com/1600x900/?bucharest,romania,city" alt="בוקרשט" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-gray-900 mb-2">בוקרשט</h3>
-              <p class="text-gray-600 mb-4">3 לילות • טיסה + טרולי • מלון 4★ • 🥐 ארוחת בוקר</p>
-              <div class="text-sm text-gray-800">
-                <div class="font-extrabold mb-1">מחיר שיווקי:</div>
-                <div class="text-lg font-extrabold text-blue-700">החל מ־1,300 ₪ לאדם (זוגי)</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Batumi -->
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1">
-            <img class="deal-img" src="https://source.unsplash.com/1600x900/?batumi,georgia,sea,city" alt="בתומי" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-gray-900 mb-2">בתומי</h3>
-              <p class="text-gray-600 mb-4">4 לילות • טיסה + טרולי • מלון 5★ • 🥐 ארוחת בוקר</p>
-              <div class="text-sm text-gray-800">
-                <div class="font-extrabold mb-1">מחיר שיווקי:</div>
-                <div class="text-lg font-extrabold text-blue-700">החל מ־1,300 ₪ לאדם (זוגי)</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Tbilisi -->
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1">
-            <img class="deal-img" src="https://source.unsplash.com/1600x900/?tbilisi,georgia,old-town" alt="טביליסי" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-gray-900 mb-2">טביליסי</h3>
-              <p class="text-gray-600 mb-4">4 לילות • טיסה + טרולי • מלון 5★ • 🥐 ארוחת בוקר</p>
-              <div class="text-sm text-gray-800">
-                <div class="font-extrabold mb-1">מחיר שיווקי:</div>
-                <div class="text-lg font-extrabold text-blue-700">החל מ־1,300 ₪ לאדם (זוגי)</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- New Delhi -->
-          <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1">
-            <img class="deal-img" src="https://source.unsplash.com/1600x900/?new-delhi,india,india-gate" alt="ניו דלהי" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-gray-900 mb-2">ניו דלהי, הודו</h3>
-              <p class="text-gray-600 mb-4">7 לילות • טיסה + מזוודה • מלון 5★ • 🥐 ארוחת בוקר</p>
-              <div class="text-sm text-gray-800">
-                <div class="font-extrabold mb-1">מחיר שיווקי:</div>
-                <div class="text-lg font-extrabold text-blue-700">החל מ־2,500 ₪ לאדם (זוגי)</div>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="text-center mt-12">
-          <p class="text-gray-800 font-extrabold">
-            ועוד יעדים בעולם במחירי רצפה — שולחים הודעה ונבנה לכם דיל.
-          </p>
+        <div class="mt-4 flex items-center justify-between">
+          <div>
+            <div class="text-gray-500 font-bold text-sm">4 לילות</div>
+            <div class="text-2xl font-extrabold text-blue-700">החל מ־1,500 ₪</div>
+            <div class="text-xs text-gray-500 font-semibold">לאדם (זוגי)</div>
+          </div>
           <a href="https://wa.me/972503456723" target="_blank" rel="noopener"
-             class="inline-block mt-5 bg-green-600 text-white hover:bg-green-700 font-extrabold py-3 px-10 rounded-full shadow-xl transition">
-            <i class="fab fa-whatsapp ml-2"></i>
-            שלחו וואטסאפ
+             class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-extrabold flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp"></i> סגור דיל
           </a>
         </div>
-
       </div>
-    </section>
+    </article>
 
-    <!-- Why us -->
-    <section id="about" class="py-16 md:py-24 bg-gray-50 fade-in-section">
-      <div class="container mx-auto px-6 md:px-12">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-10">
-          <span data-lang="he">למה ShayFly?</span>
-          <span data-lang="en">Why ShayFly?</span>
-        </h2>
+    <!-- BUDAPEST -->
+    <article class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+      <img class="deal-img" src="https://images.unsplash.com/photo-1549877452-9c387954fbc2?auto=format&fit=crop&w=1600&q=80" alt="בודפשט">
+      <div class="p-5">
+        <h3 class="text-xl font-extrabold">בודפשט</h3>
+        <p class="text-gray-600 mt-1">הדנובה, מרחצאות חמים, אוכל טוב ואווירה אירופאית קלאסית.</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-white rounded-2xl shadow-lg p-6">
-            <div class="text-2xl text-blue-700 mb-2"><i class="fa-solid fa-bolt"></i></div>
-            <h3 class="font-extrabold text-lg mb-2">מהיר וסופר ברור</h3>
-            <p class="text-gray-600">מחיר שיווקי חד, מה כלול, וכמה לילות — בלי בלבול.</p>
+        <div class="flex flex-wrap gap-3 mt-4 text-sm font-bold text-gray-800">
+          <span class="flex items-center gap-2"><i class="fa-solid fa-plane text-blue-700"></i> טיסה</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-hotel text-blue-700"></i> מלון 4★</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-suitcase-rolling text-blue-700"></i> טרולי</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-mug-hot text-blue-700"></i> א.בוקר</span>
+        </div>
+
+        <div class="mt-4 flex items-center justify-between">
+          <div>
+            <div class="text-gray-500 font-bold text-sm">4 לילות</div>
+            <div class="text-2xl font-extrabold text-blue-700">החל מ־1,200 ₪</div>
+            <div class="text-xs text-gray-500 font-semibold">לאדם (זוגי)</div>
           </div>
-
-          <div class="bg-white rounded-2xl shadow-lg p-6">
-            <div class="text-2xl text-blue-700 mb-2"><i class="fa-solid fa-shield-heart"></i></div>
-            <h3 class="font-extrabold text-lg mb-2">שירות אישי</h3>
-            <p class="text-gray-600">אנחנו סוגרים לך את הדיל שמתאים בדיוק לצרכים שלך.</p>
-          </div>
-
-          <div class="bg-white rounded-2xl shadow-lg p-6">
-            <div class="text-2xl text-blue-700 mb-2"><i class="fa-solid fa-plane-departure"></i></div>
-            <h3 class="font-extrabold text-lg mb-2">דילים חמים</h3>
-            <p class="text-gray-600">יעדים נבחרים במחירי רצפה — סוף ינואר זו הזדמנות מעולה.</p>
-          </div>
+          <a href="https://wa.me/972503456723" target="_blank" rel="noopener"
+             class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-extrabold flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp"></i> סגור דיל
+          </a>
         </div>
       </div>
-    </section>
+    </article>
 
-    <!-- Contact -->
-    <section id="contact" class="py-16 md:py-24 bg-white fade-in-section">
-      <div class="container mx-auto px-6 md:px-12">
-        <div class="max-w-3xl mx-auto bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl shadow-xl p-8 md:p-10">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 text-center mb-4">צור קשר עכשיו</h2>
-          <p class="text-center text-gray-600 mb-8">שולחים וואטסאפ ומקבלים הצעה מהירה.</p>
+    <!-- ATHENS -->
+    <article class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+      <img class="deal-img" src="https://images.unsplash.com/photo-1505731132164-cca903d2a1c4?auto=format&fit=crop&w=1600&q=80" alt="אתונה">
+      <div class="p-5">
+        <h3 class="text-xl font-extrabold">אתונה</h3>
+        <p class="text-gray-600 mt-1">האקרופוליס, שופינג, אוכל יווני מצוין וחיי לילה.</p>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <a href="tel:0503456723" class="flex items-center justify-center gap-2 bg-white rounded-2xl shadow p-4 hover:shadow-lg transition">
-              <i class="fa-solid fa-phone text-blue-700"></i>
-              <span class="font-extrabold">050-3456723</span>
-            </a>
+        <div class="flex flex-wrap gap-3 mt-4 text-sm font-bold text-gray-800">
+          <span class="flex items-center gap-2"><i class="fa-solid fa-plane text-blue-700"></i> טיסה</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-hotel text-blue-700"></i> מלון</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-suitcase-rolling text-blue-700"></i> טרולי</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-mug-hot text-blue-700"></i> א.בוקר</span>
+        </div>
 
-            <a href="https://wa.me/972503456723" target="_blank" rel="noopener"
-               class="flex items-center justify-center gap-2 bg-green-600 text-white rounded-2xl shadow p-4 hover:bg-green-700 transition">
-              <i class="fab fa-whatsapp"></i>
-              <span class="font-extrabold">WhatsApp</span>
-            </a>
-
-            <a href="mailto:shayfly84@gmail.com" class="flex items-center justify-center gap-2 bg-white rounded-2xl shadow p-4 hover:shadow-lg transition">
-              <i class="fa-solid fa-envelope text-blue-700"></i>
-              <span class="font-extrabold">shayfly84@gmail.com</span>
-            </a>
+        <div class="mt-4 flex items-center justify-between">
+          <div>
+            <div class="text-gray-500 font-bold text-sm">3 לילות</div>
+            <div class="text-2xl font-extrabold text-blue-700">החל מ־1,100 ₪</div>
+            <div class="text-xs text-gray-500 font-semibold">לאדם (זוגי)</div>
           </div>
-
-          <div class="text-center mt-8 text-sm text-gray-600">
-            * בכפוף לזמינות ולתנאי ספק. המחיר לאדם בהרכב זוגי.
-          </div>
+          <a href="https://wa.me/972503456723" target="_blank" rel="noopener"
+             class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-extrabold flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp"></i> סגור דיל
+          </a>
         </div>
       </div>
-    </section>
+    </article>
 
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8 mt-8">
-    <div class="container mx-auto px-6 md:px-12 text-center">
-      <div class="font-extrabold text-lg mb-2">ShayFly</div>
-      <div class="text-white/80">© <span id="year"></span> כל הזכויות שמורות</div>
-    </div>
-  </footer>
-
-  <script>
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Fade-in intersection observer
-    const sections = document.querySelectorAll(".fade-in-section");
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("is-visible"); });
-    }, { threshold: 0.12 });
-    sections.forEach(s => obs.observe(s));
-
-    // Mobile menu
-    const overlay = document.getElementById("mobile-menu-overlay");
-    const openBtn = document.getElementById("mobile-menu-button");
-    const closeBtn = document.getElementById("close-mobile-menu");
-    const mobileLinks = document.querySelectorAll(".mobile-nav-link");
-
-    openBtn?.addEventListener("click", () => overlay.classList.add("open"));
-    closeBtn?.addEventListener("click", () => overlay.classList.remove("open"));
-    mobileLinks.forEach(a => a.addEventListener("click", () => overlay.classList.remove("open")));
-
-    // Language toggle (basic)
-    const htmlEl = document.documentElement;
-    const langBtn = document.getElementById("language-toggle");
-
-    function applyLang(lang) {
-      htmlEl.setAttribute("data-current-lang", lang);
-      if (lang === "he") {
-        document.body.style.direction = "rtl";
-        document.body.style.textAlign = "right";
-        document.body.style.fontFamily = "'Heebo', sans-serif";
-        if (langBtn) langBtn.textContent = "English";
-      } else {
-        document.body.style.direction = "ltr";
-        document.body.style.textAlign = "left";
-        document.body.style.fontFamily = "'Inter', sans-serif";
-        if (langBtn) langBtn.textContent = "עברית";
-      }
-    }
-
-    langBtn?.addEventListener("click", () => {
-      const curr = htmlEl.getAttribute("data-current-lang") || "he";
-      applyLang(curr === "he" ? "en" : "he");
-    });
-
-    // Default lang
-    applyLang("he");
-  </script>
-
-</body>
-</html>
+    <!-- THESSALONIKI -->
+    <article class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+      <img class="deal-img" src="https://images.unsplash.com/photo-1601475074367-1d8a7c0f7a1c?auto=format&fit=crop&w=1600&q=80" alt="סלוניקי">
+      <div class="p-5">
+        <h3 class="text-xl font-extrabold">סלוני
