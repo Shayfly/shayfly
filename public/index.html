@@ -5,59 +5,39 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#0b1b2e" />
 
-  <title>ShayFly — דילים אמיתיים במחיר של סוכן | טיסות + מלון + כבודה + שירות</title>
-  <meta name="description" content="ShayFly: דילים אמיתיים (טיסה+מלון+כבודה) עם שירות סוכן בווטסאפ. עד 3 תשלומים ללא ריבית, ועד 12 בתוספת קטנה. דובאי, בטומי, אתונה ועוד." />
+  <title>ShayFly — דילים במחיר של סוכן | טיסה+מלון+כבודה</title>
+  <meta name="description" content="ShayFly – דילים במחיר של סוכן. שירות אישי בוואטסאפ. עד 3 תשלומים ללא ריבית ועד 12 בתוספת קטנה. דובאי, אבו דאבי, בטומי, טביליסי, בודפשט ועוד." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="./" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="he_IL" />
-  <meta property="og:title" content="ShayFly — דילים אמיתיים במחיר של סוכן" />
-  <meta property="og:description" content="טיסה+מלון+כבודה+שירות. עד 3 תשלומים ללא ריבית, ועד 12 בתוספת קטנה. דברו איתי בווטסאפ." />
+  <meta property="og:title" content="ShayFly — דילים במחיר של סוכן" />
+  <meta property="og:description" content="טיסה+מלון+כבודה (לפי הדיל) + שירות אישי בוואטסאפ. עד 3 תשלומים ללא ריבית ועד 12 בתוספת קטנה." />
   <meta property="og:image" content="./logo_shayfly_whitebg.png" />
   <meta property="og:image:alt" content="ShayFly" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ShayFly — דילים אמיתיים במחיר של סוכן" />
-  <meta name="twitter:description" content="טיסה+מלון+כבודה+שירות. דברו איתי בווטסאפ." />
-  <meta name="twitter:image" content="./logo_shayfly_whitebg.png" />
-
-  <!-- Icons -->
   <link rel="icon" href="./logo_shayfly_whitebg.png" />
   <link rel="apple-touch-icon" href="./logo_shayfly_whitebg.png" />
 
-  <!-- Performance: fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Preload hero background -->
   <link rel="preload" as="image" href="./images/1.jpg" />
 
   <style>
     :root{
-      --bg0:#071225;
-      --bg1:#0b1b2e;
-      --card:#0f2744;
-      --card2:#0c213a;
-      --text:#eaf2ff;
-      --muted:#b9c7dd;
+      --bg0:#071225; --bg1:#0b1b2e;
+      --text:#eaf2ff; --muted:#b9c7dd;
       --line:rgba(255,255,255,.10);
-      --glass:rgba(10,25,45,.55);
-      --brand:#18c37e;
-      --brand2:#1dd1ff;
-      --accent:#ff8a00;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --shadow2: 0 12px 30px rgba(0,0,0,.28);
-      --radius: 22px;
-      --radius2: 16px;
-      --max: 1180px;
+      --brand:#18c37e; --brand2:#1dd1ff; --accent:#ff8a00;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --shadow2:0 12px 30px rgba(0,0,0,.28);
+      --r:22px; --r2:16px; --max:1180px;
     }
-
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
       font-family:"Heebo",system-ui,-apple-system,Segoe UI,Arial;
@@ -68,53 +48,48 @@
         linear-gradient(180deg, var(--bg0), var(--bg1) 65%, #081a31);
       overflow-x:hidden;
     }
-
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 18px}
 
     /* Topbar */
-    .topbar{
+    header{
       position:sticky;top:0;z-index:50;
       backdrop-filter: blur(16px);
       background: linear-gradient(180deg, rgba(7,18,37,.86), rgba(7,18,37,.55));
       border-bottom:1px solid var(--line);
     }
-    .topbar-inner{
+    .top{
       display:flex;align-items:center;justify-content:space-between;gap:14px;
       padding:12px 0;
     }
-
     .brand{
-      display:flex;align-items:center;gap:10px;min-width:220px;
+      display:flex;align-items:center;gap:10px;
+      min-width:240px;
     }
     .brand img{
       height:44px;width:auto;border-radius:14px;background:#fff;
       border:1px solid rgba(255,255,255,.15);
-      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+      box-shadow:0 10px 24px rgba(0,0,0,.22);
     }
-    .brand .titlewrap{line-height:1.1}
-    .brand .name{font-weight:900;letter-spacing:.2px;font-size:18px}
-    .brand .tag{font-size:12px;color:var(--muted)}
-
-    .nav{
-      display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-      justify-content:center;
+    .brand .name{font-weight:950;font-size:18px;line-height:1.1}
+    .brand .tag{font-size:12px;color:var(--muted);font-weight:800}
+    nav{
+      display:flex;align-items:center;gap:12px;flex-wrap:wrap;
     }
-    .nav a{
-      font-weight:700;font-size:13px;color:rgba(234,242,255,.9);
+    nav a{
+      font-weight:800;font-size:13px;
       padding:10px 12px;border-radius:999px;
       border:1px solid transparent;
-      transition:.25s;
+      transition:.2s;
     }
-    .nav a:hover{
+    nav a:hover{
       border-color:rgba(255,255,255,.18);
       background:rgba(255,255,255,.06);
       transform:translateY(-1px);
     }
-
     .cta{
-      display:flex;align-items:center;gap:10px;min-width:260px;justify-content:flex-start;
+      display:flex;gap:10px;align-items:center;
+      min-width:240px;justify-content:flex-start;
     }
     .pill{
       display:inline-flex;align-items:center;gap:8px;
@@ -122,129 +97,68 @@
       border:1px solid rgba(255,255,255,.16);
       background:rgba(255,255,255,.06);
       box-shadow:0 10px 22px rgba(0,0,0,.18);
-      font-weight:800;font-size:13px;
+      font-weight:900;font-size:13px;
       white-space:nowrap;
+      transition:.15s;
     }
-    .pill svg{width:16px;height:16px;opacity:.95}
-    .pill.whatsapp{
-      background:linear-gradient(135deg, rgba(24,195,126,.22), rgba(24,195,126,.10));
-      border-color: rgba(24,195,126,.35);
-    }
-    .pill.phone{
-      background:linear-gradient(135deg, rgba(29,209,255,.18), rgba(29,209,255,.08));
-      border-color: rgba(29,209,255,.32);
-    }
-
-    /* Payment ribbon */
+    .pill:hover{transform:translateY(-1px)}
+    .pill.wa{border-color:rgba(24,195,126,.35);background:rgba(24,195,126,.12)}
+    .pill.phone{border-color:rgba(29,209,255,.35);background:rgba(29,209,255,.10)}
     .ribbon{
       border-top:1px solid var(--line);
       background:linear-gradient(90deg, rgba(255,138,0,.12), rgba(29,209,255,.08), rgba(24,195,126,.10));
-      color:rgba(234,242,255,.95);
-      font-weight:800;
-      font-size:13px;
-      text-align:center;
-      padding:10px 0;
+      font-weight:900;font-size:13px;text-align:center;padding:10px 0;
     }
 
     /* Hero */
-    .hero{
-      position:relative;
-      padding:38px 0 18px;
-    }
+    .hero{position:relative;padding:34px 0 18px}
     .hero-bg{
       position:absolute;inset:-2px 0 auto 0;height:520px;
       background:
-        linear-gradient(90deg, rgba(7,18,37,.65), rgba(7,18,37,.25) 55%, rgba(7,18,37,.75)),
-        radial-gradient(900px 420px at 70% 30%, rgba(29,209,255,.16), transparent 60%),
-        radial-gradient(700px 420px at 25% 55%, rgba(24,195,126,.14), transparent 60%),
+        linear-gradient(90deg, rgba(7,18,37,.70), rgba(7,18,37,.25) 55%, rgba(7,18,37,.78)),
         url("./images/1.jpg");
-      background-size:cover;
-      background-position:center;
+      background-size:cover;background-position:center;
       filter:saturate(1.05) contrast(1.08);
       border-bottom:1px solid var(--line);
-      overflow:hidden;
     }
-    .hero-bg::after{
-      content:"";
-      position:absolute;inset:-80px;
-      background:
-        radial-gradient(420px 260px at 20% 20%, rgba(255,138,0,.20), transparent 60%),
-        radial-gradient(520px 320px at 85% 35%, rgba(29,209,255,.18), transparent 62%),
-        radial-gradient(620px 360px at 55% 80%, rgba(24,195,126,.14), transparent 62%);
-      animation: floatGlow 12s ease-in-out infinite alternate;
-      pointer-events:none;
-      mix-blend-mode: screen;
-      opacity:.85;
-    }
-    @keyframes floatGlow{
-      0%{transform:translate3d(0,0,0) scale(1)}
-      100%{transform:translate3d(0,-16px,0) scale(1.03)}
-    }
-
-    .hero-grid{
+    .grid-hero{
       position:relative;
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
       align-items:stretch;
-      margin-top: 18px;
+      margin-top:18px;
     }
-
     .glass{
-      background:linear-gradient(180deg, rgba(10,25,45,.62), rgba(10,25,45,.42));
+      border-radius:var(--r);
       border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
       box-shadow:var(--shadow);
-      border-radius:var(--radius);
       backdrop-filter: blur(18px);
     }
-
-    .hero-main{
-      padding:28px 24px 22px;
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-main::before{
-      content:"";
-      position:absolute;inset:-2px;
-      background:linear-gradient(135deg, rgba(29,209,255,.10), rgba(24,195,126,.10), rgba(255,138,0,.10));
-      filter:blur(20px);
-      opacity:.55;
-      pointer-events:none;
-    }
-    .hero-main > *{position:relative}
-
+    .hero-main{padding:26px 22px}
     .badge{
       display:inline-flex;align-items:center;gap:8px;
       padding:8px 12px;border-radius:999px;
-      background:rgba(255,255,255,.08);
+      background:rgba(255,255,255,.10);
       border:1px solid rgba(255,255,255,.16);
-      font-weight:900;font-size:12px;
+      font-weight:950;font-size:12px;
       width:max-content;
     }
-    .badge .dot{
-      width:9px;height:9px;border-radius:99px;background:var(--accent);
-      box-shadow:0 0 0 6px rgba(255,138,0,.15);
-    }
-
+    .dot{width:9px;height:9px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 6px rgba(255,138,0,.14)}
     h1{
       margin:14px 0 10px;
-      font-size:46px;
-      line-height:1.08;
-      letter-spacing:-.3px;
-      font-weight:950;
-      text-shadow: 0 12px 30px rgba(0,0,0,.35);
+      font-size:46px;line-height:1.08;font-weight:950;
+      text-shadow:0 12px 30px rgba(0,0,0,.35);
     }
     .sub{
-      margin:0 0 16px;
+      margin:0;
       color:rgba(234,242,255,.92);
-      font-size:15.5px;
-      line-height:1.7;
-      max-width: 62ch;
+      font-size:15.5px;line-height:1.75;font-weight:650;
+      max-width:70ch;
     }
-
-    .hero-actions{
-      display:flex;flex-wrap:wrap;gap:10px;
-      margin-top:16px;
+    .actions{
+      display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;
     }
     .btn{
       display:inline-flex;align-items:center;gap:10px;
@@ -252,276 +166,113 @@
       border:1px solid rgba(255,255,255,.16);
       background:rgba(255,255,255,.07);
       box-shadow:var(--shadow2);
-      font-weight:900;
-      transition:.25s;
+      font-weight:950;
       cursor:pointer;
+      transition:.2s;
       user-select:none;
     }
     .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.10)}
-    .btn.primary{
-      border-color:rgba(24,195,126,.35);
-      background:linear-gradient(135deg, rgba(24,195,126,.26), rgba(24,195,126,.14));
-    }
-    .btn.secondary{
-      border-color:rgba(29,209,255,.35);
-      background:linear-gradient(135deg, rgba(29,209,255,.22), rgba(29,209,255,.10));
-    }
-    .btn svg{width:18px;height:18px}
-
-    .hero-fine{
-      margin-top:12px;
-      color:rgba(234,242,255,.75);
-      font-size:12.5px;
-      line-height:1.7;
-    }
-
-    .hero-side{
-      padding:18px;
-      display:flex;flex-direction:column;gap:12px;
-    }
-    .side-card{
-      padding:14px 14px;
-      border-radius:var(--radius2);
+    .btn.primary{border-color:rgba(24,195,126,.35);background:rgba(24,195,126,.14)}
+    .btn.secondary{border-color:rgba(29,209,255,.35);background:rgba(29,209,255,.12)}
+    .fine{margin-top:12px;color:rgba(234,242,255,.75);font-size:12.5px;line-height:1.7;font-weight:650}
+    .side{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .card-mini{
+      border-radius:var(--r2);
       border:1px solid rgba(255,255,255,.12);
-      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      background:rgba(255,255,255,.05);
+      padding:14px;
     }
-    .side-title{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-      font-weight:950;
-      margin-bottom:10px;
-    }
-    .side-title small{color:rgba(234,242,255,.7);font-weight:800}
-    .checklist{display:grid;gap:9px;margin:0;padding:0;list-style:none}
-    .checklist li{
-      display:flex;gap:10px;align-items:flex-start;
-      color:rgba(234,242,255,.88);
-      font-weight:700;font-size:13px;line-height:1.55;
-    }
-    .tick{
-      width:18px;height:18px;border-radius:6px;
-      background:rgba(24,195,126,.20);
-      border:1px solid rgba(24,195,126,.35);
-      display:grid;place-items:center;flex:0 0 18px;
-      margin-top:1px;
-    }
-    .tick svg{width:14px;height:14px}
+    .card-mini h3{margin:0 0 10px;font-weight:950;font-size:16px}
+    .list{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+    .list li{color:rgba(234,242,255,.86);font-weight:700;font-size:13px;line-height:1.6}
 
     /* Sections */
-    section{padding:34px 0}
+    section{padding:30px 0}
     .section-head{
       display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
       margin-bottom:14px;
     }
-    .section-head h2{
-      margin:0;
-      font-size:26px;
-      font-weight:950;
-      letter-spacing:-.2px;
-    }
-    .section-head p{
-      margin:0;color:rgba(234,242,255,.78);
-      font-weight:600;font-size:13.5px;line-height:1.6;
-      max-width:70ch;
-    }
-
-    /* Deal of week */
-    .weekly{
-      display:grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap:16px;
-      align-items:stretch;
-    }
-    .weekly .poster{
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.14);
-      overflow:hidden;
-      position:relative;
-      min-height: 290px;
-      background:
-        linear-gradient(180deg, rgba(7,18,37,.35), rgba(7,18,37,.78)),
-        url("./images/batumi.jpg");
-      background-size:cover;
-      background-position:center;
-      box-shadow:var(--shadow);
-    }
-    .weekly .poster::after{
-      content:"דיל השבוע";
-      position:absolute;top:14px;right:14px;
-      background:rgba(255,138,0,.95);
-      color:#0b1b2e;
-      font-weight:950;
-      padding:10px 12px;
-      border-radius:999px;
-      box-shadow:0 16px 30px rgba(0,0,0,.25);
-    }
-    .weekly .content{
-      padding:18px;
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.14);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow:var(--shadow);
-    }
-    .kpis{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-      margin:12px 0 14px;
-    }
-    .kpi{
-      padding:10px 10px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.05);
-    }
-    .kpi b{display:block;font-weight:950}
-    .kpi span{color:rgba(234,242,255,.75);font-weight:700;font-size:12px}
-
-    .note{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:12px;border-radius:16px;
-      border:1px dashed rgba(29,209,255,.35);
-      background:rgba(29,209,255,.06);
-      color:rgba(234,242,255,.86);
-      font-weight:700;font-size:13px;line-height:1.6;
-      margin-top:12px;
-    }
-    .note svg{width:18px;height:18px;flex:0 0 18px;margin-top:2px}
+    .section-head h2{margin:0;font-size:26px;font-weight:950}
+    .section-head p{margin:0;color:rgba(234,242,255,.78);font-weight:650;font-size:13.5px;line-height:1.65;max-width:78ch}
 
     /* Deals grid */
-    .grid{
+    .deals{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:14px;
     }
-    .card{
-      border-radius:var(--radius);
+    article.deal{
+      border-radius:var(--r);
       border:1px solid rgba(255,255,255,.14);
       overflow:hidden;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       box-shadow:var(--shadow2);
-      transform:translateY(0);
-      transition: transform .25s, background .25s, border-color .25s;
-      position:relative;
+      transition: transform .2s, border-color .2s, background .2s;
     }
-    .card:hover{
+    article.deal:hover{
       transform:translateY(-6px);
-      border-color: rgba(29,209,255,.28);
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-color:rgba(29,209,255,.26);
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
     }
-    .card .imgwrap{
-      position:relative;
-      height:190px;
-      background:#0a1a2f;
-    }
-    .card .imgwrap img{
-      width:100%;height:100%;object-fit:cover;
-      filter:saturate(1.05) contrast(1.06);
-    }
-    .card .imgwrap::after{
-      content:"";
-      position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(7,18,37,.06), rgba(7,18,37,.78));
-      pointer-events:none;
-    }
-    .card .tag{
+    .imgwrap{height:190px;background:#0a1a2f;position:relative}
+    .imgwrap img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.06)}
+    .imgwrap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(7,18,37,.04), rgba(7,18,37,.78))}
+    .country{
       position:absolute;top:12px;right:12px;
+      padding:8px 10px;border-radius:999px;
+      font-weight:950;font-size:12px;
       background:rgba(255,255,255,.12);
       border:1px solid rgba(255,255,255,.16);
-      padding:8px 10px;
-      border-radius:999px;
-      font-weight:950;font-size:12px;
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(12px);
+      z-index:2;
     }
-    .card .body{
-      padding:14px 14px 12px;
-    }
-    .card h3{
-      margin:0 0 8px;
-      font-size:18px;
+    .body{padding:14px 14px 12px}
+    .body h3{margin:0 0 8px;font-size:18px;font-weight:950}
+    .desc{margin:0 0 10px;color:rgba(234,242,255,.78);font-size:13px;line-height:1.65;font-weight:650;min-height:40px}
+    .price{
       font-weight:950;
-      letter-spacing:-.2px;
-    }
-    .card p{
       margin:0 0 12px;
-      color:rgba(234,242,255,.78);
-      font-size:13px;
-      line-height:1.65;
-      font-weight:650;
-      min-height: 42px;
+      font-size:15px;
+      color:rgba(234,242,255,.92);
     }
-    .chips{
-      display:flex;flex-wrap:wrap;gap:8px;
-      margin-bottom:10px;
-    }
+    .price b{color:var(--accent);font-size:18px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
     .chip{
-      display:inline-flex;align-items:center;gap:7px;
       padding:8px 10px;border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.05);
-      font-weight:850;font-size:12px;
-      color:rgba(234,242,255,.88);
+      font-weight:900;font-size:12px;color:rgba(234,242,255,.88);
+      white-space:nowrap;
     }
-    .chip svg{width:14px;height:14px;opacity:.95}
-    .card .actions{
-      display:flex;gap:10px;flex-wrap:wrap;
-    }
-    .card .actions .mini{
+    .deal-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .mini{
       padding:10px 12px;border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(255,255,255,.05);
       font-weight:950;font-size:12.5px;
-      display:inline-flex;align-items:center;gap:8px;
       transition:.2s;
       cursor:pointer;
     }
-    .card .actions .mini:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
-    .card .actions .mini.primary{
-      border-color:rgba(24,195,126,.32);
-      background:rgba(24,195,126,.12);
-    }
-
-    /* Gallery strip (your 1-8 images) */
-    .strip{
-      display:grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap:10px;
-    }
-    .strip .ph{
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.14);
-      overflow:hidden;
-      background:rgba(255,255,255,.04);
-      height:90px;
-      position:relative;
-    }
-    .strip .ph img{width:100%;height:100%;object-fit:cover}
-    .strip .ph::after{
-      content:"";
-      position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(7,18,37,.06), rgba(7,18,37,.42));
-      pointer-events:none;
-    }
+    .mini:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
+    .mini.primary{border-color:rgba(24,195,126,.32);background:rgba(24,195,126,.12)}
 
     /* Contact */
     .contact{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:14px;
-      align-items:stretch;
     }
     .panel{
-      padding:18px;
-      border-radius:var(--radius);
+      border-radius:var(--r);
       border:1px solid rgba(255,255,255,.14);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       box-shadow:var(--shadow2);
+      padding:18px;
     }
     .panel h3{margin:0 0 10px;font-weight:950;font-size:18px}
-    .panel p{margin:0 0 12px;color:rgba(234,242,255,.78);line-height:1.7;font-weight:650;font-size:13.5px}
-    .form{
-      display:grid;gap:10px;margin-top:10px;
-    }
-    .row{display:grid;grid-template-columns: 1fr 1fr;gap:10px}
+    .panel p{margin:0 0 12px;color:rgba(234,242,255,.78);font-weight:650;line-height:1.7;font-size:13.5px}
+    .form{display:grid;gap:10px;margin-top:10px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     .input{
       width:100%;
       padding:12px 12px;
@@ -534,715 +285,337 @@
     }
     .input::placeholder{color:rgba(234,242,255,.52)}
     textarea.input{min-height:110px;resize:vertical}
-    .send{
-      display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;
-    }
 
-    /* Footer */
     footer{
       padding:26px 0 38px;
       color:rgba(234,242,255,.72);
       border-top:1px solid var(--line);
       background:linear-gradient(180deg, rgba(7,18,37,.0), rgba(7,18,37,.40));
     }
-    .footgrid{
+    .foot{
       display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
     }
     .small{font-size:12px;line-height:1.6;font-weight:650}
-    .links{display:flex;gap:10px;flex-wrap:wrap}
-    .links a{
-      padding:9px 12px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.05);
-      font-weight:850;font-size:12px;
-      transition:.2s;
-    }
-    .links a:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
 
-    /* Reveal animations */
+    /* Animations */
     .reveal{opacity:0;transform:translateY(12px);transition:opacity .7s ease, transform .7s ease}
     .reveal.on{opacity:1;transform:translateY(0)}
 
-    /* Responsive */
     @media (max-width: 980px){
       h1{font-size:40px}
-      .hero-grid{grid-template-columns:1fr}
-      .cta{min-width:auto;justify-content:flex-start}
-      .brand{min-width:auto}
-      .weekly{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr 1fr}
-      .strip{grid-template-columns: repeat(4, 1fr)}
+      .grid-hero{grid-template-columns:1fr}
+      .deals{grid-template-columns:1fr 1fr}
       .contact{grid-template-columns:1fr}
       .row{grid-template-columns:1fr}
-      .hero-bg{height:520px}
     }
     @media (max-width: 560px){
       h1{font-size:34px}
-      .nav{display:none}
-      .grid{grid-template-columns:1fr}
-      .strip{grid-template-columns: repeat(2, 1fr)}
-      .hero-bg{height:560px}
+      nav{display:none}
+      .deals{grid-template-columns:1fr}
       .brand .tag{display:none}
     }
-
-    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
     }
   </style>
 
-  <!-- Structured Data -->
+  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"TravelAgency",
     "name":"ShayFly",
-    "description":"דילים אמיתיים (טיסה+מלון+כבודה) עם שירות סוכן בווטסאפ. עד 3 תשלומים ללא ריבית ועד 12 בתוספת קטנה.",
+    "description":"דילים במחיר של סוכן. שירות אישי בוואטסאפ. עד 3 תשלומים ללא ריבית ועד 12 בתוספת קטנה.",
     "telephone":"+972-50-3456723",
     "image":"./logo_shayfly_whitebg.png",
     "url":"./",
     "areaServed":"IL",
-    "sameAs":[
-      "https://wa.me/972503456723"
-    ],
-    "makesOffer":[
-      {"@type":"Offer","name":"דילים לדובאי"},
-      {"@type":"Offer","name":"דילים לבטומי"},
-      {"@type":"Offer","name":"דילים לאתונה"}
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {
-        "@type":"Question",
-        "name":"מה כולל דיל ShayFly?",
-        "acceptedAnswer":{"@type":"Answer","text":"דיל כולל לרוב טיסה + מלון + כבודה לפי המפורסם, ושירות אישי בווטסאפ לבדיקת זמינות ומחיר סופי."}
-      },
-      {
-        "@type":"Question",
-        "name":"איך עובדים התשלומים?",
-        "acceptedAnswer":{"@type":"Answer","text":"עד 3 תשלומים ללא ריבית. עד 12 תשלומים בתוספת קטנה — בהתאם לספק ולתנאי העסקה."}
-      },
-      {
-        "@type":"Question",
-        "name":"איך סוגרים דיל?",
-        "acceptedAnswer":{"@type":"Answer","text":"שולחים בווטסאפ יעד + תאריכים + הרכב, ומקבלים הצעה מסודרת עם זמינות."}
-      }
-    ]
+    "sameAs":["https://wa.me/972503456723"]
   }
   </script>
 </head>
 
 <body>
-  <!-- Topbar -->
-  <header class="topbar">
-    <div class="container">
-      <div class="topbar-inner">
-        <div class="cta">
-          <a class="pill whatsapp" href="https://wa.me/972503456723" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M20 12.1a8 8 0 0 1-12.1 6.9L4 20l1-3.7A8 8 0 1 1 20 12.1Z" stroke="currentColor" stroke-width="2" opacity=".95"/>
-              <path d="M9.6 8.8c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.3.4c-.1.2-.2.3 0 .6.2.4.8 1.2 1.7 1.9.9.7 1.7 1 2 .9.3-.1.5-.6.7-.8.1-.2.3-.2.5-.1l1.8.9c.2.1.4.3.3.6-.1.6-.5 1.8-1.4 2-.8.2-1.8.1-3.1-.5-1.2-.6-2.8-1.6-4-3.3-1-1.4-1.5-2.7-1.6-3.6-.1-1 .3-1.9.8-2.4Z" fill="currentColor" opacity=".95"/>
-            </svg>
-            וואטסאפ
-          </a>
 
-          <a class="pill phone" href="tel:+972503456723">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M7 4h3l1 5-2 1c1.2 2.4 3.1 4.3 5.5 5.5l1-2 5 1v3c0 1.1-.9 2-2 2-8.3 0-15-6.7-15-15 0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="2" />
-            </svg>
-            050-3456723
-          </a>
-        </div>
-
-        <nav class="nav" aria-label="תפריט">
-          <a href="#deals">דילים</a>
-          <a href="#weekly">דיל השבוע</a>
-          <a href="#why">למה ShayFly</a>
-          <a href="#gallery">גלריה</a>
-          <a href="#contact">צור קשר</a>
-        </nav>
-
-        <a class="brand" href="#top" aria-label="ShayFly Home">
-          <!-- LOGO: זה הנתיב הנכון אצלך (באותה תיקיה של index.html) -->
-          <img
-            src="./logo_shayfly_whitebg.png"
-            alt="ShayFly"
-            loading="eager"
-            decoding="async"
-            fetchpriority="high"
-            onerror="this.onerror=null;this.src='./images/logo_shayfly_whitebg.png';"
-          />
-          <div class="titlewrap">
-            <div class="name">ShayFly</div>
-            <div class="tag">דילים אמיתיים במחיר של סוכן</div>
-          </div>
-        </a>
+<header>
+  <div class="container">
+    <div class="top">
+      <div class="cta">
+        <a class="pill wa" href="https://wa.me/972503456723" target="_blank" rel="noopener">💬 וואטסאפ</a>
+        <a class="pill phone" href="tel:+972503456723">📞 050-3456723</a>
       </div>
-    </div>
 
-    <div class="ribbon">
-      💳 עד 3 תשלומים ללא ריבית · עד 12 בתוספת קטנה
-    </div>
-  </header>
+      <nav aria-label="תפריט">
+        <a href="#deals">דילים</a>
+        <a href="#contact">צור קשר</a>
+      </nav>
 
-  <!-- Hero -->
-  <main id="top" class="hero">
-    <div class="hero-bg" role="img" aria-label="רקע חופשה"></div>
-
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-main glass reveal">
-          <div class="badge">
-            <span class="dot"></span>
-            מחיר רצפה • שירות אישי • מחיר של סוכן
-          </div>
-
-          <h1>דילים אמיתיים. תמונות אמיתיות.<br/>מחיר של סוכן.</h1>
-
-          <p class="sub">
-            בוחרים יעד, שולחים ווטסאפ, ואני מחזיר הצעה מסודרת:
-            <b>טיסה + מלון + כבודה</b> (לפי הדיל), עם ליווי לפני/אחרי הזמנה.
-            מתאים לזוגות, משפחות, וחופשות “דקה 90”.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="https://wa.me/972503456723?text=%D7%94%D7%99%20%D7%A9%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%94%D7%A6%D7%A2%D7%94%20%D7%9C%D7%93%D7%99%D7%9C.%0A%D7%99%D7%A2%D7%93%3A%20%0A%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%3A%20%0A%D7%94%D7%A8%D7%9B%D7%91%3A%20" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M20 12.1a8 8 0 0 1-12.1 6.9L4 20l1-3.7A8 8 0 1 1 20 12.1Z" stroke="currentColor" stroke-width="2" opacity=".95"/>
-                <path d="M9.6 8.8c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.3.4c-.1.2-.2.3 0 .6.2.4.8 1.2 1.7 1.9.9.7 1.7 1 2 .9.3-.1.5-.6.7-.8.1-.2.3-.2.5-.1l1.8.9c.2.1.4.3.3.6-.1.6-.5 1.8-1.4 2-.8.2-1.8.1-3.1-.5-1.2-.6-2.8-1.6-4-3.3-1-1.4-1.5-2.7-1.6-3.6-.1-1 .3-1.9.8-2.4Z" fill="currentColor" opacity=".95"/>
-              </svg>
-              דבר איתי עכשיו בווטסאפ
-            </a>
-
-            <a class="btn secondary" href="#deals">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 7h12M6 12h12M6 17h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              לכל הדילים
-            </a>
-
-            <a class="btn" href="tel:+972503456723">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7 4h3l1 5-2 1c1.2 2.4 3.1 4.3 5.5 5.5l1-2 5 1v3c0 1.1-.9 2-2 2-8.3 0-15-6.7-15-15 0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="2" />
-              </svg>
-              התקשר
-            </a>
-          </div>
-
-          <div class="hero-fine">
-            * התמונות באתר אמיתיות (מהתיקייה שלך). המחירים והזמינות משתנים לפי תאריכים/ספקים — בווטסאפ תקבל אישור סופי.
-          </div>
-        </div>
-
-        <aside class="hero-side glass reveal">
-          <div class="side-card">
-            <div class="side-title">
-              <div>למה ShayFly?</div>
-              <small>שירות של סוכן</small>
-            </div>
-
-            <ul class="checklist">
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M20 7 10 17l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                הצעה מסודרת לפי יעד + תאריכים + הרכב
-              </li>
-
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M20 7 10 17l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                דגש על זמינות אמיתית ומיקום נכון
-              </li>
-
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M20 7 10 17l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                ליווי לפני ואחרי הזמנה — בלי בלאגן
-              </li>
-
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M20 7 10 17l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                תשלומים: עד 3 בלי ריבית, עד 12 בתוספת קטנה
-              </li>
-            </ul>
-          </div>
-
-          <div class="side-card">
-            <div class="side-title">
-              <div>מה שולחים לי בווטסאפ?</div>
-              <small>לקבלת מחיר</small>
-            </div>
-            <ul class="checklist">
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7 10 17l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> יעד (לדוגמה: בטומי)</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7 10 17l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> תאריכים או טווח</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7 10 17l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> הרכב (זוג / זוג+ילדים)</li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </main>
-
-  <!-- Weekly deal -->
-  <section id="weekly">
-    <div class="container">
-      <div class="section-head reveal">
+      <a class="brand" href="#top" aria-label="ShayFly">
+        <img src="./logo_shayfly_whitebg.png" alt="ShayFly" loading="eager" decoding="async"
+             onerror="this.onerror=null;this.src='./images/logo_shayfly_whitebg.png';" />
         <div>
-          <h2>דיל השבוע: בטומי</h2>
-          <p>דוגמה מקצועית להצגה באתר: תמונה אמיתית, מאפיינים, והנעה לפעולה. את המחיר המדויק סוגרים בווטסאפ לפי תאריכים והרכב.</p>
+          <div class="name">ShayFly</div>
+          <div class="tag">דילים במחיר של סוכן</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="ribbon">
+    💳 עד 3 תשלומים ללא ריבית · עד 12 בתוספת קטנה
+  </div>
+</header>
+
+<main id="top" class="hero">
+  <div class="hero-bg" role="img" aria-label="רקע חופשה"></div>
+
+  <div class="container">
+    <div class="grid-hero">
+      <div class="hero-main glass reveal">
+        <div class="badge"><span class="dot"></span> מחיר רצפה לסוף ינואר · שירות אישי · מחיר של סוכן</div>
+        <h1>דילים אמיתיים. סוכן אמיתי.<br>מחיר של סוכן.</h1>
+        <p class="sub">
+          שולחים בוואטסאפ <b>יעד + תאריכים + הרכב</b>, ואני מחזיר הצעה מסודרת.
+          בכל הדילים: המחיר <b>החל מ-</b> והכל כפוף לזמינות בזמן הבדיקה.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="https://wa.me/972503456723?text=היי%20שי,%20רוצה%20הצעה%20לדיל.%0Aיעד:%20%0Aתאריכים:%20%0Aהרכב:%20%0Aתודה!" target="_blank" rel="noopener">דבר איתי בווטסאפ</a>
+          <a class="btn secondary" href="#deals">לכל הדילים</a>
+          <a class="btn" href="tel:+972503456723">התקשר עכשיו</a>
+        </div>
+
+        <div class="fine">
+          * עד 3 תשלומים ללא ריבית · עד 12 בתוספת קטנה · המחיר לאדם בהרכב זוגי · כפוף לזמינות.
         </div>
       </div>
 
-      <div class="weekly reveal">
-        <div class="poster" aria-label="Batumi deal image"></div>
+      <aside class="side glass reveal">
+        <div class="card-mini">
+          <h3>למה ShayFly?</h3>
+          <ul class="list">
+            <li>✅ שירות אישי בווטסאפ</li>
+            <li>✅ הצעה מסודרת לפי צורך</li>
+            <li>✅ תשלומים נוחים</li>
+            <li>✅ שקיפות בתנאים</li>
+          </ul>
+        </div>
 
-        <div class="content">
-          <div class="badge" style="margin-bottom:10px">
-            <span class="dot" style="background:var(--brand)"></span>
-            בטומי • גאורגיה • חופשה עירונית/ים
+        <div class="card-mini">
+          <h3>מה לשלוח לי?</h3>
+          <ul class="list">
+            <li>📍 יעד</li>
+            <li>📅 תאריכים</li>
+            <li>👨‍👩‍👧‍👦 הרכב</li>
+            <li>⭐ רמת מלון / דרישות</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<section id="deals">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h2>דילים ויעדים חמים</h2>
+        <p>מחירים שיווקיים “החל מ-” לפי מה שסיכמנו. לסגירה/בדיקת זמינות — כפתור וואטסאפ בכל יעד.</p>
+      </div>
+    </div>
+
+    <div class="deals" id="dealsGrid" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h2>צור קשר</h2>
+        <p>ממלאים פרטים ולוחצים “שלח בווטסאפ” — ההודעה נבנית אוטומטית.</p>
+      </div>
+    </div>
+
+    <div class="contact reveal">
+      <div class="panel">
+        <h3>שלח פרטים (נשלח בווטסאפ)</h3>
+        <p>שם + יעד + תאריכים + הרכב. אפשר לציין כשרות/פארק מים/הכל כלול.</p>
+
+        <div class="form">
+          <div class="row">
+            <input class="input" id="fName" placeholder="שם" />
+            <input class="input" id="fPhone" placeholder="טלפון" />
           </div>
-
-          <div class="kpis">
-            <div class="kpi"><b>כבודה</b><span>לפי הדיל (בדיקה בווטסאפ)</span></div>
-            <div class="kpi"><b>מיקום</b><span>נבחר לפי צורך (מרכז/ים)</span></div>
-            <div class="kpi"><b>תשלום</b><span>עד 3 בלי ריבית / עד 12</span></div>
+          <div class="row">
+            <input class="input" id="fDest" placeholder="יעד (לדוגמה: דובאי / בטומי)" />
+            <input class="input" id="fDates" placeholder="תאריכים / טווח" />
           </div>
+          <input class="input" id="fPax" placeholder="הרכב (זוג / זוג+2 / וכו׳)" />
+          <textarea class="input" id="fMsg" placeholder="הערות (כשרות/פארק מים/מרכז/ים וכו׳)"></textarea>
 
-          <p style="margin:0;color:rgba(234,242,255,.85);font-weight:700;line-height:1.7">
-            רוצה “דיל שבוע” מותאם לך? שולחים לי בווטסאפ:
-            <b>תאריך יציאה/חזרה + הרכב + רצון למלון 4★/5★</b>.
-            אני מחזיר הצעה מסודרת עם זמינות.
-          </p>
-
-          <div class="hero-actions" style="margin-top:14px">
-            <a class="btn primary" href="https://wa.me/972503456723?text=%D7%94%D7%99%20%D7%A9%D7%99%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%93%D7%99%D7%9C%20%D7%A9%D7%91%D7%95%D7%A2%20%D7%9C%D7%91%D7%98%D7%95%D7%9E%D7%99.%0A%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%3A%20%0A%D7%94%D7%A8%D7%9B%D7%91%3A%20%0A%D7%A8%D7%9E%D7%AA%20%D7%9E%D7%9C%D7%95%D7%9F%3A%204%2F5%20%E2%98%85" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M20 12.1a8 8 0 0 1-12.1 6.9L4 20l1-3.7A8 8 0 1 1 20 12.1Z" stroke="currentColor" stroke-width="2" opacity=".95"/>
-                <path d="M9.6 8.8c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.3.4c-.1.2-.2.3 0 .6.2.4.8 1.2 1.7 1.9.9.7 1.7 1 2 .9.3-.1.5-.6.7-.8.1-.2.3-.2.5-.1l1.8.9c.2.1.4.3.3.6-.1.6-.5 1.8-1.4 2-.8.2-1.8.1-3.1-.5-1.2-.6-2.8-1.6-4-3.3-1-1.4-1.5-2.7-1.6-3.6-.1-1 .3-1.9.8-2.4Z" fill="currentColor" opacity=".95"/>
-              </svg>
-              קבל הצעה לבטומי
-            </a>
-
-            <a class="btn secondary" href="#deals">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 7h12M6 12h12M6 17h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              לעוד יעדים
-            </a>
+          <div class="actions">
+            <a class="btn primary" id="sendWA" href="#" target="_blank" rel="noopener">שלח בווטסאפ</a>
+            <a class="btn" href="tel:+972503456723">התקשר</a>
           </div>
+        </div>
+      </div>
 
-          <div class="note">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 9v4m0 4h.01M10.3 4.3a2 2 0 0 1 3.4 0l7 12.2A2 2 0 0 1 19 19H5a2 2 0 0 1-1.7-2.5l7-12.2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            רוצה עוד יעדים? כתוב לי בווטסאפ “יעד + תאריכים + הרכב” ואני מכין לך הצעה.
-          </div>
+      <div class="panel">
+        <h3>עוד יעדים שתרצו אצלנו בוואטסאפ</h3>
+        <p>
+          כתבו: <b>יעד + תאריכים + הרכב + דרישות</b> ואני חוזר עם הצעה מסודרת.
+        </p>
+        <div class="actions">
+          <a class="btn secondary" href="https://wa.me/972503456723?text=היי%20שי,%20אני%20רוצה%20דיל%20ליעד%20נוסף.%0Aיעד:%20%0Aתאריכים:%20%0Aהרכב:%20%0Aדרישות:%20" target="_blank" rel="noopener">בקש עוד יעד</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Why -->
-  <section id="why">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <h2>למה לקוחות סוגרים איתי</h2>
-          <p>כי זה לא “עוד אתר”. זה שירות סוכן אמיתי עם מענה בווטסאפ, ותהליך מסודר שמונע טעויות.</p>
-        </div>
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div class="small">
+        <b>ShayFly</b> · 050-3456723 ·
+        <a href="https://wa.me/972503456723" target="_blank" rel="noopener" style="text-decoration:underline">וואטסאפ</a><br>
+        💳 עד 3 תשלומים ללא ריבית · עד 12 בתוספת קטנה · *כפוף לזמינות ותנאי ספק. ט.ל.ח.
       </div>
-
-      <div class="grid reveal" style="grid-template-columns:repeat(3,1fr)">
-        <div class="panel">
-          <h3>✅ הצעה מסודרת</h3>
-          <p>לא מנחשים. בודקים זמינות, מיקום מלון, תנאים וכבודה — ואז מציעים.</p>
-        </div>
-        <div class="panel">
-          <h3>✅ תמונות אמיתיות</h3>
-          <p>אתה העלית את התמונות — האתר מציג אותן בצורה יוקרתית ונקייה.</p>
-        </div>
-        <div class="panel">
-          <h3>✅ תשלומים נוחים</h3>
-          <p>עד 3 תשלומים ללא ריבית, ועד 12 בתוספת קטנה (לפי הספק).</p>
-        </div>
-      </div>
+      <div class="small">© ShayFly</div>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- Deals -->
-  <section id="deals">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <h2>דילים ויעדים חמים</h2>
-          <p>9 יעדים שעבדנו עליהם. לכל יעד יש כפתור “קבל הצעה” שמייצר הודעת ווטסאפ מוכנה.</p>
-        </div>
-      </div>
+<script>
+  // 9 destinations + "החל מ-" prices
+  const DESTS = [
+    { city:"דובאי", country:"איחוד האמירויות", img:"./images/dubai.jpg",
+      desc:"יוקרה, קניות וחופים — חופשה בסטייל.", nights:"4 לילות", includes:["טיסה","טרולי","מלון 5★","א.בוקר"], price:1500 },
 
-      <div class="grid" id="dealsGrid" aria-live="polite"></div>
-    </div>
-  </section>
+    { city:"אבו דאבי", country:"איחוד האמירויות", img:"./images/abu-dabi.jpg",
+      desc:"מסגד שייח׳ זאיד, טיילת וחוויות.", nights:"4 לילות", includes:["טיסה","טרולי","מלון 5★","א.בוקר"], price:1500 },
 
-  <!-- Gallery strip -->
-  <section id="gallery">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <h2>טעימה מהתמונות שלך (1–8)</h2>
-          <p>הכנסת את 1.jpg–8.jpg — פה זה נראה איכותי, נקי, ונטען בצורה חכמה (Lazy).</p>
-        </div>
-      </div>
+    { city:"בודפשט", country:"הונגריה", img:"./images/budapest.jpg",
+      desc:"הדנובה, מרחצאות וחיי לילה.", nights:"4 לילות", includes:["טיסה","טרולי","מלון 4★","א.בוקר"], price:1200 },
 
-      <div class="strip reveal" id="strip"></div>
-    </div>
-  </section>
+    { city:"אתונה", country:"יוון", img:"./images/athens.jpg",
+      desc:"היסטוריה, אוכל יווני ושופינג.", nights:"3 לילות", includes:["טיסה","טרולי","מלון","א.בוקר"], price:1100 },
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <h2>דבר איתי — ואני סוגר לך הצעה</h2>
-          <p>אפשר בווטסאפ / טלפון. אם אתה רוצה “עוד יעדים” — תכתוב לי מה אתה מחפש.</p>
-        </div>
-      </div>
+    { city:"סלוניקי", country:"יוון", img:"./images/thessaloniki.jpg",
+      desc:"טיילת, שווקים ואווירה צעירה.", nights:"3 לילות", includes:["טיסה","טרולי","מלון","א.בוקר"], price:1100 },
 
-      <div class="contact reveal">
-        <div class="panel">
-          <h3>שלח פרטים (נשלח לווטסאפ)</h3>
-          <p>ממלאים כאן, ולוחצים “שלח בווטסאפ” — זה פותח הודעה מוכנה אליי.</p>
+    { city:"בוקרשט", country:"רומניה", img:"./images/bucharest.jpg",
+      desc:"תמורה מעולה, בילויים וקניות.", nights:"3 לילות", includes:["טיסה","טרולי","מלון 4★"], price:1300 },
 
-          <div class="form">
-            <div class="row">
-              <input class="input" id="fName" placeholder="שם" />
-              <input class="input" id="fPhone" placeholder="טלפון" />
+    { city:"בטומי", country:"גאורגיה", img:"./images/batumi.jpg",
+      desc:"ים, קזינו וטיולים — חופשה כיפית.", nights:"4 לילות", includes:["טיסה","טרולי","מלון 5★","א.בוקר"], price:1300 },
+
+    { city:"טביליסי", country:"גאורגיה", img:"./images/tbilisi.jpg",
+      desc:"עיר עתיקה, אוכל ותרבות.", nights:"4 לילות", includes:["טיסה","טרולי","מלון 5★","א.בוקר"], price:1300 },
+
+    { city:"ניו דלהי", country:"הודו", img:"./images/new-delhi.jpg",
+      desc:"טיול אקזוטי של פעם בחיים.", nights:"7 לילות", includes:["טיסה","מזוודה","מלון 5★","א.בוקר"], price:2500 }
+  ];
+
+  const grid = document.getElementById("dealsGrid");
+  const wa = (txt) => "https://wa.me/972503456723?text=" + encodeURIComponent(txt);
+
+  function renderDeals(){
+    grid.innerHTML = DESTS.map(d => {
+      const chips = [
+        `<span class="chip">🌙 ${d.nights}</span>`,
+        ...d.includes.map(x => `<span class="chip">${x}</span>`),
+        `<span class="chip">💳 תשלומים</span>`
+      ].join("");
+
+      const msg = `היי שי, רוצה פרטים על ${d.city}.\nלפי הדיל באתר: ${d.nights}, ${d.includes.join(" + ")}.\nתאריכים: \nהרכב: \nתודה!`;
+
+      return `
+        <article class="deal reveal">
+          <div class="imgwrap">
+            <img src="${d.img}" alt="${d.city}" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='./images/1.jpg';">
+            <div class="country">${d.country}</div>
+          </div>
+          <div class="body">
+            <h3>${d.city}</h3>
+            <p class="desc">${d.desc}</p>
+
+            <p class="price">החל מ- <b>${d.price.toLocaleString()}</b> ₪ לאדם (זוגי)</p>
+
+            <div class="chips">${chips}</div>
+
+            <div class="deal-actions">
+              <a class="mini primary" href="${wa(msg)}" target="_blank" rel="noopener">💬 קבל הצעה בוואטסאפ</a>
+              <button class="mini" type="button" onclick="fillContact('${d.city}')">✍️ שאלות/התאמה</button>
             </div>
-            <div class="row">
-              <input class="input" id="fDest" placeholder="יעד (לדוגמה: דובאי / בטומי)" />
-              <input class="input" id="fDates" placeholder="תאריכים / טווח" />
-            </div>
-            <input class="input" id="fPax" placeholder="הרכב (זוג / זוג+2 / וכו׳)" />
-            <textarea class="input" id="fMsg" placeholder="הערות (כשרות/פארק מים/מרכז/ים וכו׳)"></textarea>
-
-            <div class="send">
-              <a class="btn primary" id="sendWA" href="#" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M20 12.1a8 8 0 0 1-12.1 6.9L4 20l1-3.7A8 8 0 1 1 20 12.1Z" stroke="currentColor" stroke-width="2" opacity=".95"/>
-                  <path d="M9.6 8.8c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.3.4c-.1.2-.2.3 0 .6.2.4.8 1.2 1.7 1.9.9.7 1.7 1 2 .9.3-.1.5-.6.7-.8.1-.2.3-.2.5-.1l1.8.9c.2.1.4.3.3.6-.1.6-.5 1.8-1.4 2-.8.2-1.8.1-3.1-.5-1.2-.6-2.8-1.6-4-3.3-1-1.4-1.5-2.7-1.6-3.6-.1-1 .3-1.9.8-2.4Z" fill="currentColor" opacity=".95"/>
-                </svg>
-                שלח בווטסאפ
-              </a>
-
-              <a class="btn" href="tel:+972503456723">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M7 4h3l1 5-2 1c1.2 2.4 3.1 4.3 5.5 5.5l1-2 5 1v3c0 1.1-.9 2-2 2-8.3 0-15-6.7-15-15 0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="2" />
-                </svg>
-                התקשר עכשיו
-              </a>
-            </div>
           </div>
-        </div>
+        </article>
+      `;
+    }).join("");
+  }
 
-        <div class="panel">
-          <h3>עוד יעדים שתרצו אצלנו בווטסאפ</h3>
-          <p>
-            כתבו לי:
-            <b>“יעד/מדינה + תאריכים + הרכב + דרישות (כשרות/פארק מים/הכל כלול)”</b>
-            ואני מחזיר הצעה עם זמינות.
-          </p>
-
-          <div class="note" style="border-style:solid;border-color:rgba(24,195,126,.35);background:rgba(24,195,126,.07)">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 12a8 8 0 1 0 16 0A8 8 0 0 0 4 12Z" stroke="currentColor" stroke-width="2"/>
-              <path d="M12 7v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            זמינות ומחיר סופי נקבעים לפי רגע הבדיקה. אל תדאג — אני בודק ומסדר.
-          </div>
-
-          <div class="hero-actions" style="margin-top:14px">
-            <a class="btn primary" href="https://wa.me/972503456723?text=%D7%94%D7%99%20%D7%A9%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%94%D7%A6%D7%A2%D7%94%20%D7%9C%D7%99%D7%A2%D7%93%20%D7%A0%D7%95%D7%A1%D7%A3.%0A%D7%99%D7%A2%D7%93%3A%20%0A%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%3A%20%0A%D7%94%D7%A8%D7%9B%D7%91%3A%20%0A%D7%93%D7%A8%D7%99%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M20 12.1a8 8 0 0 1-12.1 6.9L4 20l1-3.7A8 8 0 1 1 20 12.1Z" stroke="currentColor" stroke-width="2" opacity=".95"/>
-                <path d="M9.6 8.8c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.3.4c-.1.2-.2.3 0 .6.2.4.8 1.2 1.7 1.9.9.7 1.7 1 2 .9.3-.1.5-.6.7-.8.1-.2.3-.2.5-.1l1.8.9c.2.1.4.3.3.6-.1.6-.5 1.8-1.4 2-.8.2-1.8.1-3.1-.5-1.2-.6-2.8-1.6-4-3.3-1-1.4-1.5-2.7-1.6-3.6-.1-1 .3-1.9.8-2.4Z" fill="currentColor" opacity=".95"/>
-              </svg>
-              בקש עוד יעד
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footgrid">
-        <div class="small">
-          <b>ShayFly</b> • שירות סוכן בווטסאפ •
-          <a href="tel:+972503456723" style="text-decoration:underline">050-3456723</a> •
-          <a href="https://wa.me/972503456723" target="_blank" rel="noopener" style="text-decoration:underline">וואטסאפ</a>
-          <div class="small" style="margin-top:6px;opacity:.9">
-            💳 עד 3 תשלומים ללא ריבית · עד 12 בתוספת קטנה (לפי ספק ותנאים)
-          </div>
-        </div>
-
-        <div class="links">
-          <a href="#deals">דילים</a>
-          <a href="#weekly">דיל השבוע</a>
-          <a href="#contact">צור קשר</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // -----------------------------
-    // Data: 9 destinations (your files)
-    // -----------------------------
-    const DESTS = [
-      {
-        key: "dubai",
-        city: "דובאי",
-        country: "איחוד האמירויות",
-        img: "./images/dubai.jpg",
-        tag: "יוקרה • קניות • אטרקציות",
-        chips: ["טיסה", "מלון", "אטרקציות"],
-        waText: "היי שי, רוצה הצעה לדובאי.\nתאריכים: \nהרכב: \nהעדפות מלון (4/5★): \n"
-      },
-      {
-        key: "abu-dhabi",
-        city: "אבו דאבי",
-        country: "איחוד האמירויות",
-        img: "./images/abu-dabi.jpg",
-        tag: "שקט יוקרתי • תרבות • חופים",
-        chips: ["טיסה", "מלון", "חופים"],
-        waText: "היי שי, רוצה הצעה לאבו דאבי.\nתאריכים: \nהרכב: \nהעדפות: \n"
-      },
-      {
-        key: "batumi",
-        city: "בטומי",
-        country: "גאורגיה",
-        img: "./images/batumi.jpg",
-        tag: "ים • טיילת • עיר כיפית",
-        chips: ["טיסה", "מלון", "עיר/ים"],
-        waText: "היי שי, רוצה הצעה לבטומי.\nתאריכים: \nהרכב: \nמלון 4/5★: \n"
-      },
-      {
-        key: "athens",
-        city: "אתונה",
-        country: "יוון",
-        img: "./images/athens.jpg",
-        tag: "קלאסית • אוכל • שופינג",
-        chips: ["טיסה", "מלון", "מרכז"],
-        waText: "היי שי, רוצה הצעה לאתונה.\nתאריכים: \nהרכב: \nאיזור מועדף: \n"
-      },
-      {
-        key: "thessaloniki",
-        city: "סלוניקי",
-        country: "יוון",
-        img: "./images/thessaloniki.jpg",
-        tag: "עיר/ים • אווירה • אוכל",
-        chips: ["טיסה", "מלון", "טיילת"],
-        waText: "היי שי, רוצה הצעה לסלוניקי.\nתאריכים: \nהרכב: \nהעדפות: \n"
-      },
-      {
-        key: "budapest",
-        city: "בודפשט",
-        country: "הונגריה",
-        img: "./images/budapest.jpg",
-        tag: "רומנטית • ספא • לילה",
-        chips: ["טיסה", "מלון", "ספא"],
-        waText: "היי שי, רוצה הצעה לבודפשט.\nתאריכים: \nהרכב: \nהעדפות מלון: \n"
-      },
-      {
-        key: "bucharest",
-        city: "בוקרשט",
-        country: "רומניה",
-        img: "./images/bucharest.jpg",
-        tag: "תמורה • חיי לילה • קניות",
-        chips: ["טיסה", "מלון", "לילה"],
-        waText: "היי שי, רוצה הצעה לבוקרשט.\nתאריכים: \nהרכב: \nהעדפות: \n"
-      },
-      {
-        key: "tbilisi",
-        city: "טביליסי",
-        country: "גאורגיה",
-        img: "./images/tbilisi.jpg",
-        tag: "עיר עתיקה • תרבות • אוכל",
-        chips: ["טיסה", "מלון", "עיר"],
-        waText: "היי שי, רוצה הצעה לטביליסי.\nתאריכים: \nהרכב: \nהעדפות: \n"
-      },
-      {
-        key: "new-delhi",
-        city: "ניו דלהי",
-        country: "הודו",
-        img: "./images/new-delhi.jpg",
-        tag: "אקסטרים • תרבות • חוויה",
-        chips: ["טיסה", "מלון", "חוויות"],
-        waText: "היי שי, רוצה הצעה לניו דלהי.\nתאריכים: \nהרכב: \nהעדפות: \n"
-      }
-    ];
-
-    const ICONS = {
-      plane: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 16l20-6-20-6v5l13 1-13 1v5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>`,
-      hotel: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14M4 14h16M7 8h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
-      bag: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 7h12l-1 14H7L6 7Z" stroke="currentColor" stroke-width="2"/><path d="M9 7a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
-      star: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3 7 7 .5-5.5 4.5 1.8 7L12 17l-6.3 4 1.8-7L2 9.5 9 9l3-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>`,
-      wa: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12.1a8 8 0 0 1-12.1 6.9L4 20l1-3.7A8 8 0 1 1 20 12.1Z" stroke="currentColor" stroke-width="2" opacity=".95"/><path d="M9.6 8.8c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.3.4c-.1.2-.2.3 0 .6.2.4.8 1.2 1.7 1.9.9.7 1.7 1 2 .9.3-.1.5-.6.7-.8.1-.2.3-.2.5-.1l1.8.9c.2.1.4.3.3.6-.1.6-.5 1.8-1.4 2-.8.2-1.8.1-3.1-.5-1.2-.6-2.8-1.6-4-3.3-1-1.4-1.5-2.7-1.6-3.6-.1-1 .3-1.9.8-2.4Z" fill="currentColor" opacity=".95"/></svg>`
-    };
-
-    // -----------------------------
-    // Render deals
-    // -----------------------------
-    const grid = document.getElementById("dealsGrid");
-
-    function waLink(text){
-      return "https://wa.me/972503456723?text=" + encodeURIComponent(text);
-    }
-
-    function chipIcon(label){
-      // small mapping just for look
-      if(label.includes("טיסה")) return ICONS.plane;
-      if(label.includes("מלון")) return ICONS.hotel;
-      if(label.includes("כבודה")) return ICONS.bag;
-      if(label.includes("★") || label.includes("5")) return ICONS.star;
-      return ICONS.star;
-    }
-
-    function render(){
-      grid.innerHTML = DESTS.map(d => {
-        const chips = d.chips.map(c => `
-          <span class="chip">${chipIcon(c)} ${c}</span>
-        `).join("");
-
-        return `
-          <article class="card reveal" data-city="${d.city}">
-            <div class="imgwrap">
-              <img
-                src="${d.img}"
-                alt="${d.city} – ${d.country}"
-                loading="lazy"
-                decoding="async"
-                onerror="this.onerror=null;this.src='./images/1.jpg';"
-              />
-              <div class="tag">${d.country}</div>
-            </div>
-            <div class="body">
-              <h3>${d.city}</h3>
-              <p>${d.tag}</p>
-              <div class="chips">
-                ${chips}
-                <span class="chip">${ICONS.star} שירות אישי</span>
-              </div>
-              <div class="actions">
-                <a class="mini primary" href="${waLink(d.waText)}" target="_blank" rel="noopener">
-                  ${ICONS.wa} קבל הצעה
-                </a>
-                <button class="mini" type="button" onclick="scrollToContact('${d.city}')">
-                  ${ICONS.star} שאלות/עוד יעדים
-                </button>
-              </div>
-            </div>
-          </article>
-        `;
-      }).join("");
-    }
-
-    window.scrollToContact = function(city){
-      const dest = document.getElementById("fDest");
-      if(dest) dest.value = city;
-      document.getElementById("contact").scrollIntoView({behavior:"smooth", block:"start"});
-    };
-
-    render();
-
-    // -----------------------------
-    // Render strip 1–8
-    // -----------------------------
-    const strip = document.getElementById("strip");
-    const stripImgs = [1,2,3,4,5,6,7,8].map(n => `./images/${n}.jpg`);
-    strip.innerHTML = stripImgs.map((src,i)=>`
-      <div class="ph">
-        <img src="${src}" alt="תמונה ${i+1}" loading="lazy" decoding="async"
-          onerror="this.onerror=null;this.src='./images/1.jpg';"
-        />
-      </div>
-    `).join("");
-
-    // -----------------------------
-    // Reveal on scroll
-    // -----------------------------
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add("on"); obs.unobserve(e.target); }
-      });
-    }, {threshold: 0.12});
-
-    document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
-
-    // -----------------------------
-    // Contact form -> WhatsApp
-    // -----------------------------
-    const sendWA = document.getElementById("sendWA");
-    function buildMsg(){
-      const name = (document.getElementById("fName").value || "").trim();
-      const phone = (document.getElementById("fPhone").value || "").trim();
-      const dest = (document.getElementById("fDest").value || "").trim();
-      const dates = (document.getElementById("fDates").value || "").trim();
-      const pax = (document.getElementById("fPax").value || "").trim();
-      const msg = (document.getElementById("fMsg").value || "").trim();
-
-      let out = "היי שי, רוצה הצעה לדיל.\n";
-      if(name) out += "שם: " + name + "\n";
-      if(phone) out += "טלפון: " + phone + "\n";
-      if(dest) out += "יעד: " + dest + "\n";
-      if(dates) out += "תאריכים: " + dates + "\n";
-      if(pax) out += "הרכב: " + pax + "\n";
-      if(msg) out += "הערות: " + msg + "\n";
-      out += "\nתודה!";
-      return out;
-    }
-
-    function syncWA(){
-      sendWA.href = waLink(buildMsg());
-    }
-
-    ["fName","fPhone","fDest","fDates","fPax","fMsg"].forEach(id=>{
-      const el = document.getElementById(id);
-      if(el) el.addEventListener("input", syncWA);
-    });
+  window.fillContact = function(city){
+    const el = document.getElementById("fDest");
+    if(el) el.value = city;
+    document.getElementById("contact").scrollIntoView({behavior:"smooth"});
     syncWA();
+  };
 
-    // -----------------------------
-    // Smooth scrolling for anchors
-    // -----------------------------
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener("click", (e)=>{
-        const id = a.getAttribute("href");
-        const target = document.querySelector(id);
-        if(!target) return;
-        e.preventDefault();
-        target.scrollIntoView({behavior:"smooth", block:"start"});
-      });
+  // Contact form -> WhatsApp
+  const sendWA = document.getElementById("sendWA");
+  function buildMsg(){
+    const name = (document.getElementById("fName").value || "").trim();
+    const phone = (document.getElementById("fPhone").value || "").trim();
+    const dest = (document.getElementById("fDest").value || "").trim();
+    const dates = (document.getElementById("fDates").value || "").trim();
+    const pax = (document.getElementById("fPax").value || "").trim();
+    const msg = (document.getElementById("fMsg").value || "").trim();
+
+    let out = "היי שי, רוצה הצעה לדיל.\n";
+    if(name) out += "שם: " + name + "\n";
+    if(phone) out += "טלפון: " + phone + "\n";
+    if(dest) out += "יעד: " + dest + "\n";
+    if(dates) out += "תאריכים: " + dates + "\n";
+    if(pax) out += "הרכב: " + pax + "\n";
+    if(msg) out += "הערות: " + msg + "\n";
+    out += "\nתודה!";
+    return out;
+  }
+  function syncWA(){ sendWA.href = wa(buildMsg()); }
+
+  ["fName","fPhone","fDest","fDates","fPax","fMsg"].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.addEventListener("input", syncWA);
+  });
+
+  // Reveal on scroll
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add("on"); obs.unobserve(e.target); }
     });
-  </script>
+  }, {threshold:0.12});
+
+  function observeAll(){
+    document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+  }
+
+  renderDeals();
+  observeAll();
+  syncWA();
+
+  // Smooth scroll anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener("click", (e)=>{
+      const id = a.getAttribute("href");
+      const target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      target.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
+</script>
+
 </body>
 </html>
