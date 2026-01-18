@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#071225" />
+  <meta name="theme-color" content="#ffffff" />
 
-  <title>ShayFly — דילים במחיר של סוכן | טיסה+מלון+כבודה</title>
-  <meta name="description" content="ShayFly – דילים במחיר של סוכן. שירות אישי בוואטסאפ. עד 3 תשלומים ללא ריבית." />
-
+  <title>ShayFly — חופשה בראש שקט | דילים במחיר של סוכן</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-deep: #071225;
-      --bg-accent: #0b1b2e;
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
-      --brand: #10b981; /* ירוק רענן */
-      --brand-alt: #0ea5e9; /* כחול שמיים */
-      --accent-gold: #fbbf24; /* זהב למחיר */
-      --glass: rgba(255, 255, 255, 0.04);
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --r-lg: 24px;
-      --r-md: 16px;
-      --shadow-lux: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      --primary: #007cf0; /* כחול שמיים */
+      --secondary: #ff4d4d; /* אדום-כתום חי */
+      --accent: #00dfd8; /* טורקיז */
+      --wa-green: #25d366;
+      --text: #1d1d1f;
+      --light-bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --grad: linear-gradient(135deg, #007cf0 0%, #00dfd8 100%);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --r: 20px;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -33,152 +30,113 @@
     body {
       margin: 0;
       font-family: "Heebo", sans-serif;
-      color: var(--text-main);
-      background-color: var(--bg-deep);
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.08) 0%, transparent 40%);
+      color: var(--text);
+      background-color: var(--light-bg);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-    /* Header & Nav */
+    /* Header */
     header {
-      position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(20px);
-      background: rgba(7, 18, 37, 0.8);
-      border-bottom: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky; top: 0; z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 10px 0;
     }
-    .top-nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 0;
-    }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand img {
-      height: 48px; border-radius: 12px; background: #fff;
-      padding: 2px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .brand-text .name { font-weight: 900; font-size: 20px; letter-spacing: -0.5px; line-height: 1; }
-    .brand-text .tag { font-size: 12px; color: var(--brand); font-weight: 700; }
-
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a { font-weight: 700; font-size: 14px; opacity: 0.8; transition: 0.3s; }
-    .nav-links a:hover { opacity: 1; color: var(--brand-alt); }
-
-    .header-cta { display: flex; gap: 10px; }
-    .pill {
-      padding: 8px 16px; border-radius: 99px; font-weight: 800; font-size: 13px;
-      display: flex; align-items: center; gap: 6px; transition: 0.3s;
-      border: 1px solid var(--glass-border); background: var(--glass);
-    }
-    .pill:hover { transform: translateY(-2px); background: rgba(255,255,255,0.1); }
-    .pill.wa { border-color: var(--brand); color: var(--brand); }
-
-    /* Hero Section */
-    .hero { padding: 60px 0 40px; position: relative; }
-    .hero-grid {
-      display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 30px;
-    }
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--r-lg);
-      padding: 40px;
-      box-shadow: var(--shadow-lux);
-    }
-    .badge {
-      display: inline-block; padding: 6px 14px; background: rgba(16,185,129,0.15);
-      color: var(--brand); border-radius: 99px; font-size: 12px; font-weight: 800; margin-bottom: 20px;
-    }
-    h1 { font-size: 52px; font-weight: 900; line-height: 1.1; margin: 0 0 20px; }
-    h1 span { color: var(--brand-alt); }
-    .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin-bottom: 30px; }
-
-    .btn-group { display: flex; gap: 15px; flex-wrap: wrap; }
-    .btn {
-      padding: 16px 32px; border-radius: 16px; font-weight: 800; font-size: 16px;
-      cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px;
-      text-align: center; border: none;
-    }
-    .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 10px 20px -5px rgba(16,185,129,0.4); }
-    .btn-primary:hover { transform: translateY(-3px); filter: brightness(1.1); }
-    .btn-secondary { background: var(--glass); color: #fff; border: 1px solid var(--glass-border); }
-    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
-
-    .side-info { display: flex; flex-direction: column; gap: 20px; }
-    .mini-card {
-      background: var(--glass); padding: 20px; border-radius: var(--r-md);
-      border: 1px solid var(--glass-border);
-    }
-    .mini-card h3 { margin: 0 0 12px; font-size: 16px; color: var(--brand-alt); }
-    .mini-card ul { margin: 0; padding: 0; list-style: none; font-size: 14px; font-weight: 600; }
-    .mini-card li { margin-bottom: 8px; display: flex; gap: 8px; }
-
-    /* Deals Grid */
-    section { padding: 80px 0; }
-    .section-title { margin-bottom: 40px; }
-    .section-title h2 { font-size: 36px; font-weight: 900; margin: 0; }
-    .section-title p { color: var(--text-muted); font-size: 16px; }
-
-    .deals-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px;
-    }
-    .deal-card {
-      background: var(--bg-accent); border-radius: var(--r-lg); overflow: hidden;
-      border: 1px solid var(--glass-border); transition: 0.4s; position: relative;
-    }
-    .deal-card:hover { transform: translateY(-10px); border-color: var(--brand-alt); box-shadow: var(--shadow-lux); }
+    .top-nav { display: flex; align-items: center; justify-content: space-between; }
     
-    .img-box { height: 220px; position: relative; overflow: hidden; }
-    .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-    .deal-card:hover .img-box img { scale: 1.1; }
-    .tag-country {
-      position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(5px); padding: 5px 12px; border-radius: 99px; font-size: 11px; font-weight: 800;
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand img { height: 45px; border-radius: 10px; box-shadow: var(--shadow); }
+    .brand b { font-size: 22px; font-weight: 900; color: var(--primary); letter-spacing: -1px; }
+
+    .header-btns { display: flex; gap: 10px; }
+    .btn-pill {
+      padding: 8px 15px; border-radius: 50px; font-size: 13px; font-weight: 800;
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+      transition: 0.3s; background: #fff; border: 1px solid #eee; color: var(--text);
+    }
+    .btn-pill.wa { background: var(--wa-green); color: #fff; border: none; }
+    .btn-pill:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+    /* Hero */
+    .hero {
+      padding: 60px 0;
+      background: radial-gradient(circle at top right, #e0f2ff, #ffffff);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '✈️'; position: absolute; font-size: 100px; opacity: 0.05; left: -20px; top: 20px; transform: rotate(-20deg);
+    }
+    .hero h1 { font-size: 56px; font-weight: 900; margin: 0; line-height: 1.1; color: #003a70; }
+    .hero h1 span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 20px; color: #50667a; margin: 20px auto 30px; max-width: 600px; }
+
+    .main-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 18px 35px; background: var(--grad); color: #fff;
+      border-radius: 50px; font-weight: 900; font-size: 18px;
+      text-decoration: none; box-shadow: 0 15px 30px rgba(0, 124, 240, 0.3);
+      transition: 0.3s;
+    }
+    .main-cta:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+    /* Deals */
+    section { padding: 60px 0; }
+    .section-title { text-align: center; margin-bottom: 40px; }
+    .section-title h2 { font-size: 32px; font-weight: 900; margin: 0; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px;
+    }
+    .card {
+      background: var(--card-bg); border-radius: var(--r); overflow: hidden;
+      box-shadow: var(--shadow); transition: 0.3s; border: 1px solid #f0f0f0;
+    }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+
+    .img-wrap { height: 200px; position: relative; }
+    .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .price-badge {
+      position: absolute; bottom: -15px; left: 20px;
+      background: #fff; padding: 10px 18px; border-radius: 15px;
+      box-shadow: var(--shadow); font-weight: 900; color: var(--primary);
     }
 
-    .card-body { padding: 25px; }
-    .card-body h3 { font-size: 22px; margin: 0 0 10px; font-weight: 800; }
-    .card-body .desc { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; height: 44px; overflow: hidden; }
-    
-    .price-tag { margin-bottom: 15px; font-size: 14px; }
-    .price-tag b { font-size: 24px; color: var(--accent-gold); }
+    .card-content { padding: 30px 20px 20px; }
+    .card-content h3 { margin: 0 0 10px; font-size: 22px; }
+    .card-content .desc { font-size: 14px; color: #666; margin-bottom: 15px; min-height: 40px; }
 
-    .chips-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-    .chip-item {
-      background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 8px;
-      font-size: 11px; font-weight: 700; border: 1px solid rgba(255,255,255,0.05);
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .tag { background: #f0f7ff; color: #007cf0; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; }
+
+    .card-btn {
+      display: block; width: 100%; padding: 12px; text-align: center;
+      background: var(--wa-green); color: #fff; border-radius: 12px;
+      text-decoration: none; font-weight: 800; transition: 0.2s;
     }
+    .card-btn:hover { filter: brightness(1.05); }
 
-    .card-actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    .btn-sm {
-      padding: 12px; border-radius: 12px; font-size: 14px; font-weight: 800;
-      text-align: center; transition: 0.2s; cursor: pointer;
+    /* Form */
+    .form-box {
+      background: #fff; padding: 40px; border-radius: var(--r);
+      box-shadow: var(--shadow); border: 2px solid #eef2f6;
     }
-    .btn-sm-primary { background: var(--brand); color: #fff; }
-    .btn-sm-outline { border: 1px solid var(--glass-border); color: var(--text-main); }
-
-    /* Form Section */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-    .input-group { margin-bottom: 15px; }
-    .input-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 5px; color: var(--brand-alt); }
-    .custom-input {
-      width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border);
-      padding: 14px; border-radius: 12px; color: #fff; font-family: inherit; font-size: 15px;
-      outline: none; transition: 0.3s;
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+    input {
+      width: 100%; padding: 15px; border: 1px solid #e0e0e0; border-radius: 12px;
+      font-family: inherit; font-size: 15px; outline: none; transition: 0.3s;
     }
-    .custom-input:focus { border-color: var(--brand-alt); background: rgba(0,0,0,0.3); }
+    input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(0, 124, 240, 0.1); }
 
-    footer { padding: 40px 0; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-muted); font-size: 13px; }
+    footer { background: #fff; padding: 40px 0; text-align: center; border-top: 1px solid #eee; }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero-grid, .contact-grid { grid-template-columns: 1fr; }
-      h1 { font-size: 38px; }
-      .nav-links { display: none; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 38px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .header-btns .btn-pill:last-child { display: none; }
     }
   </style>
 </head>
@@ -188,22 +146,14 @@
 <header>
   <div class="container">
     <div class="top-nav">
-      <div class="header-cta">
-        <a class="pill wa" href="https://wa.me/972503456723" target="_blank">💬 וואטסאפ</a>
-        <a class="pill" href="tel:+972503456723">📞 050-3456723</a>
+      <div class="header-btns">
+        <a class="btn-pill wa" href="https://wa.me/972503456723" target="_blank">💬 שלח הודעה</a>
+        <a class="btn-pill" href="tel:+972503456723">📞 050-3456723</a>
       </div>
 
-      <nav class="nav-links">
-        <a href="#deals">דילים חמים</a>
-        <a href="#contact">בקשה אישית</a>
-      </nav>
-
       <a class="brand" href="#">
-        <img src="./logo_shayfly_whitebg.png" alt="ShayFly" onerror="this.src='https://via.placeholder.com/50x50?text=SF'">
-        <div class="brand-text">
-          <div class="name">ShayFly</div>
-          <div class="tag">Travel Agent Price</div>
-        </div>
+        <b>ShayFly</b>
+        <img src="./logo_shayfly_whitebg.png" alt="ShayFly" onerror="this.style.display='none'">
       </a>
     </div>
   </div>
@@ -211,133 +161,96 @@
 
 <main class="hero">
   <div class="container">
-    <div class="hero-grid">
-      <div class="glass-card">
-        <div class="badge">🔥 מחירים בלעדיים לסוף ינואר</div>
-        <h1>חופשה מושלמת<br>במחיר של <span>סוכנים.</span></h1>
-        <p>בלי אותיות קטנות ובלי כאבי ראש. אני מוצא לכם את הדיל הכי משתלם בשוק וסוגר לכם הכל בוואטסאפ.</p>
-        
-        <div class="btn-group">
-          <a class="btn btn-primary" href="https://wa.me/972503456723?text=היי%20שי,%20אשמח%20להצעה%20לדיל!">דבר איתי בוואטסאפ</a>
-          <a class="btn btn-secondary" href="#deals">צפה בדילים</a>
-        </div>
-      </div>
-
-      <div class="side-info">
-        <div class="mini-card">
-          <h3>למה כדאי לכם?</h3>
-          <ul>
-            <li>✅ שירות אישי 1-על-1</li>
-            <li>✅ חיסכון של מאות שקלים</li>
-            <li>✅ עד 3 תשלומים ללא ריבית</li>
-          </ul>
-        </div>
-        <div class="mini-card">
-          <h3>איך זה עובד?</h3>
-          <ul>
-            <li>1️⃣ שולחים יעד ותאריכים</li>
-            <li>2️⃣ מקבלים הצעה מנצחת</li>
-            <li>3️⃣ אורזים מזוודות!</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <h1>החופשה הבאה שלכם<br>מתחילה ב<span>וואטסאפ.</span></h1>
+    <p>דילים אמיתיים במחיר של סוכן, שירות אישי וזמין, ואפס כאבי ראש. לאן טסים?</p>
+    <a href="https://wa.me/972503456723?text=היי%20שי,%20אשמח%20להצעה%20מנצחת!" class="main-cta">דבר איתי בווטסאפ ✈️</a>
   </div>
 </main>
 
 <section id="deals">
   <div class="container">
     <div class="section-title">
-      <h2>היעדים המבוקשים ביותר</h2>
-      <p>המחירים המוצגים הם "החל מ-" לאדם בחדר זוגי, בכפוף לזמינות.</p>
+      <h2>דילים חמים מהתנור 🔥</h2>
+      <p>המחירים להיום - כדאי למהר לפני שיחטפו!</p>
     </div>
 
-    <div class="deals-grid" id="dealsGrid">
+    <div class="grid" id="dealsGrid">
       </div>
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" style="background: #fff;">
   <div class="container">
-    <div class="glass-card">
-      <div class="contact-grid">
-        <div>
-          <h2>לא מצאתם מה שחיפשתם?</h2>
-          <p>תנו לי לעבוד בשבילכם. מלאו את הפרטים ואחזור אליכם עם הצעה מותאמת אישית לוואטסאפ שלכם.</p>
-          <div style="margin-top:20px; color: var(--brand);">
-            <strong>💳 אפשרות לעד 12 תשלומים!</strong>
-          </div>
-        </div>
+    <div class="section-title">
+      <h2>לא מצאתם? אני אמצא לכם! 🔎</h2>
+      <p>מלאו פרטים קטנים ואני חוזר אליכם עם הדיל הכי זול בשוק.</p>
+    </div>
 
-        <div class="contact-form">
-          <div class="input-group">
-            <label>שם מלא</label>
-            <input class="custom-input" id="fName" placeholder="ישראל ישראלי">
-          </div>
-          <div class="input-group">
-            <label>לאן תרצו לטוס?</label>
-            <input class="custom-input" id="fDest" placeholder="למשל: תאילנד, פריז...">
-          </div>
-          <div class="input-group">
-            <label>הרכב נוסעים</label>
-            <input class="custom-input" id="fPax" placeholder="זוג / זוג + 2">
-          </div>
-          <button class="btn btn-primary" style="width:100%; justify-content:center;" id="sendBtn">שלח בקשה בוואטסאפ</button>
-        </div>
+    <div class="form-box" style="max-width: 700px; margin: 0 auto;">
+      <div class="form-grid">
+        <input type="text" id="fName" placeholder="איך קוראים לכם?">
+        <input type="text" id="fDest" placeholder="לאן בא לכם לטוס?">
       </div>
+      <div class="form-grid">
+        <input type="text" id="fPax" placeholder="כמה אנשים? (למשל: זוג + 1)">
+        <input type="text" id="fDates" placeholder="מתי? (חודש / תאריכים)">
+      </div>
+      <button onclick="sendLead()" class="card-btn" style="background: var(--grad); padding: 18px; font-size: 18px; border: none; cursor: pointer;">שלחו לי הצעה בוואטסאפ 🚀</button>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <p>ShayFly © 2024 | כל הזכויות שמורות | ט.ל.ח</p>
-    <p style="margin-top:10px;">המחירים כפופים לשינויי ספק וזמינות מקומות בטיסה ובמלון.</p>
+    <p><b>ShayFly</b> - חופשות במחיר של סוכן</p>
+    <p style="opacity: 0.6; font-size: 12px;">המחירים "החל מ-" ומשתנים לפי זמינות הספקים. ט.ל.ח</p>
   </div>
 </footer>
 
 <script>
   const DESTS = [
-    { city:"דובאי", country:"איחוד האמירויות", img:"./images/dubai.jpg", desc:"יוקרה, קניות וחופים — חופשה בסטייל.", nights:"4 לילות", includes:["טיסה","מלון 5★","א.בוקר"], price:1500 },
-    { city:"אבו דאבי", country:"איחוד האמירויות", img:"./images/abu-dabi.jpg", desc:"מסגד שייח׳ זאיד, טיילת וחוויות.", nights:"4 לילות", includes:["טיסה","מלון 5★","א.בוקר"], price:1500 },
-    { city:"בודפשט", country:"הונגריה", img:"./images/budapest.jpg", desc:"הדנובה, מרחצאות וחיי לילה.", nights:"4 לילות", includes:["טיסה","מלון 4★","א.בוקר"], price:1200 },
-    { city:"אתונה", country:"יוון", img:"./images/athens.jpg", desc:"היסטוריה, אוכל יווני ושופינג.", nights:"3 לילות", includes:["טיסה","מלון","א.בוקר"], price:1100 },
-    { city:"סלוניקי", country:"יוון", img:"./images/thessaloniki.jpg", desc:"טיילת, שווקים ואווירה צעירה.", nights:"3 לילות", includes:["טיסה","מלון","א.בוקר"], price:1100 },
-    { city:"בוקרשט", country:"רומניה", img:"./images/bucharest.jpg", desc:"תמורה מעולה, בילויים וקניות.", nights:"3 לילות", includes:["טיסה","מלון 4★"], price:1300 },
-    { city:"בטומי", country:"גאורגיה", img:"./images/batumi.jpg", desc:"ים, קזינו וטיולים — חופשה כיפית.", nights:"4 לילות", includes:["טיסה","מלון 5★","א.בוקר"], price:1300 },
-    { city:"טביליסי", country:"גאורגיה", img:"./images/tbilisi.jpg", desc:"עיר עתיקה, אוכל ותרבות.", nights:"4 לילות", includes:["טיסה","מלון 5★","א.בוקר"], price:1300 },
-    { city:"ניו דלהי", country:"הודו", img:"./images/new-delhi.jpg", desc:"טיול אקזוטי של פעם בחיים.", nights:"7 לילות", includes:["טיסה","מזוודה","מלון 5★"], price:2500 }
+    { city:"דובאי", country:"איחוד האמירויות", img:"./images/dubai.jpg", desc:"יוקרה, קניות וחופים בלתי נשכחים.", nights:"4 לילות", tags:["מלון 5★","א.בוקר","טיסה"], price:1500 },
+    { city:"אבו דאבי", country:"איחוד האמירויות", img:"./images/abu-dabi.jpg", desc:"עולם של אטרקציות ופארקים.", nights:"4 לילות", tags:["פארקים","מלון 5★"], price:1500 },
+    { city:"בודפשט", country:"הונגריה", img:"./images/budapest.jpg", desc:"העיר הכי יפה באירופה, בסטייל.", nights:"4 לילות", tags:["שופינג","מרכז העיר"], price:1200 },
+    { city:"אתונה", country:"יוון", img:"./images/athens.jpg", desc:"היסטוריה, טברנות ואווירה יוונית.", nights:"3 לילות", tags:["קרוב","אוכל מעולה"], price:1100 },
+    { city:"סלוניקי", country:"יוון", img:"./images/thessaloniki.jpg", desc:"חופשה צעירה, תוססת וכיפית.", nights:"3 לילות", tags:["טיילת","בילויים"], price:1100 },
+    { city:"בוקרשט", country:"רומניה", img:"./images/bucharest.jpg", desc:"קזינו, קניות ומחירים מצחיקים.", nights:"3 לילות", tags:["קזינו","מלון 4★"], price:1300 },
+    { city:"בטומי", country:"גאורגיה", img:"./images/batumi.jpg", desc:"חופשת בטן-גב וקזינו על הים.", nights:"4 לילות", tags:["קזינו","על הים"], price:1300 },
+    { city:"טביליסי", country:"גאורגיה", img:"./images/tbilisi.jpg", desc:"טיולים, נופים ואוכל נדיר.", nights:"4 לילות", tags:["נופים","טיולים"], price:1300 },
+    { city:"ניו דלהי", country:"הודו", img:"./images/new-delhi.jpg", desc:"החופשה האקזוטית שתמיד חלמתם.", nights:"7 לילות", tags:["אקזוטי","פעם בחיים"], price:2500 }
   ];
 
   function renderDeals() {
     const grid = document.getElementById('dealsGrid');
     grid.innerHTML = DESTS.map(d => `
-      <div class="deal-card">
-        <div class="tag-country">${d.country}</div>
-        <div class="img-box">
-          <img src="${d.img}" alt="${d.city}" onerror="this.src='https://via.placeholder.com/400x300?text=${d.city}'">
+      <div class="card">
+        <div class="img-wrap">
+          <img src="${d.img}" alt="${d.city}" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80'">
+          <div class="price-badge">₪${d.price.toLocaleString()}</div>
         </div>
-        <div class="card-body">
+        <div class="card-content">
+          <div style="font-size: 12px; color: var(--primary); font-weight: 800;">${d.country}</div>
           <h3>${d.city}</h3>
           <p class="desc">${d.desc}</p>
-          <div class="chips-container">
-            <span class="chip-item">🌙 ${d.nights}</span>
-            ${d.includes.map(inc => `<span class="chip-item">✓ ${inc}</span>`).join('')}
+          <div class="tags">
+            <span class="tag">🌙 ${d.nights}</span>
+            ${d.tags.map(t => `<span class="tag">${t}</span>`).join('')}
           </div>
-          <div class="price-tag">החל מ- <b>₪${d.price.toLocaleString()}</b></div>
-          <div class="card-actions">
-            <a href="https://wa.me/972503456723?text=היי%20שי,%20אני%20רוצה%20דיל%20ל${d.city}" class="btn-sm btn-sm-primary" target="_blank">בדיקת זמינות בוואטסאפ</a>
-          </div>
+          <a href="https://wa.me/972503456723?text=${encodeURIComponent('היי שי, אשמח לפרטים על הדיל ל' + d.city)}" class="card-btn" target="_blank">אני רוצה הצעה! ✨</a>
         </div>
       </div>
     `).join('');
   }
 
-  document.getElementById('sendBtn').onclick = function() {
+  function sendLead() {
     const name = document.getElementById('fName').value;
     const dest = document.getElementById('fDest').value;
     const pax = document.getElementById('fPax').value;
-    const text = `היי שי, אני רוצה הצעה לדיל!\nשם: ${name}\nיעד: ${dest}\nהרכב: ${pax}`;
+    const dates = document.getElementById('fDates').value;
+    
+    if(!name || !dest) { alert('בבקשה מלאו שם ויעד :)'); return; }
+
+    const text = `היי שי! אני רוצה הצעה לחופשה ✈️\nשם: ${name}\nיעד: ${dest}\nהרכב: ${pax}\nמתי: ${dates}`;
     window.open(`https://wa.me/972503456723?text=${encodeURIComponent(text)}`, '_blank');
   }
 
