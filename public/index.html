@@ -1,315 +1,235 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#020617" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShayFly — חופשה במחיר של סוכן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-color: #0b1b2e;
+            --accent-color: #18c37e;
+            --text-main: #333;
+            --text-light: #666;
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
 
-  <title>ShayFly — חווית טיסה ונופש | דילים של סוכנים</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet" />
+        body {
+            font-family: 'Heebo', sans-serif;
+            margin: 0; padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-  <style>
-    :root {
-      --primary: #10b981; /* Teal-Emerald Trust color */
-      --secondary: #0ea5e9; /* Sky blue */
-      --accent: #f59e0b; /* Amber Gold for Luxury */
-      --bg: #020617;
-      --card-bg: rgba(15, 23, 42, 0.6);
-      --glass: rgba(255, 255, 255, 0.03);
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --radius: 20px;
-    }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
-    body {
-      margin: 0; font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text);
-      line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth;
-    }
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eee;
+            position: sticky; top: 0; z-index: 1000;
+        }
 
-    /* Cinematic Background */
-    body::before {
-      content: ""; position: fixed; inset: 0;
-      background: 
-        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 40%);
-      z-index: -1;
-    }
+        .header-content {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0;
+        }
 
-    .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+        .logo-wrap { display: flex; align-items: center; gap: 15px; }
+        .logo-wrap img { height: 60px; width: auto; }
+        .logo-wrap h1 { font-size: 24px; font-weight: 900; margin: 0; color: var(--brand-color); }
 
-    /* Luxury Header */
-    header {
-      position: sticky; top: 0; z-index: 1000;
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      background: rgba(2, 6, 23, 0.8);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-wrapper { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
-    
-    .logo-area { display: flex; align-items: center; gap: 15px; }
-    .logo-container {
-      width: 52px; height: 52px; background: #fff; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4); padding: 4px;
-    }
-    .logo-container img { max-width: 100%; height: auto; object-fit: contain; }
-    .logo-text h1 { font-size: 24px; font-weight: 900; margin: 0; letter-spacing: -0.5px; }
-    .logo-text span { color: var(--primary); font-size: 12px; font-weight: 700; display: block; margin-top: -4px; }
+        .contact-pills { display: flex; gap: 10px; }
+        .pill {
+            padding: 8px 16px; border-radius: 50px; font-size: 14px; font-weight: 700;
+            text-decoration: none; transition: 0.3s;
+        }
+        .pill-wa { background: var(--accent-color); color: white; }
+        .pill-phone { border: 1px solid var(--brand-color); color: var(--brand-color); }
+        .pill:hover { opacity: 0.8; transform: translateY(-2px); }
 
-    nav { display: flex; gap: 32px; }
-    nav a { font-weight: 700; font-size: 15px; color: var(--muted); transition: 0.3s; }
-    nav a:hover { color: var(--text); }
+        /* Hero */
+        .hero {
+            background: var(--brand-color); color: white;
+            padding: 80px 0; text-align: center;
+        }
+        .hero h2 { font-size: clamp(32px, 5vw, 48px); margin: 0 0 15px; font-weight: 900; }
+        .hero p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto 30px; }
 
-    .header-btns { display: flex; gap: 12px; }
-    .btn-small { 
-      padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 800;
-      border: 1px solid var(--border); background: var(--glass);
-    }
-    .btn-small.wa { border-color: var(--primary); color: var(--primary); }
+        /* Deals Grid */
+        .section-title {
+            margin: 60px 0 30px; display: flex; align-items: center; gap: 15px;
+        }
+        .section-title h3 { font-size: 28px; margin: 0; font-weight: 900; }
+        .section-title .line { flex: 1; height: 1px; background: #ddd; }
 
-    /* Hero Section */
-    .hero { padding: 100px 0 60px; text-align: center; }
-    .hero-tag {
-      background: var(--glass); border: 1px solid var(--border); padding: 8px 20px;
-      border-radius: 100px; font-size: 14px; font-weight: 700; color: var(--secondary);
-      display: inline-block; margin-bottom: 24px;
-    }
-    .hero h2 { 
-      font-size: clamp(40px, 8vw, 80px); line-height: 1; font-weight: 900; margin: 0 0 24px;
-      background: linear-gradient(to bottom, #fff 40%, #94a3b8);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero p { max-width: 700px; margin: 0 auto 40px; font-size: 20px; color: var(--muted); }
+        .deals-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px; margin-bottom: 80px;
+        }
 
-    /* Deals Section */
-    .grid-deals { 
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); 
-      gap: 30px; padding: 40px 0;
-    }
-    .deal-card {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden; transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-      position: relative;
-    }
-    .deal-card:hover { transform: translateY(-12px); border-color: var(--primary); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
-    
-    .deal-image { height: 260px; position: relative; overflow: hidden; }
-    .deal-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-    .deal-card:hover .deal-image img { transform: scale(1.1); }
-    
-    .deal-overlay {
-      position: absolute; inset: 0; background: linear-gradient(to top, var(--bg), transparent);
-    }
-    .deal-price {
-      position: absolute; bottom: 20px; right: 20px; background: var(--primary);
-      padding: 10px 20px; border-radius: 14px; font-weight: 900; font-size: 20px;
-      box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
-    }
-    .deal-price span { font-size: 13px; font-weight: 400; opacity: 0.9; }
+        .deal-card {
+            background: var(--white); border-radius: 16px; overflow: hidden;
+            box-shadow: var(--shadow); transition: 0.3s; border: 1px solid #eee;
+        }
+        .deal-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
 
-    .deal-body { padding: 25px; }
-    .deal-body h3 { font-size: 26px; margin: 0 0 10px; }
-    .deal-info { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
-    .info-tag { font-size: 13px; font-weight: 700; color: var(--secondary); display: flex; align-items: center; gap: 5px; }
+        .deal-img { height: 200px; position: relative; }
+        .deal-img img { width: 100%; height: 100%; object-fit: cover; }
+        .price-tag {
+            position: absolute; bottom: 15px; right: 15px;
+            background: var(--brand-color); color: white;
+            padding: 5px 15px; border-radius: 8px; font-weight: 700;
+        }
 
-    .btn-main {
-      width: 100%; padding: 16px; border-radius: 14px; border: none; font-family: inherit;
-      font-weight: 900; font-size: 16px; cursor: pointer; transition: 0.3s;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      background: var(--text); color: var(--bg);
-    }
-    .btn-main:hover { background: var(--primary); color: white; }
+        .deal-info { padding: 20px; }
+        .deal-info h4 { margin: 0 0 5px; font-size: 20px; }
+        .deal-info p { margin: 0 0 15px; color: var(--text-light); font-size: 14px; }
 
-    /* Contact Engine */
-    .contact-engine { padding: 100px 0; }
-    .engine-box {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: 32px;
-      padding: 60px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px;
-      backdrop-filter: blur(10px);
-    }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .form-group.full { grid-column: span 2; }
-    
-    label { font-size: 14px; font-weight: 700; color: var(--muted); margin-bottom: 8px; display: block; }
-    .input-field {
-      width: 100%; padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid var(--border);
-      border-radius: 16px; color: white; font-size: 16px; transition: 0.3s;
-    }
-    .input-field:focus { border-color: var(--primary); background: rgba(0,0,0,0.5); }
+        .wa-btn {
+            display: block; width: 100%; text-align: center;
+            background: #f0fdf4; color: var(--accent-color);
+            padding: 12px; border-radius: 10px; text-decoration: none;
+            font-weight: 700; transition: 0.3s; border: 1px solid var(--accent-color);
+        }
+        .wa-btn:hover { background: var(--accent-color); color: white; }
 
-    /* Float WhatsApp */
-    .wa-sticky {
-      position: fixed; bottom: 30px; left: 30px; width: 65px; height: 65px;
-      background: #25d366; border-radius: 22px; display: flex; align-items: center;
-      justify-content: center; box-shadow: 0 15px 35px rgba(37,211,102,0.4); z-index: 2000;
-      transition: 0.3s;
-    }
-    .wa-sticky:hover { transform: scale(1.1) rotate(5deg); }
+        /* Form Section */
+        .form-section {
+            background: var(--white); border-radius: 20px; padding: 40px;
+            box-shadow: var(--shadow); margin-bottom: 80px;
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full-w { grid-column: span 2; }
+        
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 700; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;
+            font-family: inherit; font-size: 15px; box-sizing: border-box;
+        }
+        .submit-btn {
+            background: var(--brand-color); color: white; border: none;
+            padding: 15px 40px; border-radius: 10px; font-weight: 700;
+            cursor: pointer; width: 100%; font-size: 16px;
+        }
 
-    @media (max-width: 1000px) {
-      .engine-box { grid-template-columns: 1fr; padding: 30px; }
-      nav { display: none; }
-      .grid-deals { grid-template-columns: 1fr; }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-w { grid-column: span 1; }
+            .header-content { flex-direction: column; gap: 15px; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-  <div class="container nav-wrapper">
-    <div class="header-btns">
-      <a href="https://wa.me/972503456723" class="btn-small wa">WhatsApp</a>
-      <a href="tel:+972503456723" class="btn-small">Call Now</a>
+    <div class="container header-content">
+        <div class="contact-pills">
+            <a href="https://wa.me/972503456723" class="pill pill-wa">בוואטסאפ 💬</a>
+            <a href="tel:+972503456723" class="pill pill-phone">050-3456723</a>
+        </div>
+        
+        <div class="logo-wrap">
+            <h1>ShayFly</h1>
+            <img src="./logo_shayfly_whitebg.png" alt="ShayFly" onerror="this.style.display='none'">
+        </div>
     </div>
-
-    <nav>
-      <a href="#deals">Destinations</a>
-      <a href="#contact">Custom Trip</a>
-      <a href="#">Why ShayFly</a>
-    </nav>
-
-    <div class="logo-area">
-      <div class="logo-text">
-        <h1>ShayFly</h1>
-        <span>Premium Travel Agent</span>
-      </div>
-      <div class="logo-container">
-        <img src="./logo_shayfly_whitebg.png" alt="ShayFly" onerror="this.src='https://ui-avatars.com/api/?name=S+F&background=020617&color=fff&bold=true'">
-      </div>
-    </div>
-  </div>
 </header>
 
-<main>
-  <section class="hero container">
-    <span class="hero-tag">Best Agent Rates • 2026 Collection</span>
-    <h2>החופשה הבאה שלכם<br>מתחילה בסטנדרט אחר.</h2>
-    <p>אני לא רק מוצא לכם טיסה ומלון. אני בונה לכם חוויה במחירים שסוכנים שומרים לעצמם. שירות אישי, שקיפות מלאה וראש שקט מאפס לנחיתה.</p>
-  </section>
+<section class="hero">
+    <div class="container">
+        <h2>החופשה הבאה שלכם מתחילה כאן</h2>
+        <p>דילים בלעדיים, שירות אישי ומחירים של פעם בחיים. תנו לי למצוא לכם את היעד המושלם.</p>
+    </div>
+</section>
 
-  <section id="deals" class="container">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2 style="font-size: 32px; font-weight: 900;">דילים נבחרים</h2>
-        <div style="height: 2px; flex: 1; background: var(--border); margin: 0 30px;"></div>
+<main class="container">
+    <div class="section-title">
+        <h3>דילים חמים</h3>
+        <div class="line"></div>
     </div>
 
-    <div class="grid-deals" id="dealsGrid">
-      </div>
-  </section>
+    <div class="deals-grid" id="dealsContainer">
+        </div>
 
-  <section id="contact" class="container contact-engine">
-    <div class="engine-box">
-      <div>
-        <h2 style="font-size: 42px; font-weight: 900; margin: 0 0 20px; line-height: 1.1;">מתכננים משהו מיוחד?</h2>
-        <p style="color: var(--muted); font-size: 18px;">מלאו את פרטי הנסיעה ואני אבנה לכם הצעה מנצחת תוך פחות מ-24 שעות.</p>
-        <div style="margin-top: 40px; border-right: 3px solid var(--primary); padding-right: 20px;">
-          <p style="margin-bottom: 15px; font-weight: 700;">💳 עד 12 תשלומים נוחים</p>
-          <p style="margin-bottom: 15px; font-weight: 700;">⭐ מלונות במיקומים הכי טובים</p>
-          <p style="margin-bottom: 0; font-weight: 700;">📞 זמינות בוואטסאפ לכל שאלה</p>
-        </div>
-      </div>
-
-      <div class="form-grid">
-        <div class="form-group">
-          <label>שם המטייל</label>
-          <input type="text" id="fName" class="input-field" placeholder="ישראל ישראלי">
-        </div>
-        <div class="form-group">
-          <label>יעד חלומי</label>
-          <input type="text" id="fDest" class="input-field" placeholder="למשל: בטומי">
-        </div>
-        <div class="form-group">
-          <label>תאריכים</label>
-          <input type="text" id="fDates" class="input-field" placeholder="מתי טסים?">
-        </div>
-        <div class="form-group">
-          <label>הרכב נוסעים</label>
-          <input type="text" id="fPax" class="input-field" placeholder="למשל: זוג + 2">
-        </div>
-        <div class="form-group full">
-          <label>דגשים מיוחדים</label>
-          <textarea id="fMsg" class="input-field" style="height: 100px;" placeholder="כשרות, יום הולדת, פארק מים..."></textarea>
-        </div>
-        <div class="form-group full">
-          <button class="btn-main" onclick="sendWA()">שלחו לי הצעה בוואטסאפ</button>
-        </div>
-      </div>
+    <div class="section-title">
+        <h3>התאמה אישית</h3>
+        <div class="line"></div>
     </div>
-  </section>
+
+    <div class="form-section">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>שם מלא</label>
+                <input type="text" id="name" placeholder="הכנס שם מלא">
+            </div>
+            <div class="form-group">
+                <label>טלפון</label>
+                <input type="text" id="phone" placeholder="05X-XXXXXXX">
+            </div>
+            <div class="form-group">
+                <label>יעד מבוקש</label>
+                <input type="text" id="dest" placeholder="לאן תרצו לטוס?">
+            </div>
+            <div class="form-group">
+                <label>תאריכים משוערים</label>
+                <input type="text" id="dates" placeholder="למשל: סוף מרץ">
+            </div>
+            <div class="form-group full-w">
+                <label>הערות מיוחדות</label>
+                <textarea id="notes" rows="3" placeholder="כמות אנשים, תקציב או בקשות מיוחדות..."></textarea>
+            </div>
+            <div class="full-w">
+                <button class="submit-btn" onclick="sendToWhatsApp()">שלחו לי הצעה בוואטסאפ</button>
+            </div>
+        </div>
+    </div>
 </main>
 
-<footer class="container" style="padding: 60px 0; border-top: 1px solid var(--border); text-align: center;">
-    <p style="color: var(--muted); font-size: 14px;">© 2026 ShayFly Luxury Travel. All Rights Reserved. המחירים כפופים לזמינות ותנאי הספק.</p>
-</footer>
-
-<a href="https://wa.me/972503456723" class="wa-sticky">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.224-3.52c1.54.953 3.12 1.4 4.754 1.402 5.352 0 9.703-4.351 9.705-9.704.002-2.595-1.005-5.035-2.837-6.87s-4.273-2.838-6.868-2.839c-5.354 0-9.705 4.351-9.707 9.705-.001 1.742.469 3.438 1.359 4.914l-.993 3.626 3.73-.978zm11.573-7.661c-.307-.154-1.817-.897-2.098-.998-.282-.103-.488-.154-.691.154-.204.307-.788.998-.965 1.203-.177.205-.355.231-.662.077-.307-.154-1.297-.478-2.47-1.526-.913-.813-1.53-1.817-1.709-2.124-.179-.307-.019-.473.134-.627.138-.138.307-.359.462-.538.154-.179.205-.307.307-.513.103-.205.051-.385-.026-.538-.077-.154-.691-1.666-.947-2.28-.248-.599-.5-.519-.691-.529-.179-.009-.385-.011-.59-.011-.205 0-.538.077-.82.385-.282.307-1.077 1.051-1.077 2.564 0 1.513 1.103 2.974 1.256 3.179.154.205 2.17 3.313 5.256 4.646.734.317 1.307.505 1.754.648.737.234 1.409.201 1.94.122.592-.088 1.817-.743 2.074-1.461.256-.718.256-1.333.179-1.461-.077-.128-.282-.205-.59-.359z"/></svg>
-</a>
-
 <script>
-  const DESTS = [
-    { city:"דובאי", country:"איחוד האמירויות", img:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800", price:1499, tags:["5★ Luxury","4 Nights","Breakfast"] },
-    { city:"בודפשט", country:"הונגריה", img:"https://images.unsplash.com/photo-1503152394-c571994fd383?q=80&w=800", price:1150, tags:["City Center","4 Nights"] },
-    { city:"בטומי", country:"גאורגיה", img:"https://images.unsplash.com/photo-1563911191471-397f3795c614?q=80&w=800", price:1290, tags:["Casino","5★ Resort"] },
-    { city:"בוקרשט", country:"רומניה", img:"https://images.unsplash.com/photo-1555990540-02a83f4439bb?q=80&w=800", price:1300, tags:["Nightlife","Premium"] },
-    { city:"אתונה", country:"יוון", img:"https://images.unsplash.com/photo-1503152394-c571994fd383?q=80&w=800", price:990, tags:["Historical","Short flight"] },
-    { city:"אבו דאבי", country:"איחוד האמירויות", img:"https://images.unsplash.com/photo-1544918877-4467d018599f?q=80&w=800", price:1450, tags:["Grand Mosque","5★ Stay"] },
-    { city:"טביליסי", country:"גאורגיה", img:"https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=800", price:1250, tags:["Old City","Culinary"] },
-    { city:"ניו דלהי", country:"הודו", img:"https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=800", price:2500, tags:["Culture","Exotic Stay"] },
-    { city:"סלוניקי", country:"יוון", img:"https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?q=80&w=800", price:1100, tags:["Shopping","Vibe"] }
-  ];
+    const deals = [
+        { title: "דובאי", price: "₪1500", img: "./images/dubai.jpg", desc: "4 לילות במלון 5 כוכבים כולל טיסות" },
+        { title: "בודפשט", price: "₪1200", img: "./images/budapest.jpg", desc: "3 לילות במרכז העיר, טיסות ישירות" },
+        { title: "בטומי", price: "₪1300", img: "./images/batumi.jpg", desc: "חופשת קזינו ונופש, הכל כלול" },
+        { title: "אבו דאבי", price: "₪1500", img: "./images/abu-dabi.jpg", desc: "יוקרה בלב המדבר, מלון פרימיום" },
+        { title: "אתונה", price: "₪1100", img: "./images/athens.jpg", desc: "סופ״ש של אוכל וקולינריה" },
+        { title: "בוקרשט", price: "₪1300", img: "./images/bucharest.jpg", desc: "שופינג וחיי לילה סוערים" },
+        { title: "טביליסי", price: "₪1300", img: "./images/tbilisi.jpg", desc: "נופים משגעים ואווירה אותנטית" },
+        { title: "ניו דלהי", price: "₪2500", img: "./images/new-delhi.jpg", desc: "טיול שורשים וחוויה תרבותית" },
+        { title: "סלוניקי", price: "₪1100", img: "./images/thessaloniki.jpg", desc: "יוון הקלאסית במרחק נגיעה" }
+    ];
 
-  function renderDeals() {
-    const grid = document.getElementById('dealsGrid');
-    grid.innerHTML = DESTS.map(d => `
-      <div class="deal-card">
-        <div class="deal-image">
-          <img src="${d.img}" alt="${d.city}">
-          <div class="deal-overlay"></div>
-          <div class="deal-price">₪${d.price.toLocaleString()} <span>לאדם</span></div>
-        </div>
-        <div class="deal-body">
-          <div style="font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 5px;">${d.country}</div>
-          <h3>${d.city}</h3>
-          <div class="deal-info">
-            ${d.tags.map(t => `<span class="info-tag">✦ ${t}</span>`).join('')}
-          </div>
-          <button class="btn-main" onclick="openDeal('${d.city}')">
-            <span>דברו איתי בוואטסאפ</span>
-          </button>
-        </div>
-      </div>
-    `).join('');
-  }
+    const container = document.getElementById('dealsContainer');
+    deals.forEach(deal => {
+        container.innerHTML += `
+            <div class="deal-card">
+                <div class="deal-img">
+                    <img src="${deal.img}" alt="${deal.title}" onerror="this.src='https://via.placeholder.com/400x250?text=${deal.title}'">
+                    <div class="price-tag">${deal.price}</div>
+                </div>
+                <div class="deal-info">
+                    <h4>${deal.title}</h4>
+                    <p>${deal.desc}</p>
+                    <a href="https://wa.me/972503456723?text=היי שי, אני מעוניין בדיל ל${deal.title}" class="wa-btn">לפרטים בוואטסאפ</a>
+                </div>
+            </div>
+        `;
+    });
 
-  function openDeal(city) {
-    const text = `היי שי, ראיתי את הדיל ל${city} באתר ואני מעוניין בפרטים נוספים.`;
-    window.open(`https://wa.me/972503456723?text=${encodeURIComponent(text)}`, '_blank');
-  }
+    function sendToWhatsApp() {
+        const name = document.getElementById('name').value;
+        const dest = document.getElementById('dest').value;
+        const phone = document.getElementById('phone').value;
+        const dates = document.getElementById('dates').value;
+        const notes = document.getElementById('notes').value;
 
-  function sendWA() {
-    const name = document.getElementById('fName').value;
-    const dest = document.getElementById('fDest').value;
-    const dates = document.getElementById('fDates').value;
-    const pax = document.getElementById('fPax').value;
-    const msg = document.getElementById('fMsg').value;
-
-    const text = `היי שי, אני רוצה לקבל הצעה לחופשה:
-👤 שם: ${name}
-📍 יעד: ${dest}
-📅 תאריכים: ${dates}
-👨‍👩‍👧‍👦 הרכב: ${pax}
-📝 הערות: ${msg}`;
-    
-    window.open(`https://wa.me/972503456723?text=${encodeURIComponent(text)}`, '_blank');
-  }
-
-  document.addEventListener('DOMContentLoaded', renderDeals);
+        const text = `היי שי, אני רוצה לקבל הצעה: %0Aשם: ${name}%0Aטלפון: ${phone}%0Aיעד: ${dest}%0Aתאריכים: ${dates}%0Aהערות: ${notes}`;
+        window.open(`https://wa.me/972503456723?text=${text}`, '_blank');
+    }
 </script>
 
 </body>
