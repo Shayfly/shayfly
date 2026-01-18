@@ -7,12 +7,10 @@
   <title>ShayFly – דילים במחיר של סוכן | טיסה + מלון + כבודה</title>
   <meta name="description" content="ShayFly – דילים במחיר של סוכן. טיסה + מלון + כבודה + ארוחת בוקר לפי היעד. שירות אישי בוואטסאפ. עד 3 תשלומים ללא ריבית ועד 12 בתוספת קטנה." />
   <meta name="robots" content="index,follow" />
-
   <meta property="og:type" content="website" />
   <meta property="og:title" content="ShayFly – דילים במחיר של סוכן" />
   <meta property="og:description" content="טיסה + מלון + כבודה + ארוחת בוקר לפי היעד. שירות אישי בוואטסאפ." />
   <meta property="og:image" content="logo_shayfly_whitebg.png" />
-
   <link rel="icon" href="logo_shayfly_whitebg.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,37 +98,44 @@
       text-align:center;font-size:13px;
     }
 
-    /* HERO עם תמונה אמיתית שלך */
+    /* HERO slideshow */
     .hero{
       position:relative;
       padding:28px 0 18px;
       overflow:hidden;
+      min-height: 430px;
     }
     .hero-bg{
       position:absolute; inset:0;
-      background-image:
-        linear-gradient(135deg, rgba(11,44,61,.88), rgba(11,94,215,.65)),
-        url("images/dubai.jpg"); /* <- כאן אפשר להחליף ל images/travelers.jpg אם תעלה */
       background-size: cover;
       background-position: center;
       transform: scale(1.02);
-      filter: saturate(1.05) contrast(1.02);
+      filter: saturate(1.05) contrast(1.03);
     }
+    .hero-overlay{
+      position:absolute; inset:0;
+      background: linear-gradient(135deg, rgba(11,44,61,.88), rgba(11,94,215,.62));
+    }
+    .hero-bg.layerA{opacity:1; transition: opacity 900ms ease;}
+    .hero-bg.layerB{opacity:0; transition: opacity 900ms ease;}
+    .hero-bg.layerB.show{opacity:1;}
+    .hero-bg.layerA.hide{opacity:0;}
+
     .hero-grid{
       position:relative; z-index:2;
       display:grid; gap:16px;
       grid-template-columns: 1fr;
+      align-items:stretch;
     }
     @media(min-width:1000px){
-      .hero-grid{grid-template-columns: 1.15fr .85fr; align-items:stretch;}
+      .hero-grid{grid-template-columns: 1.15fr .85fr;}
     }
-
     .hero-card{
       color:#fff;border-radius:24px;
       box-shadow: var(--shadow);
       padding:28px 22px;
       background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
       backdrop-filter: blur(6px);
     }
     .badge{
@@ -142,7 +147,7 @@
     }
     .hero h1{margin:14px 0 8px;font-size:34px;line-height:1.12;font-weight:950}
     @media(min-width:900px){ .hero h1{font-size:52px;} }
-    .hero p{margin:0;color:rgba(255,255,255,.92);font-weight:800;font-size:15px}
+    .hero p{margin:0;color:rgba(255,255,255,.92);font-weight:850;font-size:15px}
     @media(min-width:900px){ .hero p{font-size:16px;} }
 
     .cta-row{
@@ -233,7 +238,7 @@
       padding:6px 10px;border-radius:999px;
       white-space:nowrap;
     }
-    .desc{margin:8px 0 12px;color:#475467;font-weight:800;font-size:13px}
+    .desc{margin:8px 0 12px;color:#475467;font-weight:850;font-size:13px}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
     .chip{
       font-size:12px;font-weight:950;color:#0b2c3d;
@@ -278,24 +283,17 @@
       .deal-week .cover{ height: 260px; }
     }
 
-    /* More destinations row */
-    .more{
-      padding: 18px 0 50px;
-    }
-    .more h3{
-      margin:0; font-size:20px; font-weight:950; color:var(--dark);
-      text-align:center;
-    }
-    .more p{
-      margin:8px 0 0; color:var(--muted); font-weight:900; text-align:center;
-    }
+    /* More */
+    .more{padding: 18px 0 50px;}
+    .more h3{margin:0;font-size:20px;font-weight:950;color:var(--dark);text-align:center;}
+    .more p{margin:8px 0 0;color:var(--muted);font-weight:900;text-align:center;}
     .scrollrow{
       display:flex; gap:10px; overflow:auto; padding: 12px 2px;
       scroll-snap-type:x mandatory;
     }
     .scrollrow .chip{scroll-snap-align:start}
 
-    /* Floating WhatsApp button */
+    /* Floating WhatsApp */
     .wa-float{
       position:fixed; left:16px; bottom:16px; z-index:99;
       background: var(--wa); color:#fff;
@@ -351,7 +349,9 @@
   </div>
 
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg layerA" id="heroLayerA"></div>
+    <div class="hero-bg layerB" id="heroLayerB"></div>
+    <div class="hero-overlay"></div>
 
     <div class="wrap hero-grid">
       <div class="hero-card">
@@ -376,22 +376,10 @@
         </div>
 
         <div class="kpi">
-          <div class="box">
-            <div class="num">מחיר סוכן</div>
-            <div class="lbl">בלי עמלות מיותרות</div>
-          </div>
-          <div class="box">
-            <div class="num">שירות אישי</div>
-            <div class="lbl">זמין בוואטסאפ</div>
-          </div>
-          <div class="box">
-            <div class="num">הכל ברור</div>
-            <div class="lbl">מה כלול בדיל</div>
-          </div>
-          <div class="box">
-            <div class="num">תשלומים</div>
-            <div class="lbl">עד 3 / עד 12</div>
-          </div>
+          <div class="box"><div class="num">מחיר סוכן</div><div class="lbl">בלי עמלות מיותרות</div></div>
+          <div class="box"><div class="num">שירות אישי</div><div class="lbl">זמין בוואטסאפ</div></div>
+          <div class="box"><div class="num">הכל ברור</div><div class="lbl">מה כלול בדיל</div></div>
+          <div class="box"><div class="num">תשלומים</div><div class="lbl">עד 3 / עד 12</div></div>
         </div>
 
         <ul class="side-list">
@@ -412,14 +400,11 @@
 
       <div class="grid">
 
-        <!-- Batumi (Deal of the week) -->
+        <!-- 1) Batumi - Deal of the week -->
         <article class="card deal-week deal-week-span">
           <img class="cover" src="images/batumi.jpg" alt="בתומי" loading="lazy">
           <div class="content">
-            <div class="title-row">
-              <h3 class="title">בתומי</h3>
-              <span class="tag">דיל השבוע</span>
-            </div>
+            <div class="title-row"><h3 class="title">בתומי</h3><span class="tag">דיל השבוע</span></div>
             <p class="desc">ים, קזינו, טיילת ואווירת חופש במחיר משתלם.</p>
             <div class="chips">
               <span class="chip">✈️ טיסה</span><span class="chip">🏨 מלון 5★</span><span class="chip">🧳 טרולי</span><span class="chip">🍳 א.בוקר</span>
@@ -432,15 +417,13 @@
           </div>
         </article>
 
+        <!-- 2) Dubai -->
         <article class="card">
           <img class="cover" src="images/dubai.jpg" alt="דובאי" loading="lazy">
           <div class="content">
-            <div class="title-row">
-              <h3 class="title">דובאי</h3>
-              <span class="tag">פרימיום</span>
-            </div>
+            <div class="title-row"><h3 class="title">דובאי</h3><span class="tag">פרימיום</span></div>
             <p class="desc">יוקרה, קניות, חופים ואטרקציות ברמה עולמית.</p>
-            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 5★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 4 לילות</span></div>
+            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 מלון 5★</span><span class="chip">🧳 טרולי</span><span class="chip">🍳 א.בוקר</span><span class="chip">🌙 4 לילות</span></div>
             <div class="bottom">
               <div class="price">החל מ- 1,499 ₪<small>לאדם (זוגי)</small></div>
               <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לדובאי%20(4%20לילות)%20החל%20מ-1,499%20₪%20🙏" target="_blank" rel="noopener">וואטסאפ →</a>
@@ -448,15 +431,13 @@
           </div>
         </article>
 
+        <!-- 3) Abu Dhabi -->
         <article class="card">
           <img class="cover" src="images/abu-dabi.jpg" alt="אבו דאבי" loading="lazy">
           <div class="content">
-            <div class="title-row">
-              <h3 class="title">אבו דאבי</h3>
-              <span class="tag">5★</span>
-            </div>
+            <div class="title-row"><h3 class="title">אבו דאבי</h3><span class="tag">5★</span></div>
             <p class="desc">תרבות, חופים ואטרקציות – יעד יוקרתי שמרגיש גדול.</p>
-            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 5★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 4 לילות</span></div>
+            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 מלון 5★</span><span class="chip">🧳 טרולי</span><span class="chip">🍳 א.בוקר</span><span class="chip">🌙 4 לילות</span></div>
             <div class="bottom">
               <div class="price">החל מ- 1,499 ₪<small>לאדם (זוגי)</small></div>
               <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לאבו%20דאבי%20(4%20לילות)%20החל%20מ-1,499%20₪%20🙏" target="_blank" rel="noopener">וואטסאפ →</a>
@@ -464,31 +445,13 @@
           </div>
         </article>
 
-        <article class="card">
-          <img class="cover" src="images/tbilisi.jpg" alt="טביליסי" loading="lazy">
-          <div class="content">
-            <div class="title-row">
-              <h3 class="title">טביליסי</h3>
-              <span class="tag">חורף</span>
-            </div>
-            <p class="desc">אוכל גיאורגי, יין, סמטאות ונופים.</p>
-            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 5★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 4 לילות</span></div>
-            <div class="bottom">
-              <div class="price">החל מ- 1,299 ₪<small>לאדם (זוגי)</small></div>
-              <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לטביליסי%20(4%20לילות)%20החל%20מ-1,299%20₪%20🙏" target="_blank" rel="noopener">וואטסאפ →</a>
-            </div>
-          </div>
-        </article>
-
+        <!-- 4) Budapest -->
         <article class="card">
           <img class="cover" src="images/budapest.jpg" alt="בודפשט" loading="lazy">
           <div class="content">
-            <div class="title-row">
-              <h3 class="title">בודפשט</h3>
-              <span class="tag">קלאסי</span>
-            </div>
+            <div class="title-row"><h3 class="title">בודפשט</h3><span class="tag">קלאסי</span></div>
             <p class="desc">מרחצאות, הדנובה ואווירה אירופאית.</p>
-            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 4★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 4 לילות</span></div>
+            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 מלון 4★</span><span class="chip">🧳 טרולי</span><span class="chip">🍳 א.בוקר</span><span class="chip">🌙 4 לילות</span></div>
             <div class="bottom">
               <div class="price">החל מ- 1,199 ₪<small>לאדם (זוגי)</small></div>
               <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לבודפשט%20(4%20לילות)%20החל%20מ-1,199%20₪%20🙏" target="_blank" rel="noopener">וואטסאפ →</a>
@@ -496,15 +459,13 @@
           </div>
         </article>
 
+        <!-- 5) Athens -->
         <article class="card">
           <img class="cover" src="images/athens.jpg" alt="אתונה" loading="lazy">
           <div class="content">
-            <div class="title-row">
-              <h3 class="title">אתונה</h3>
-              <span class="tag">סופ״ש</span>
-            </div>
+            <div class="title-row"><h3 class="title">אתונה</h3><span class="tag">סופ״ש</span></div>
             <p class="desc">היסטוריה, אוכל יווני וקפיצה קצרה.</p>
-            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 3 לילות</span></div>
+            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 מלון</span><span class="chip">🧳 טרולי</span><span class="chip">🍳 א.בוקר</span><span class="chip">🌙 3 לילות</span></div>
             <div class="bottom">
               <div class="price">החל מ- 1,099 ₪<small>לאדם (זוגי)</small></div>
               <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לאתונה%20(3%20לילות)%20החל%20מ-1,099%20₪%20🙏" target="_blank" rel="noopener">וואטסאפ →</a>
@@ -512,15 +473,13 @@
           </div>
         </article>
 
+        <!-- 6) Thessaloniki -->
         <article class="card">
           <img class="cover" src="images/thessaloniki.jpg" alt="סלוניקי" loading="lazy">
           <div class="content">
-            <div class="title-row">
-              <h3 class="title">סלוניקי</h3>
-              <span class="tag">שופינג</span>
-            </div>
+            <div class="title-row"><h3 class="title">סלוניקי</h3><span class="tag">שופינג</span></div>
             <p class="desc">טיילת, שווקים ואווירה צעירה.</p>
-            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 3 לילות</span></div>
+            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 מלון</span><span class="chip">🧳 טרולי</span><span class="chip">🍳 א.בוקר</span><span class="chip">🌙 3 לילות</span></div>
             <div class="bottom">
               <div class="price">החל מ- 1,099 ₪<small>לאדם (זוגי)</small></div>
               <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לסלוניקי%20(3%20לילות)%20החל%20מ-1,099%20₪%20🙏" target="_blank" rel="noopener">וואטסאפ →</a>
@@ -528,15 +487,13 @@
           </div>
         </article>
 
+        <!-- 7) Bucharest -->
         <article class="card">
           <img class="cover" src="images/bucharest.jpg" alt="בוקרשט" loading="lazy">
           <div class="content">
-            <div class="title-row">
-              <h3 class="title">בוקרשט</h3>
-              <span class="tag">דיל</span>
-            </div>
+            <div class="title-row"><h3 class="title">בוקרשט</h3><span class="tag">דיל חכם</span></div>
             <p class="desc">בילויים, קניות ואוכל טוב במחיר שמרגיש דיל.</p>
-            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 4★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 3 לילות</span></div>
+            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 מלון 4★</span><span class="chip">🧳 טרולי</span><span class="chip">🍳 א.בוקר</span><span class="chip">🌙 3 לילות</span></div>
             <div class="bottom">
               <div class="price">החל מ- 1,299 ₪<small>לאדם (זוגי)</small></div>
               <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לבוקרשט%20(3%20לילות)%20החל%20מ-1,299%20₪%20🙏" target="_blank" rel="noopener">וואטסאפ →</a>
@@ -544,15 +501,27 @@
           </div>
         </article>
 
+        <!-- 8) Tbilisi -->
+        <article class="card">
+          <img class="cover" src="images/tbilisi.jpg" alt="טביליסי" loading="lazy">
+          <div class="content">
+            <div class="title-row"><h3 class="title">טביליסי</h3><span class="tag">חורף</span></div>
+            <p class="desc">אוכל גיאורגי, יין, סמטאות ונופים.</p>
+            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 מלון 5★</span><span class="chip">🧳 טרולי</span><span class="chip">🍳 א.בוקר</span><span class="chip">🌙 4 לילות</span></div>
+            <div class="bottom">
+              <div class="price">החל מ- 1,299 ₪<small>לאדם (זוגי)</small></div>
+              <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לטביליסי%20(4%20לילות)%20החל%20מ-1,299%20₪%20🙏" target="_blank" rel="noopener">וואטסאפ →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 9) New Delhi -->
         <article class="card">
           <img class="cover" src="images/new-delhi.jpg" alt="ניו דלהי" loading="lazy">
           <div class="content">
-            <div class="title-row">
-              <h3 class="title">ניו דלהי · הודו</h3>
-              <span class="tag">אקזוטי</span>
-            </div>
+            <div class="title-row"><h3 class="title">ניו דלהי · הודו</h3><span class="tag">אקזוטי</span></div>
             <p class="desc">תרבות, צבעים ושווקים — חוויה של פעם בחיים.</p>
-            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 5★</span><span class="chip">🧳 מזוודה</span><span class="chip">🍳</span><span class="chip">🌙 7 לילות</span></div>
+            <div class="chips"><span class="chip">✈️</span><span class="chip">🏨 מלון 5★</span><span class="chip">🧳 מזוודה</span><span class="chip">🍳 א.בוקר</span><span class="chip">🌙 7 לילות</span></div>
             <div class="bottom">
               <div class="price">החל מ- 2,499 ₪<small>לאדם (זוגי)</small></div>
               <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20להודו%20(ניו%20דלהי)%20(7%20לילות)%20החל%20מ-2,499%20₪%20🙏" target="_blank" rel="noopener">וואטסאפ →</a>
@@ -602,6 +571,54 @@
   </footer>
 
   <a class="wa-float" href="https://wa.me/972503456723" target="_blank" rel="noopener">💬 וואטסאפ מהיר</a>
+
+  <script>
+    // HERO background slideshow using your images 1.jpg..8.jpg (best effort)
+    const imgs = [
+      "images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg",
+      "images/6.jpg","images/7.jpg","images/8.jpg"
+    ];
+
+    const layerA = document.getElementById("heroLayerA");
+    const layerB = document.getElementById("heroLayerB");
+
+    let idx = 0;
+    let showingB = false;
+
+    function setBg(el, url){
+      el.style.backgroundImage = `url("${url}")`;
+      el.style.backgroundSize = "cover";
+      el.style.backgroundPosition = "center";
+    }
+
+    // preload
+    imgs.forEach(src => { const i = new Image(); i.src = src; });
+
+    // initial
+    setBg(layerA, imgs[0]);
+
+    // rotate only on desktop for smoothness
+    const isDesktop = window.matchMedia("(min-width: 900px)").matches;
+
+    if (isDesktop) {
+      setInterval(() => {
+        idx = (idx + 1) % imgs.length;
+        const next = imgs[idx];
+
+        if (!showingB) {
+          setBg(layerB, next);
+          layerB.classList.add("show");
+          layerA.classList.add("hide");
+        } else {
+          setBg(layerA, next);
+          layerA.classList.remove("hide");
+          layerB.classList.remove("show");
+        }
+
+        showingB = !showingB;
+      }, 5000);
+    }
+  </script>
 
 </body>
 </html>
