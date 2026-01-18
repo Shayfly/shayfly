@@ -1,310 +1,252 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="UTF-8">
   <title>ShayFly – דילים במחיר של סוכן</title>
-  <meta name="description" content="ShayFly – דילים במחיר של סוכן. שירות אישי בוואטסאפ. עד 3 תשלומים ללא ריבית ועד 12 בתוספת קטנה." />
-  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ShayFly – סוכן טיסות וחופשות. דילים אמיתיים, מחירים של סוכן, עד 3 תשלומים ללא ריבית.">
 
-  <!-- Dynamic base path: works on shayfly.co.il and on https://shayfly.github.io/shayfly/ -->
-  <script>
-    (function () {
-      const isGithub = location.hostname.endsWith("github.io");
-      window.BASE = isGithub ? "/shayfly/" : "/";
-    })();
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --brand:#0b5ed7; --dark:#0b2c3d; --accent:#ff6b00; --wa:#25D366;
-      --bg:#f5f7fb; --muted:#667085; --stroke: rgba(16,24,40,.09);
-      --shadow: 0 22px 55px rgba(16,24,40,.16);
-      --shadow2: 0 10px 22px rgba(16,24,40,.10); --r: 18px;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Heebo', sans-serif;
+      background: #f4f6f8;
+      color: #0f172a;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:"Heebo",system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:#101828;line-height:1.45}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1240px;margin:0 auto;padding:0 16px}
 
-    /* Topbar */
-    .topbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--stroke)}
-    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:12px;min-width:240px}
-    .brand img{height:46px;width:auto;border-radius:12px;background:#fff;border:1px solid rgba(16,24,40,.10);display:block}
-    .brand-title{font-weight:950;font-size:20px;color:var(--dark);line-height:1.1}
-    .brand-sub{font-weight:900;font-size:12px;color:var(--muted)}
-    .nav{display:none;gap:18px;font-weight:950;font-size:13px;color:#344054}
-    .nav a{padding:10px 10px;border-radius:12px}
-    .nav a:hover{background:#f1f5ff;color:var(--brand)}
-    @media(min-width:900px){.nav{display:flex}}
+    a { text-decoration: none; color: inherit; }
 
-    .actions{display:flex;align-items:center;gap:10px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(16,24,40,.12);background:#fff;font-weight:950;font-size:13px;box-shadow:0 6px 14px rgba(16,24,40,.06);white-space:nowrap;transition:transform .12s ease}
-    .pill:hover{transform:translateY(-1px)}
-    .wa{background:var(--wa);color:#fff;border:none;box-shadow:0 12px 20px rgba(37,211,102,.22)}
-    .wa:hover{filter:brightness(.96)}
-    .phone{display:none}
-    @media(min-width:520px){.phone{display:inline-flex}}
+    /* Header */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-    .paybar{background:linear-gradient(90deg, rgba(11,94,215,.10), rgba(255,107,0,.10));border-bottom:1px solid var(--stroke)}
-    .paybar-inner{display:flex;justify-content:center;gap:10px;padding:10px 0;color:#0f172a;font-weight:950;text-align:center;font-size:13px}
+    .logo img {
+      height: 44px;
+      display: block;
+    }
+
+    .contact {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-dark {
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .btn-green {
+      background: #22c55e;
+      color: #fff;
+    }
 
     /* Hero */
-    .hero{position:relative;padding:28px 0 18px;overflow:hidden;min-height:430px}
-    .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.02);filter:saturate(1.05) contrast(1.03)}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg, rgba(11,44,61,.90), rgba(11,94,215,.65))}
-    .hero-grid{position:relative;z-index:2;display:grid;gap:16px;grid-template-columns:1fr;align-items:stretch}
-    @media(min-width:1000px){.hero-grid{grid-template-columns:1.15fr .85fr}}
-    .hero-card{color:#fff;border-radius:24px;box-shadow:var(--shadow);padding:28px 22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(6px)}
-    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);padding:8px 12px;border-radius:999px;font-weight:950;font-size:12px}
-    .hero h1{margin:14px 0 8px;font-size:34px;line-height:1.12;font-weight:950}
-    @media(min-width:900px){.hero h1{font-size:52px}}
-    .hero p{margin:0;color:rgba(255,255,255,.92);font-weight:850;font-size:15px}
-    @media(min-width:900px){.hero p{font-size:16px}}
-    .cta-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border-radius:14px;font-weight:950;font-size:14px;border:1px solid transparent;cursor:pointer;transition:transform .12s ease}
-    .btn:hover{transform:translateY(-1px)}
-    .btn-white{background:#fff;color:var(--dark)}
-    .btn-white:hover{background:#f1f5ff}
-    .btn-wa{background:var(--wa);color:#fff}
-    .btn-wa:hover{filter:brightness(.96)}
-    .hero-note{margin-top:12px;font-size:12px;color:rgba(255,255,255,.86);font-weight:950}
+    .hero {
+      background:
+        linear-gradient(rgba(15,23,42,.55), rgba(15,23,42,.55)),
+        url("images/1.jpg") center/cover no-repeat;
+      padding: 120px 20px;
+      text-align: center;
+      color: #fff;
+    }
 
-    .side-card{background:rgba(255,255,255,.96);border-radius:24px;border:1px solid rgba(16,24,40,.10);box-shadow:var(--shadow2);padding:18px;display:flex;flex-direction:column;gap:12px}
-    .side-title{font-weight:950;color:var(--dark);font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .kpi{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .kpi .box{border:1px solid rgba(16,24,40,.10);border-radius:16px;padding:12px;background:linear-gradient(180deg,#fff,#fbfcff)}
-    .kpi .num{font-weight:950;color:var(--brand);font-size:18px}
-    .kpi .lbl{font-weight:900;color:#475467;font-size:12px;margin-top:2px}
-    .side-list{margin:0;padding:0;list-style:none;display:grid;gap:8px}
-    .side-list li{display:flex;gap:10px;align-items:flex-start;color:#344054;font-weight:900;font-size:13px;background:#f8fafc;border:1px solid rgba(16,24,40,.10);padding:10px 12px;border-radius:14px}
+    .hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
 
-    /* Deals */
-    .section{padding:18px 0 10px}
-    .section-head{text-align:center;margin:16px 0 18px}
-    .section-head h2{margin:0;font-size:28px;font-weight:950;color:var(--dark)}
-    .section-head p{margin:8px 0 0;color:var(--muted);font-weight:900}
-    .grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:18px}
-    @media(min-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(min-width:1024px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .hero p {
+      font-size: 18px;
+      opacity: .95;
+      margin-bottom: 28px;
+    }
 
-    .card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow2);border:1px solid var(--stroke);transition:transform .18s ease, box-shadow .18s ease;position:relative}
-    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-    .cover{height:210px;width:100%;object-fit:cover;display:block;background:#e9edf5}
-    .content{padding:16px 16px 14px}
-    .title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-    .title{font-size:18px;font-weight:950;margin:0;color:#0f172a}
-    .tag{font-size:11px;font-weight:950;color:#fff;background:var(--accent);padding:6px 10px;border-radius:999px;white-space:nowrap}
-    .desc{margin:8px 0 12px;color:#475467;font-weight:850;font-size:13px}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-    .chip{font-size:12px;font-weight:950;color:#0b2c3d;background:#f1f5ff;border:1px solid rgba(11,94,215,.16);padding:7px 10px;border-radius:999px;white-space:nowrap}
-    .bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;border-top:1px solid var(--stroke);padding-top:12px}
-    .price{font-weight:950;font-size:18px;color:var(--brand);line-height:1.1}
-    .price small{display:block;font-size:11px;color:var(--muted);font-weight:950;margin-top:4px}
-    .mini-btn{display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;padding:10px 12px;border-radius:12px;font-weight:950;font-size:13px;box-shadow:0 12px 20px rgba(37,211,102,.18);transition:transform .12s ease}
-    .mini-btn:hover{filter:brightness(.96);transform:translateY(-1px)}
+    /* Section */
+    section {
+      padding: 70px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-    .deal-week{border:2px solid rgba(255,107,0,.45);box-shadow:0 22px 45px rgba(16,24,40,.16)}
-    .deal-week::after{content:"דיל השבוע";position:absolute;top:14px;right:14px;background:var(--accent);color:#fff;padding:8px 12px;border-radius:999px;font-weight:950;font-size:12px}
-    @media(min-width:1024px){.deal-week-span{grid-column:span 2}.deal-week .cover{height:260px}}
+    section h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 50px;
+      font-weight: 800;
+    }
 
-    .more{padding:18px 0 50px}
-    .more h3{margin:0;font-size:20px;font-weight:950;color:var(--dark);text-align:center}
-    .more p{margin:8px 0 0;color:var(--muted);font-weight:900;text-align:center}
-    .scrollrow{display:flex;gap:10px;overflow:auto;padding:12px 2px;scroll-snap-type:x mandatory}
-    .scrollrow .chip{scroll-snap-align:start}
+    /* Deals grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
+    }
 
-    .wa-float{position:fixed;left:16px;bottom:16px;z-index:99;background:var(--wa);color:#fff;padding:12px 14px;border-radius:999px;font-weight:950;box-shadow:var(--shadow2);display:flex;align-items:center;gap:10px}
-    .wa-float:hover{filter:brightness(.96)}
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    }
 
-    footer{background:#0b2c3d;color:#fff;margin-top:10px;padding:26px 0}
-    .foot{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
-    .foot strong{font-size:16px;font-weight:950}
-    .foot a{opacity:.95;text-decoration:underline}
-    .legal{opacity:.78;font-weight:900;font-size:12px;max-width:950px}
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="topbar">
-    <div class="wrap topbar-inner">
-      <div class="brand">
-        <img id="logo" alt="ShayFly" loading="lazy">
-        <div>
-          <div class="brand-title">ShayFly</div>
-          <div class="brand-sub">דילים במחיר של סוכן</div>
-        </div>
-      </div>
+<header>
+  <div class="logo">
+    <img src="logo_shayfly_whitebg.png" alt="ShayFly">
+  </div>
+  <div class="contact">
+    <a class="btn btn-dark" href="tel:0503456723">050-3456723</a>
+    <a class="btn btn-green" href="https://wa.me/972503456723">וואטסאפ</a>
+  </div>
+</header>
 
-      <nav class="nav">
-        <a href="#deals">דילים</a>
-        <a href="#why">למה ShayFly</a>
-        <a href="#contact">צור קשר</a>
-      </nav>
+<section class="hero">
+  <h1>דילים אמיתיים. סוכן אמיתי.</h1>
+  <p>טיסות וחופשות במחיר של סוכן • עד 3 תשלומים ללא ריבית</p>
+</section>
 
-      <div class="actions">
-        <a class="pill phone" href="tel:0503456723">📞 050-3456723</a>
-        <a class="pill wa" href="https://wa.me/972503456723" target="_blank" rel="noopener">💬 וואטסאפ</a>
+<section>
+  <h2>דילים חמים</h2>
+
+  <div class="grid">
+    <div class="card">
+      <img src="images/batumi.jpg">
+      <div class="card-body">
+        <h3>בטומי</h3>
+        <p>עיר נופש, ים וקזינו</p>
+        <div class="price">החל מ-1,299 ₪ לאדם</div>
       </div>
     </div>
 
-    <div class="paybar">
-      <div class="wrap paybar-inner">
-        💳 עד 3 תשלומים ללא ריבית · עד 12 תשלומים בתוספת קטנה
+    <div class="card">
+      <img src="images/tbilisi.jpg">
+      <div class="card-body">
+        <h3>טביליסי</h3>
+        <p>אוכל, תרבות וחיי לילה</p>
+        <div class="price">החל מ-1,199 ₪ לאדם</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/dubai.jpg">
+      <div class="card-body">
+        <h3>דובאי</h3>
+        <p>יוקרה, קניות וחופים</p>
+        <div class="price">החל מ-1,499 ₪ לאדם</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/abu-dabi.jpg">
+      <div class="card-body">
+        <h3>אבו דאבי</h3>
+        <p>אטרקציות וחוויות</p>
+        <div class="price">החל מ-1,399 ₪ לאדם</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/athens.jpg">
+      <div class="card-body">
+        <h3>אתונה</h3>
+        <p>היסטוריה וקולינריה</p>
+        <div class="price">החל מ-1,099 ₪ לאדם</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/thessaloniki.jpg">
+      <div class="card-body">
+        <h3>סלוניקי</h3>
+        <p>עיר צעירה ותוססת</p>
+        <div class="price">החל מ-1,149 ₪ לאדם</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/bucharest.jpg">
+      <div class="card-body">
+        <h3>בוקרשט</h3>
+        <p>זול, כיף ומרכזי</p>
+        <div class="price">החל מ-1,099 ₪ לאדם</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/budapest.jpg">
+      <div class="card-body">
+        <h3>בודפשט</h3>
+        <p>ספא, אוכל וחיים טובים</p>
+        <div class="price">החל מ-1,149 ₪ לאדם</div>
       </div>
     </div>
   </div>
+</section>
 
-  <section class="hero">
-    <div class="hero-bg" id="heroBg"></div>
-    <div class="hero-overlay"></div>
-
-    <div class="wrap hero-grid">
-      <div class="hero-card">
-        <div class="badge">🔥 מחירי רצפה לסוף ינואר · שירות אישי · מחיר של סוכן</div>
-        <h1>דילים אמיתיים. תמונות אמיתיות. מחיר של סוכן.</h1>
-        <p>בחר יעד, שלח וואטסאפ, ואני מחזיר הצעה מסודרת: טיסה + מלון + כבודה + ארוחת בוקר (לפי הדיל).</p>
-
-        <div class="cta-row">
-          <a class="btn btn-white" href="#deals">לכל הדילים ↓</a>
-          <a class="btn btn-wa" href="https://wa.me/972503456723" target="_blank" rel="noopener">דבר איתי עכשיו בוואטסאפ</a>
-        </div>
-
-        <div class="hero-note">
-          * המחירים שיווקיים וכפופים לזמינות. המחיר לאדם בהרכב זוגי.
-        </div>
-      </div>
-
-      <aside class="side-card" id="why">
-        <div class="side-title">
-          למה ShayFly?
-          <span style="color:var(--accent);font-weight:950">✔</span>
-        </div>
-
-        <div class="kpi">
-          <div class="box"><div class="num">מחיר סוכן</div><div class="lbl">בלי עמלות מיותרות</div></div>
-          <div class="box"><div class="num">שירות אישי</div><div class="lbl">זמין בוואטסאפ</div></div>
-          <div class="box"><div class="num">הכל ברור</div><div class="lbl">מה כלול בדיל</div></div>
-          <div class="box"><div class="num">תשלומים</div><div class="lbl">עד 3 / עד 12</div></div>
-        </div>
-
-        <ul class="side-list">
-          <li>✅ הצעה מסודרת לפי יעד, תאריכים והרכב</li>
-          <li>✅ דגש על מלונות ומיקום נכון</li>
-          <li>✅ ליווי לפני ואחרי ההזמנה</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section" id="deals">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>דילים חמים</h2>
-        <p>לחץ “וואטסאפ” בכל דיל – וההודעה כבר מוכנה</p>
-      </div>
-
-      <div class="grid">
-
-        <article class="card deal-week deal-week-span">
-          <img class="cover" id="img-batumi" alt="בתומי" loading="lazy">
-          <div class="content">
-            <div class="title-row"><h3 class="title">בתומי</h3><span class="tag">דיל השבוע</span></div>
-            <p class="desc">ים, קזינו, טיילת ואווירת חופש במחיר משתלם.</p>
-            <div class="chips"><span class="chip">✈️ טיסה</span><span class="chip">🏨 מלון 5★</span><span class="chip">🧳 טרולי</span><span class="chip">🍳 א.בוקר</span><span class="chip">🌙 4 לילות</span></div>
-            <div class="bottom">
-              <div class="price">החל מ- 1,299 ₪<small>לאדם (זוגי)</small></div>
-              <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20השבוע%20לבתומי%20(4%20לילות)%20החל%20מ-1,299%20₪" target="_blank" rel="noopener">וואטסאפ →</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card"><img class="cover" id="img-dubai" alt="דובאי" loading="lazy"><div class="content"><div class="title-row"><h3 class="title">דובאי</h3><span class="tag">פרימיום</span></div><p class="desc">יוקרה, קניות, חופים ואטרקציות ברמה עולמית.</p><div class="chips"><span class="chip">✈️</span><span class="chip">🏨 5★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 4 לילות</span></div><div class="bottom"><div class="price">החל מ- 1,499 ₪<small>לאדם (זוגי)</small></div><a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לדובאי%20(4%20לילות)%20החל%20מ-1,499%20₪" target="_blank" rel="noopener">וואטסאפ →</a></div></div></article>
-
-        <article class="card"><img class="cover" id="img-abu" alt="אבו דאבי" loading="lazy"><div class="content"><div class="title-row"><h3 class="title">אבו דאבי</h3><span class="tag">5★</span></div><p class="desc">תרבות, חופים ואטרקציות – יעד יוקרתי שמרגיש גדול.</p><div class="chips"><span class="chip">✈️</span><span class="chip">🏨 5★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 4 לילות</span></div><div class="bottom"><div class="price">החל מ- 1,499 ₪<small>לאדם (זוגי)</small></div><a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לאבו%20דאבי%20(4%20לילות)%20החל%20מ-1,499%20₪" target="_blank" rel="noopener">וואטסאפ →</a></div></div></article>
-
-        <article class="card"><img class="cover" id="img-budapest" alt="בודפשט" loading="lazy"><div class="content"><div class="title-row"><h3 class="title">בודפשט</h3><span class="tag">קלאסי</span></div><p class="desc">מרחצאות, הדנובה ואווירה אירופאית.</p><div class="chips"><span class="chip">✈️</span><span class="chip">🏨 4★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 4 לילות</span></div><div class="bottom"><div class="price">החל מ- 1,199 ₪<small>לאדם (זוגי)</small></div><a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לבודפשט%20(4%20לילות)%20החל%20מ-1,199%20₪" target="_blank" rel="noopener">וואטסאפ →</a></div></div></article>
-
-        <article class="card"><img class="cover" id="img-athens" alt="אתונה" loading="lazy"><div class="content"><div class="title-row"><h3 class="title">אתונה</h3><span class="tag">סופ״ש</span></div><p class="desc">היסטוריה, אוכל יווני וקפיצה קצרה.</p><div class="chips"><span class="chip">✈️</span><span class="chip">🏨</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 3 לילות</span></div><div class="bottom"><div class="price">החל מ- 1,099 ₪<small>לאדם (זוגי)</small></div><a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לאתונה%20(3%20לילות)%20החל%20מ-1,099%20₪" target="_blank" rel="noopener">וואטסאפ →</a></div></div></article>
-
-        <article class="card"><img class="cover" id="img-thess" alt="סלוניקי" loading="lazy"><div class="content"><div class="title-row"><h3 class="title">סלוניקי</h3><span class="tag">שופינג</span></div><p class="desc">טיילת, שווקים ואווירה צעירה.</p><div class="chips"><span class="chip">✈️</span><span class="chip">🏨</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 3 לילות</span></div><div class="bottom"><div class="price">החל מ- 1,099 ₪<small>לאדם (זוגי)</small></div><a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לסלוניקי%20(3%20לילות)%20החל%20מ-1,099%20₪" target="_blank" rel="noopener">וואטסאפ →</a></div></div></article>
-
-        <article class="card"><img class="cover" id="img-bucharest" alt="בוקרשט" loading="lazy"><div class="content"><div class="title-row"><h3 class="title">בוקרשט</h3><span class="tag">דיל חכם</span></div><p class="desc">בילויים, קניות ואוכל טוב במחיר שמרגיש דיל.</p><div class="chips"><span class="chip">✈️</span><span class="chip">🏨 4★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 3 לילות</span></div><div class="bottom"><div class="price">החל מ- 1,299 ₪<small>לאדם (זוגי)</small></div><a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לבוקרשט%20(3%20לילות)%20החל%20מ-1,299%20₪" target="_blank" rel="noopener">וואטסאפ →</a></div></div></article>
-
-        <article class="card"><img class="cover" id="img-tbilisi" alt="טביליסי" loading="lazy"><div class="content"><div class="title-row"><h3 class="title">טביליסי</h3><span class="tag">חורף</span></div><p class="desc">אוכל גיאורגי, יין, סמטאות ונופים.</p><div class="chips"><span class="chip">✈️</span><span class="chip">🏨 5★</span><span class="chip">🧳</span><span class="chip">🍳</span><span class="chip">🌙 4 לילות</span></div><div class="bottom"><div class="price">החל מ- 1,299 ₪<small>לאדם (זוגי)</small></div><a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20לטביליסי%20(4%20לילות)%20החל%20מ-1,299%20₪" target="_blank" rel="noopener">וואטסאפ →</a></div></div></article>
-
-        <article class="card"><img class="cover" id="img-delhi" alt="ניו דלהי" loading="lazy"><div class="content"><div class="title-row"><h3 class="title">ניו דלהי · הודו</h3><span class="tag">אקזוטי</span></div><p class="desc">תרבות, צבעים ושווקים — חוויה של פעם בחיים.</p><div class="chips"><span class="chip">✈️</span><span class="chip">🏨 5★</span><span class="chip">🧳 מזוודה</span><span class="chip">🍳</span><span class="chip">🌙 7 לילות</span></div><div class="bottom"><div class="price">החל מ- 2,499 ₪<small>לאדם (זוגי)</small></div><a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20רוצה%20דיל%20להודו%20(ניו%20דלהי)%20(7%20לילות)%20החל%20מ-2,499%20₪" target="_blank" rel="noopener">וואטסאפ →</a></div></div></article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="more">
-    <div class="wrap">
-      <h3>עוד יעדים שתרצו אצלנו בוואטסאפ</h3>
-      <p>שלח יעד + תאריכים + הרכב, ואני חוזר עם דיל.</p>
-      <div class="scrollrow">
-        <span class="chip">🇨🇾 קפריסין</span>
-        <span class="chip">🇬🇷 רודוס</span>
-        <span class="chip">🇬🇷 כרתים</span>
-        <span class="chip">🇧🇬 בורגס</span>
-        <span class="chip">🎢 פארקי מים</span>
-        <span class="chip">🕍 ליד חב״ד</span>
-      </div>
-      <div style="display:flex;justify-content:center;margin-top:12px;">
-        <a class="mini-btn" href="https://wa.me/972503456723?text=היי%20ShayFly,%20אני%20רוצה%20דיל%20ליעד:%20____%20בתאריכים:%20____%20הרכב:%20____%20תודה!"
-           target="_blank" rel="noopener">שלח בקשה בוואטסאפ →</a>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <div class="wrap foot">
-      <strong>ShayFly – דילים במחיר של סוכן</strong>
-      <div>
-        📞 <a href="tel:0503456723">050-3456723</a>
-        · 💬 <a href="https://wa.me/972503456723" target="_blank" rel="noopener">וואטסאפ</a>
-        · ✉️ <a href="mailto:shayfly84@gmail.com">shayfly84@gmail.com</a>
-      </div>
-      <div class="legal">
-        💳 עד 3 תשלומים ללא ריבית · עד 12 תשלומים בתוספת קטנה ·
-        * המחירים שיווקיים, לאדם בהרכב זוגי, ובכפוף לזמינות ותנאי הספק. ט.ל.ח.
-      </div>
-    </div>
-  </footer>
-
-  <a class="wa-float" href="https://wa.me/972503456723" target="_blank" rel="noopener">💬 וואטסאפ מהיר</a>
-
-  <script>
-    // Set all image paths correctly based on BASE
-    const $ = (id) => document.getElementById(id);
-
-    // Logo (works on both)
-    const logo = $("logo");
-    logo.src = window.BASE + "logo_shayfly_whitebg.png";
-
-    // Hero background: use your one background image 1.jpg
-    $("heroBg").style.backgroundImage =
-      `url("${window.BASE}images/1.jpg")`;
-
-    // Deals images
-    $("img-batumi").src = window.BASE + "images/batumi.jpg";
-    $("img-dubai").src = window.BASE + "images/dubai.jpg";
-    $("img-abu").src = window.BASE + "images/abu-dabi.jpg";
-    $("img-budapest").src = window.BASE + "images/budapest.jpg";
-    $("img-athens").src = window.BASE + "images/athens.jpg";
-    $("img-thess").src = window.BASE + "images/thessaloniki.jpg";
-    $("img-bucharest").src = window.BASE + "images/bucharest.jpg";
-    $("img-tbilisi").src = window.BASE + "images/tbilisi.jpg";
-    $("img-delhi").src = window.BASE + "images/new-delhi.jpg";
-  </script>
+<footer>
+  © ShayFly – דילים במחיר של סוכן | עד 3 תשלומים ללא ריבית
+</footer>
 
 </body>
 </html>
